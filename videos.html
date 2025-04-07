@@ -57,19 +57,6 @@
             height: 100%;
         }
         
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo i {
-            margin-right: 10px;
-        }
-        
         .nav-menu {
             display: flex;
             list-style: none;
@@ -236,6 +223,12 @@
             padding-bottom: 10px;
         }
         
+        .section-title i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+            font-size: 28px;
+        }
+        
         .section-title:after {
             content: '';
             position: absolute;
@@ -254,6 +247,14 @@
             overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .video-container.scrolled {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .video-container iframe {
@@ -281,6 +282,13 @@
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .video-item.scrolled {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .video-item:hover {
@@ -603,10 +611,6 @@
     <!-- Header -->
     <header>
         <div class="header-container container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-church"></i> Revival Now America
-            </a>
-            
             <button class="mobile-menu-btn" id="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -618,11 +622,11 @@
                     </a>
                     <div class="dropdown">
                         <a href="about.html" class="dropdown-link">About</a>
-                        <a href="Our Projects.html" class="dropdown-link">Our Projects</a>
+                        <a href="Our-Projects.html" class="dropdown-link">Our Projects</a>
                         <a href="our-message.html" class="dropdown-link">Our Message</a>
                         <a href="who-we-are.html" class="dropdown-link">Who We Are</a>
                         <a href="what-we-believe.html" class="dropdown-link">What We Believe</a>
-                        <a href="Thoughts on Revival.html" class="dropdown-link">Thoughts on Revival</a>
+                        <a href="Thoughts-on-Revival.html" class="dropdown-link">Thoughts on Revival</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -632,7 +636,7 @@
                     <div class="dropdown">
                         <a href="bible-corner.html" class="dropdown-link">Bible Corner</a>
                         <a href="Discipleship.html" class="dropdown-link">Discipleship</a>
-                        <a href="Weekly Devotionals.html" class="dropdown-link">Weekly Devotionals</a>
+                        <a href="Weekly-Devotionals.html" class="dropdown-link">Weekly Devotionals</a>
                         <a href="Global-Christian-Village.html" class="dropdown-link">Global Christian Village</a>
                     </div>
                 </li>
@@ -641,10 +645,10 @@
                         <i class="fas fa-book-open"></i> Resources
                     </a>
                     <div class="dropdown">
-                        <a href="Free eBooks.html" class="dropdown-link">Free eBooks</a>
+                        <a href="Free-eBooks.html" class="dropdown-link">Free eBooks</a>
                         <a href="Photos.html" class="dropdown-link">Photos</a>
                         <a href="Videos.html" class="dropdown-link">Videos</a>
-                        <a href="Bible Corner.html" class="dropdown-link">Bible Corner</a>
+                        <a href="Bible-Corner.html" class="dropdown-link">Bible Corner</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -652,7 +656,7 @@
                         <i class="fas fa-hand-holding-heart"></i> Give
                     </a>
                     <div class="dropdown">
-                        <a href="Vehicle Donations.html" class="dropdown-link">Vehicle Donations</a>
+                        <a href="Vehicle-Donations.html" class="dropdown-link">Vehicle Donations</a>
                         <a href="donation.html" class="dropdown-link">Donation</a>
                     </div>
                 </li>
@@ -660,12 +664,6 @@
                     <a href="#" class="nav-link">
                         <i class="fas fa-phone-alt"></i> Contact
                     </a>
-                    <div class="dropdown">
-                        <a href="https://youtu.be/TltoaXcJXVs" class="dropdown-link" target="_blank">Contact Video 1</a>
-                        <a href="https://youtu.be/ifanw_I6dKo" class="dropdown-link" target="_blank">Contact Video 2</a>
-                        <a href="https://youtu.be/ERgIOM5Bm2A" class="dropdown-link" target="_blank">Contact Video 3</a>
-                        <a href="https://youtu.be/n1WD5vQQM3A" class="dropdown-link" target="_blank">Contact Video 4</a>
-                    </div>
                 </li>
             </ul>
         </div>
@@ -687,7 +685,7 @@
             
             <!-- Featured Video Section -->
             <section class="video-section" id="featured-video">
-                <h2 class="section-title">Featured Video</h2>
+                <h2 class="section-title"><i class="fas fa-video"></i> Featured Video</h2>
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/TltoaXcJXVs" title="Revival Now America Featured Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
@@ -695,7 +693,7 @@
             
             <!-- Video Gallery Section -->
             <section class="video-gallery">
-                <h2 class="section-title">More Videos</h2>
+                <h2 class="section-title"><i class="fas fa-film"></i> More Videos</h2>
                 <div class="video-grid">
                     <div class="video-item">
                         <a href="https://youtu.be/ifanw_I6dKo" target="_blank" class="video-thumbnail">
@@ -780,13 +778,13 @@
                             <a href="about.html"><i class="fas fa-angle-right"></i> About Us</a>
                         </li>
                         <li class="footer-link">
-                            <a href="Our Projects.html"><i class="fas fa-angle-right"></i> Our Projects</a>
+                            <a href="Our-Projects.html"><i class="fas fa-angle-right"></i> Our Projects</a>
                         </li>
                         <li class="footer-link">
                             <a href="what-we-believe.html"><i class="fas fa-angle-right"></i> What We Believe</a>
                         </li>
                         <li class="footer-link">
-                            <a href="Weekly Devotionals.html"><i class="fas fa-angle-right"></i> Weekly Devotionals</a>
+                            <a href="Weekly-Devotionals.html"><i class="fas fa-angle-right"></i> Weekly Devotionals</a>
                         </li>
                         <li class="footer-link">
                             <a href="Videos.html"><i class="fas fa-angle-right"></i> Videos</a>
@@ -798,10 +796,10 @@
                     <h3 class="footer-title">Resources</h3>
                     <ul class="footer-links">
                         <li class="footer-link">
-                            <a href="Free eBooks.html"><i class="fas fa-angle-right"></i> Free eBooks</a>
+                            <a href="Free-eBooks.html"><i class="fas fa-angle-right"></i> Free eBooks</a>
                         </li>
                         <li class="footer-link">
-                            <a href="Bible Corner.html"><i class="fas fa-angle-right"></i> Bible Corner</a>
+                            <a href="Bible-Corner.html"><i class="fas fa-angle-right"></i> Bible Corner</a>
                         </li>
                         <li class="footer-link">
                             <a href="Photos.html"><i class="fas fa-angle-right"></i> Photo Gallery</a>
@@ -828,7 +826,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 Revival Now America. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+                <p>© 2025 Revival Now America. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
             </div>
         </div>
     </footer>
@@ -872,40 +870,38 @@
                 }
             });
         });
+        
+        // Scroll Animation for Video Content
+        const videoElements = document.querySelectorAll('.video-container, .video-item');
+        
+        const elementInView = (el, percentageScroll = 100) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= 
+                ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
+            );
+        };
+        
+        const displayScrollElement = (element) => {
+            element.classList.add('scrolled');
+        };
+        
+        const hideScrollElement = (element) => {
+            element.classList.remove('scrolled');
+        };
+        
+        const handleScrollAnimation = () => {
+            videoElements.forEach((el) => {
+                if (elementInView(el, 90)) {
+                    displayScrollElement(el);
+                } else {
+                    hideScrollElement(el);
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', handleScrollAnimation);
+        handleScrollAnimation();
     </script>
 </body>
 </html>
-you are a full-stack developer with a decade of experience specializing in the creation and enhancement of websites and web
- applications. Your role is to efficiently design, troubleshoot, and optimize a website or application based on the specific tasks and issues communicated by the user.
-Strict Guidelines for Execution:
-rewrite videos.html
-1. Adherence to Instructions: 
-   - Do not modify or eliminate any existing code ,images or  design elements unless you receive explicit permission to do so.*Design Enhancements:
-   - Incorporate various design elements such as icons, borders, headlines, calls to action (CTAs), overlays, gradients, and animations to enrich the user experience.
-Use lightweight CSS and minimal JavaScript.
-remove the logo on the header 
-
-Ensure compatibility with low‑end computers by optimizing image sizes and avoiding heavy libraries.
-2. Additional Links: 
-   - create an home button  in the header with a dropdown link the fallowing html
-     -- about.html
-Our Projects.html
-   - our-message.html
-     - who-we-are.html
-     - what-we-believe.html
-Thoughts on Revival.html
-create an Ministries button in the header with a dropdown link the fallowing html
-bible-corner.html
-Discipleship.html
-Weekly Devotionals.html
-Global-Christian-Village.html
-create an Resources button in the header with a dropdown link the fallowing html
-Free eBooks.html
-Photos.html
-Videos.html
-Bible Corner.html
-create an Give button  in the header with a dropdown link the fallowing html
-Vehicle Donations.html
-donation.html
-create an Give Contact button in the header with a dropdown the fallowing html
-esure all sitelinks are link together to avoide errors  
