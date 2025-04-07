@@ -51,10 +51,6 @@
             padding: 15px 0;
         }
         
-        .logo {
-            height: 50px;
-        }
-        
         .nav-menu {
             display: flex;
             list-style: none;
@@ -144,7 +140,7 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
         
-        /* TikTok Video Section */
+        /* Video Section */
         .video-section {
             padding: 60px 0;
             background-color: var(--light-bg);
@@ -153,7 +149,7 @@
         
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             max-width: 800px;
@@ -191,6 +187,12 @@
             color: var(--primary-color);
         }
         
+        .section-title i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+        
         .section-dark .section-title {
             color: var(--white);
         }
@@ -201,6 +203,14 @@
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .content-box.scrolled {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .section-dark .content-box {
@@ -265,8 +275,7 @@
         input[type="email"],
         input[type="tel"],
         input[type="date"],
-        textarea,
-        select {
+        textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
@@ -384,14 +393,6 @@
         @media screen and (max-width: 768px) {
             .mobile-toggle {
                 display: block;
-                z-index: 1001;
-                position: relative;
-                right: 10px;
-                top: 0;
-                color: var(--primary-color);
-                background: none;
-                border: none;
-                font-size: 24px;
             }
             
             .nav-menu {
@@ -405,7 +406,6 @@
                 transition: 0.3s;
                 box-shadow: 0 10px 27px rgba(0,0,0,0.05);
                 overflow-y: auto;
-                z-index: 1000;
                 padding-top: 80px;
             }
             
@@ -456,10 +456,6 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html">
-                <img src="images/logo.svg" alt="Revival Now America Logo" class="logo">
-            </a>
-            
             <button class="mobile-toggle" id="mobile-toggle">
                 <i class="fas fa-bars"></i>
             </button>
@@ -522,7 +518,7 @@
         </div>
     </header>
     
-    <!-- Hero Section with disciples.webp background -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>Revival Now America Discipleship</h1>
@@ -533,7 +529,7 @@
     <!-- TikTok Video Section -->
     <section class="video-section">
         <div class="container">
-            <h2 class="section-title">Watch Our Discipleship Teaching</h2>
+            <h2 class="section-title"><i class="fas fa-video"></i> Watch Our Discipleship Teaching</h2>
             <div class="video-container">
                 <iframe src="https://www.tiktok.com/embed/v2/7221344522398321966" allowfullscreen></iframe>
             </div>
@@ -548,10 +544,9 @@
     <!-- The Great Commission Section -->
     <section class="section section-light">
         <div class="container">
-            <h2 class="section-title">The Great Commission</h2>
+            <h2 class="section-title"><i class="fas fa-globe"></i> The Great Commission</h2>
             <div class="content-box">
                 <p>Revival Now America is committed to the Great Commission of our Lord Jesus Christ. And what is the Great Commission? While the term is not found in the Bible, it is very much implied. It refers to the commandment of the resurrected Lord Jesus Christ to His disciples, to "Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son and of the Holy Ghost. Teaching them to observe all things whatsoever I have commanded you: and lo, I am with you always, even to the end of the world" (Matthew 28:19-20). The Great Commission must not be confused with the Great Commandment, which is to love God and our neighbors (Matthew 22:36-40).</p>
-                
                 <p>The Great Commission requires believers to make disciples, not only locally but also internationally. We are required to teach, to train and to equip disciples to make other disciples (2 Timothy 2:2). This is our mission here at Revival Now America, to make disciples of every nation on the planet. After the training, successful students would be ordained ministers of the gospel and ordination is by direct and personal laying on of hands. We do not do "Internet Ordination."</p>
             </div>
         </div>
@@ -560,12 +555,10 @@
     <!-- Discipleship is Serious Section -->
     <section class="section section-dark">
         <div class="container">
-            <h2 class="section-title">Discipleship is a serious matter!</h2>
+            <h2 class="section-title"><i class="fas fa-cross"></i> Discipleship is a serious matter!</h2>
             <div class="content-box">
                 <p>The call to discipleship is a serious venture! One must weigh the costs and carefully consider whether one is called to discipleship, or to mere church membership. Are you willing to deny yourself, take up your cross daily to follow the Lord (Matthew 16:24; Luke 9:23)? Remember, anyone who does not take his cross to follow the Lord, is not worthy of discipleship (Matthew 10:38).</p>
-                
                 <p>Denying self means to give up one's own life, plans and aspirations for God's plans for your life. You would not do whatever you want to do, or go wherever you want, or try to please everybody. You would have to forget about your pride or self-importance or self-esteem. If you are so full of yourself, you cannot be a disciple. If you have so many commitments to the world, you cannot be a disciple. And if you think ministry is a way to make money, then forget it!</p>
-                
                 <p>Taking up the cross daily means that your old life is crucified with Christ, and you now live a new life in Jesus Christ (Galatians 2:21). A disciple must also be willing to study the word, "to show yourself approved to God" (2 Timothy 2:15).</p>
             </div>
         </div>
@@ -574,7 +567,7 @@
     <!-- Making the Decision Section -->
     <section class="section section-light">
         <div class="container">
-            <h2 class="section-title">Making the decision for discipleship</h2>
+            <h2 class="section-title"><i class="fas fa-handshake"></i> Making the decision for discipleship</h2>
             <div class="content-box">
                 <p>When you have prayerfully considered the cost of discipleship and believe you would like to lay aside your personal goals and aspirations in order to serve the Lord and His people, then you could apply for our discipleship program by completing the form below.</p>
             </div>
@@ -584,12 +577,10 @@
     <!-- Rewards of Discipleship Section -->
     <section class="section section-dark">
         <div class="container">
-            <h2 class="section-title">The rewards of discipleship</h2>
+            <h2 class="section-title"><i class="fas fa-trophy"></i> The rewards of discipleship</h2>
             <div class="content-box">
                 <p>Discipleship would cost us everything in the world, but we have everything to gain in the kingdom of God. The Lord offers great rewards for disciples. First of all, He gives us the grace and empowerment to become disciples and it is not like we carry a burden we cannot bear. He is there with us on the journey to give us the strength and the victory we need (Matthew 28:20).</p>
-                
                 <p>As disciples, we have great pleasure and joy in ministering to the people, in bringing salvation to the lost, healing to the sick and deliverance to the captives. Apart from the gift of eternal life, we have special positions of authority when the Lord comes to establish His kingdom on earth in the millennium (Revelation 20:4-6). We would also have special positions and authority in the new heaven and earth that would appear after the millennium (Revelation 21:1-7). Further, God has prepared some special rewards for disciples and believers which we cannot fathom at this point, except by revelation (1 Corinthians 2:9-10).</p>
-                
                 <blockquote>"The opposite of discipleship is to be ashamed of Christ and His cross and all the offence which the cross brings in its train."<br>- Dietrich Bonhoeffer</blockquote>
             </div>
         </div>
@@ -598,12 +589,10 @@
     <!-- Program Description Section -->
     <section class="section section-light">
         <div class="container">
-            <h2 class="section-title">Our Discipleship Program</h2>
+            <h2 class="section-title"><i class="fas fa-book"></i> Our Discipleship Program</h2>
             <div class="content-box">
                 <p>Are you looking to deepen your Christian faith and understanding of the Bible? Our discipleship program offers a comprehensive approach to Christian growth through weekly teachings and practical exercises. Our program is designed to help you develop a biblical worldview, become more effective in sharing your faith with others, and live out your faith in a way that brings transformation to both yourself and the world around you.</p>
-                
                 <p>Through our discipleship program, you'll receive training in evangelism and mentorship from experienced Christians who will help keep you accountable and guide you in applying what you learn to your daily life. Our program is perfect for anyone seeking to build a stronger foundation in their faith and develop a deeper relationship with God.</p>
-                
                 <p>Join our discipleship program by filling out the form below today and start your journey towards spiritual development and Christian transformation.</p>
             </div>
         </div>
@@ -612,63 +601,52 @@
     <!-- Application Form Section -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title">Discipleship Application Form</h2>
+            <h2 class="section-title"><i class="fas fa-file-alt"></i> Discipleship Application Form</h2>
             <form class="form-container">
                 <div class="form-group">
                     <label for="first-name">First name</label>
                     <input type="text" id="first-name" name="first-name" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="last-name">Last Name</label>
                     <input type="text" id="last-name" name="last-name" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="dob">Date of Birth</label>
-                    <input type="date" id="dob" name="dob" placeholder="mm/dd/yyyy" required>
+                    <input type="date" id="dob" name="dob" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="phone">Phone number</label>
                     <input type="tel" id="phone" name="phone" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="testimony">When and how did you become a Christian?</label>
                     <textarea id="testimony" name="testimony" required></textarea>
                 </div>
-                
                 <div class="form-group">
                     <label for="address">Address</label>
                     <input type="text" id="address" name="address" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="country">Country</label>
                     <input type="text" id="country" name="country" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="church">Church / Denomination</label>
                     <input type="text" id="church" name="church" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="occupation">Present Occupation</label>
                     <input type="text" id="occupation" name="occupation" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="reason">Why do you want to be a disciple?</label>
                     <textarea id="reason" name="reason" required></textarea>
                 </div>
-                
                 <div class="form-group">
                     <button type="submit" class="submit-btn">Submit Application</button>
                 </div>
@@ -684,7 +662,6 @@
                     <h3>About Us</h3>
                     <p>Revival Now America is dedicated to spreading the Gospel and fostering spiritual growth through Biblical teachings and community outreach.</p>
                 </div>
-                
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <ul>
@@ -695,7 +672,6 @@
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-col">
                     <h3>Resources</h3>
                     <ul>
@@ -705,7 +681,6 @@
                         <li><a href="Bible-Corner.html">Bible Corner</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-col">
                     <h3>Connect With Us</h3>
                     <div class="social-links">
@@ -724,7 +699,6 @@
                     </div>
                 </div>
             </div>
-            
             <div class="copyright">
                 <p>© 2025 Revival Now America. All Rights Reserved | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
             </div>
@@ -742,11 +716,9 @@
             mobileToggle.classList.toggle('active');
         });
         
-        // Handle dropdown on mobile
         if (window.innerWidth <= 768) {
             navItems.forEach(item => {
                 const link = item.querySelector('.nav-link');
-                
                 if (link && item.querySelector('.dropdown')) {
                     link.addEventListener('click', (e) => {
                         e.preventDefault();
@@ -763,40 +735,38 @@
             alert('Thank you for your application! We will review your submission and contact you soon.');
             form.reset();
         });
+        
+        // Scroll animation for content boxes
+        const contentBoxes = document.querySelectorAll('.content-box');
+        
+        const elementInView = (el, percentageScroll = 100) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= 
+                ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
+            );
+        };
+        
+        const displayScrollElement = (element) => {
+            element.classList.add('scrolled');
+        };
+        
+        const hideScrollElement = (element) => {
+            element.classList.remove('scrolled');
+        };
+        
+        const handleScrollAnimation = () => {
+            contentBoxes.forEach((el) => {
+                if (elementInView(el, 90)) {
+                    displayScrollElement(el);
+                } else {
+                    hideScrollElement(el);
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', handleScrollAnimation);
+        handleScrollAnimation();
     </script>
 </body>
 </html>
-you are a full-stack developer with a decade of experience specializing in the creation and enhancement of websites and web
- applications. Your role is to efficiently design, troubleshoot, and optimize a website or application based on the specific tasks and issues communicated by the user.
-Strict Guidelines for Execution:
-rewrite deciples.html
-1. Adherence to Instructions: 
-   - Do not modify or eliminate any existing code ,images or  design elements unless you receive explicit permission to do so.*Design Enhancements:
-   - Incorporate various design elements such as icons, borders, headlines, calls to action (CTAs), overlays, gradients, and animations to enrich the user experience.
-Use lightweight CSS and minimal JavaScript.
-remove the logo on the header 
-
-Ensure compatibility with low‑end computers by optimizing image sizes and avoiding heavy libraries.
-2. Additional Links: 
-   - create an home button  in the header with a dropdown link the fallowing html
-     -- about.html
-Our Projects.html
-   - our-message.html
-     - who-we-are.html
-     - what-we-believe.html
-Thoughts on Revival.html
-create an Ministries button in the header with a dropdown link the fallowing html
-bible-corner.html
-Discipleship.html
-Weekly Devotionals.html
-Global-Christian-Village.html
-create an Resources button in the header with a dropdown link the fallowing html
-Free eBooks.html
-Photos.html
-Videos.html
-Bible Corner.html
-create an Give button  in the header with a dropdown link the fallowing html
-Vehicle Donations.html
-donation.html
-create an Give Contact button in the header with a dropdown the fallowing html
-esure all sitelinks are link together to avoide errors  

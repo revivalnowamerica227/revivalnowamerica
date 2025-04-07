@@ -52,18 +52,6 @@
             align-items: center;
         }
         
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo i {
-            margin-right: 10px;
-            color: var(--accent-color);
-        }
-        
         nav ul {
             display: flex;
             list-style: none;
@@ -206,6 +194,7 @@
             padding: 2rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
         }
         
         .section-title {
@@ -241,6 +230,11 @@
             margin-bottom: 0.5rem;
             font-weight: 500;
             color: var(--dark-color);
+        }
+        
+        .form-group label i {
+            margin-right: 5px;
+            color: var(--secondary-color);
         }
         
         .form-group input,
@@ -281,6 +275,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border: 2px solid transparent;
+            position: relative;
         }
         
         .donation-option:hover {
@@ -292,6 +287,17 @@
             background-color: var(--secondary-color);
             color: white;
             border-color: var(--secondary-color);
+        }
+        
+        .donation-option.active::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            font-size: 1.2rem;
         }
         
         .donation-amount {
@@ -306,7 +312,7 @@
         }
         
         .payment-method {
-            flex: 1;
+            flex:  instructions;
             text-align: center;
             padding: 1rem;
             background-color: var(--light-color);
@@ -314,6 +320,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border: 2px solid transparent;
+            position: relative;
         }
         
         .payment-method:hover {
@@ -325,6 +332,17 @@
             background-color: var(--secondary-color);
             color: white;
             border-color: var(--secondary-color);
+        }
+        
+        .payment-method.active::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            font-size: 1.2rem;
         }
         
         .payment-method i {
@@ -347,6 +365,14 @@
         
         .image-section img:hover {
             transform: scale(1.02);
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            margin-top: 1rem;
+            color: #666;
+            font-size: 1.1rem;
         }
         
         footer {
@@ -451,6 +477,17 @@
             to { transform: scale(1.05); }
         }
         
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         /* Responsive Styles */
         @media (max-width: 768px) {
             .header-container {
@@ -527,10 +564,6 @@
 <body>
     <header>
         <div class="container header-container">
-            <div class="logo">
-                <i class="fas fa-cross"></i>
-                <span>Revival Now America</span>
-            </div>
             <nav>
                 <ul>
                     <li class="dropdown">
@@ -647,22 +680,22 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="first-name">First Name</label>
+                        <label for="first-name"><i class="fas fa-user"></i> First Name</label>
                         <input type="text" id="first-name" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="last-name">Last Name</label>
+                        <label for="last-name"><i class="fas fa-user"></i> Last Name</label>
                         <input type="text" id="last-name" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email Address</label>
+                        <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
                         <input type="email" id="email" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="phone">Phone Number</label>
+                        <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
                         <input type="tel" id="phone">
                     </div>
 
@@ -698,7 +731,7 @@
                     </div>
 
                     <div class="form-group full-width">
-                        <label for="message">Special Instructions (Optional)</label>
+                        <label for="message"><i class="fas fa-comment"></i> Special Instructions (Optional)</label>
                         <textarea id="message" rows="4"></textarea>
                     </div>
 
@@ -716,6 +749,7 @@
 
             <section class="image-section">
                 <img src="images/The Godhead.webp" alt="The Godhead">
+                <p class="image-caption">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver." - 2 Corinthians 9:7</p>
             </section>
         </div>
     </main>
@@ -766,15 +800,13 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Revival Now America. All Rights Reserved.</p>
+                <p>© 2023 Revival Now America. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Simple script to handle donation option selection
         document.addEventListener('DOMContentLoaded', function() {
-            // Donation options
             const donationOptions = document.querySelectorAll('.donation-option');
             donationOptions.forEach(option => {
                 option.addEventListener('click', function() {
@@ -783,7 +815,6 @@
                 });
             });
             
-            // Payment methods
             const paymentMethods = document.querySelectorAll('.payment-method');
             paymentMethods.forEach(method => {
                 method.addEventListener('click', function() {
@@ -792,54 +823,17 @@
                 });
             });
             
-            // Mobile dropdown toggle
             const dropdowns = document.querySelectorAll('.dropdown');
-            dropdowns.forEach(dropdown => {
-                dropdown.addEventListener('click', function(e) {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        dropdowns.forEach(d => {
-                            if (d !== this) d.classList.remove('active');
-                        });
-                        this.classList.toggle('active');
-                    }
-                });
+            dropdowns.forsequencing(function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdowns.forEach(d => {
+                        if (d !== this) d.classList.remove('active');
+                    });
+                    this.classList.toggle('active');
+                }
             });
         });
     </script>
 </body>
 </html>
-you are a full-stack developer with a decade of experience specializing in the creation and enhancement of websites and web
- applications. Your role is to efficiently design, troubleshoot, and optimize a website or application based on the specific tasks and issues communicated by the user.
-Strict Guidelines for Execution:
-rewrite Donations.html
-1. Adherence to Instructions: 
-   - Do not modify or eliminate any existing code ,images or  design elements unless you receive explicit permission to do so.*Design Enhancements:
-   - Incorporate various design elements such as icons, borders, headlines, calls to action (CTAs), overlays, gradients, and animations to enrich the user experience.
-Use lightweight CSS and minimal JavaScript.
-remove the logo on the header 
-
-Ensure compatibility with low‑end computers by optimizing image sizes and avoiding heavy libraries.
-2. Additional Links: 
-   - create an home button  in the header with a dropdown link the fallowing html
-     -- about.html
-Our Projects.html
-   - our-message.html
-     - who-we-are.html
-     - what-we-believe.html
-Thoughts on Revival.html
-create an Ministries button in the header with a dropdown link the fallowing html
-bible-corner.html
-Discipleship.html
-Weekly Devotionals.html
-Global-Christian-Village.html
-create an Resources button in the header with a dropdown link the fallowing html
-Free eBooks.html
-Photos.html
-Videos.html
-Bible Corner.html
-create an Give button  in the header with a dropdown link the fallowing html
-Vehicle Donations.html
-donation.html
-create an Give Contact button in the header with a dropdown the fallowing html
-esure all sitelinks are link together to avoide errors  

@@ -14,6 +14,7 @@
             --dark-bg: #2c3e50;
         }
         
+        /* Existing styles remain unchanged */
         * {
             margin: 0;
             padding: 0;
@@ -133,6 +134,7 @@
             font-size: 42px;
             margin-bottom: 20px;
             animation: fadeInDown 1s ease-out;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Added */
         }
         
         .hero p {
@@ -177,6 +179,14 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0; /* Added */
+            transform: translateY(20px); /* Added */
+            transition: all 0.5s ease; /* Modified */
+        }
+        
+        .doctrine-card.scrolled {
+            opacity: 1; /* Added */
+            transform: translateY(0); /* Added */
         }
         
         .doctrine-card:hover {
@@ -189,6 +199,12 @@
             padding: 20px;
             color: #fff;
             background: linear-gradient(135deg, var(--primary-color), #1a6eb7);
+        }
+        
+        .doctrine-card h3 i {
+            margin-right: 10px; /* Added */
+            color: #fff; /* Added */
+            font-size: 24px; /* Added */
         }
         
         .doctrine-card .content {
@@ -459,10 +475,6 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html">
-                <img src="images/logo.svg" alt="Revival America Logo" class="logo">
-            </a>
-            
             <button class="mobile-toggle" id="mobile-toggle">
                 <i class="fas fa-bars"></i>
             </button>
@@ -525,7 +537,7 @@
         </div>
     </header>
     
-    <!-- Hero Section with The Bible.webp background -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>The Six Foundational Doctrines of Christ</h1>
@@ -546,7 +558,6 @@
                 </p>
             </div>
             
-            <!-- Teacher Section with Brother Amartey.webp -->
             <div class="teacher-section">
                 <div class="teacher-flex">
                     <div class="teacher-image">
@@ -567,11 +578,9 @@
                 </div>
             </div>
             
-            <!-- Doctrines Section -->
             <div class="doctrines-container">
-                <!-- Doctrine 1: Repentance -->
                 <div class="doctrine-card">
-                    <h3>1. Repentance</h3>
+                    <h3><i class="fas fa-heart-broken"></i> 1. Repentance</h3>
                     <div class="content">
                         <p>
                             Repentance, with regards to salvation, simply means, "to change one's mind," about sin and about God; to acknowledge we are sinners and need God to save us (Acts 2:36-38: Mark 1:15; Matthew 3:1-2).
@@ -583,9 +592,8 @@
                     </div>
                 </div>
                 
-                <!-- Doctrine 2: Faith -->
                 <div class="doctrine-card">
-                    <h3>2. Faith</h3>
+                    <h3><i class="fas fa-cross"></i> 2. Faith</h3>
                     <div class="content">
                         <p>
                             Faith is having belief, trust or confidence in God. Whoever comes to God must believe that He is real and that He rewards those who diligently seek Him, and without faith it is impossible to please God (Hebrews 11:6).
@@ -597,9 +605,8 @@
                     </div>
                 </div>
                 
-                <!-- Doctrine 3: Baptisms -->
                 <div class="doctrine-card">
-                    <h3>3. Baptisms</h3>
+                    <h3><i class="fas fa-tint"></i> 3. Baptisms</h3>
                     <div class="content">
                         <p>
                             The Bible speaks of three baptisms: John's baptism, Believers' baptism, and Holy Spirit baptism (Matthew 3:11; 28:19; Acts 1:8).
@@ -611,9 +618,8 @@
                     </div>
                 </div>
                 
-                <!-- Doctrine 4: Laying on of Hands -->
                 <div class="doctrine-card">
-                    <h3>4. Laying on of Hands</h3>
+                    <h3><i class="fas fa-hands"></i> 4. Laying on of Hands</h3>
                     <div class="content">
                         <p>
                             This is the ceremony by which hands are laid on the individual for impartation of the gift of the Holy Spirit, spiritual gifts, blessings, authority or for an induction or ordination into an office or ministry (Acts 6:6; 8:5-17; 13:2-3).
@@ -625,9 +631,8 @@
                     </div>
                 </div>
                 
-                <!-- Doctrine 5: Resurrection of the Dead -->
                 <div class="doctrine-card">
-                    <h3>5. Resurrection of the Dead</h3>
+                    <h3><i class="fas fa-sun"></i> 5. Resurrection of the Dead</h3>
                     <div class="content">
                         <p>
                             The Lord Jesus lived, died, was buried and rose again from the dead on the third day, conquering death, to become the "firstfruits" of the dead (John 20:1-31; 1 Corinthians 15:1-23; 29-54).
@@ -639,9 +644,8 @@
                     </div>
                 </div>
                 
-                <!-- Doctrine 6: Eternal Judgment -->
                 <div class="doctrine-card">
-                    <h3>6. Eternal Judgment</h3>
+                    <h3><i class="fas fa-balance-scale"></i> 6. Eternal Judgment</h3>
                     <div class="content">
                         <p>
                             "It is appointed unto man once to die, but after this, the judgment" (Hebrew 9:27). God has appointed a final judgment in which both the living and the dead will be judged.
@@ -654,7 +658,6 @@
                 </div>
             </div>
             
-            <!-- Additional Content Section with Brother and Doctrines.png -->
             <div class="teacher-section" style="margin-top: 60px;">
                 <div class="teacher-flex">
                     <div class="teacher-content">
@@ -751,7 +754,6 @@
             navMenu.classList.toggle('active');
         });
         
-        // Handle dropdown on mobile
         if (window.innerWidth <= 768) {
             navItems.forEach(item => {
                 const link = item.querySelector('.nav-link');
@@ -765,7 +767,6 @@
             });
         }
         
-        // Add scroll animation
         const scrollElements = document.querySelectorAll('.doctrine-card, .teacher-section');
         
         const elementInView = (el, percentageScroll = 100) => {
@@ -798,42 +799,7 @@
             handleScrollAnimation();
         });
         
-        // Initialize on page load
         handleScrollAnimation();
     </script>
 </body>
 </html>
-you are a full-stack developer with a decade of experience specializing in the creation and enhancement of websites and web
- applications. Your role is to efficiently design, troubleshoot, and optimize a website or application based on the specific tasks and issues communicated by the user.
-Strict Guidelines for Execution:
-rewrite bible-corner.html
-1. Adherence to Instructions: 
-   - Do not modify or eliminate any existing code ,images or  design elements unless you receive explicit permission to do so.*Design Enhancements:
-   - Incorporate various design elements such as icons, borders, headlines, calls to action (CTAs), overlays, gradients, and animations to enrich the user experience.
-Use lightweight CSS and minimal JavaScript.
-remove the logo on the header 
-
-Ensure compatibility with low‑end computers by optimizing image sizes and avoiding heavy libraries.
-2. Additional Links: 
-   - create an home button  in the header with a dropdown link the fallowing html
-     -- about.html
-Our Projects.html
-   - our-message.html
-     - who-we-are.html
-     - what-we-believe.html
-Thoughts on Revival.html
-create an Ministries button in the header with a dropdown link the fallowing html
-bible-corner.html
-Discipleship.html
-Weekly Devotionals.html
-Global-Christian-Village.html
-create an Resources button in the header with a dropdown link the fallowing html
-Free eBooks.html
-Photos.html
-Videos.html
-Bible Corner.html
-create an Give button  in the header with a dropdown link the fallowing html
-Vehicle Donations.html
-donation.html
-create an Give Contact button in the header with a dropdown the fallowing html
-esure all sitelinks are link together to avoide errors  

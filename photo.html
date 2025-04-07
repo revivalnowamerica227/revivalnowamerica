@@ -43,20 +43,6 @@
             align-items: center;
         }
         
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-decoration: none;
-            color: #fff;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo i {
-            margin-right: 10px;
-            font-size: 2rem;
-        }
-        
         /* Navigation */
         nav ul {
             display: flex;
@@ -135,7 +121,7 @@
         .hero {
             position: relative;
             height: 300px;
-            background-image: url('images/hero-bg.jpg');
+            background-image: url('images/photos-hero.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -274,6 +260,14 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .gallery-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
         
         .gallery-item:hover {
@@ -534,10 +528,6 @@
                 text-align: center;
             }
             
-            .logo {
-                margin-bottom: 15px;
-            }
-            
             nav ul {
                 display: none;
                 flex-direction: column;
@@ -590,15 +580,20 @@
                 border: 1px solid #ddd;
             }
         }
+        
+        /* Performance optimization for low-end devices */
+        @media (prefers-reduced-motion: reduce) {
+            .gallery-item, .gallery-overlay, .gallery-item img, .modal {
+                transition: none;
+                animation: none;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-church"></i> Revival Now America
-            </a>
             <button class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
             </button>
@@ -608,35 +603,35 @@
                         <a href="#"><i class="fas fa-home"></i> Home</a>
                         <div class="dropdown-content">
                             <a href="about.html">About</a>
-                            <a href="our-projects.html">Our Projects</a>
+                            <a href="Our Projects.html">Our Projects</a>
                             <a href="our-message.html">Our Message</a>
                             <a href="who-we-are.html">Who We Are</a>
                             <a href="what-we-believe.html">What We Believe</a>
-                            <a href="thoughts-on-revival.html">Thoughts on Revival</a>
+                            <a href="Thoughts on Revival.html">Thoughts on Revival</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-pray"></i> Ministries</a>
                         <div class="dropdown-content">
                             <a href="bible-corner.html">Bible Corner</a>
-                            <a href="discipleship.html">Discipleship</a>
-                            <a href="weekly-devotionals.html">Weekly Devotionals</a>
-                            <a href="global-christian-village.html">Global Christian Village</a>
+                            <a href="Discipleship.html">Discipleship</a>
+                            <a href="Weekly Devotionals.html">Weekly Devotionals</a>
+                            <a href="Global-Christian-Village.html">Global Christian Village</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-book-open"></i> Resources</a>
                         <div class="dropdown-content">
-                            <a href="free-ebooks.html">Free eBooks</a>
-                            <a href="photos.html">Photos</a>
-                            <a href="videos.html">Videos</a>
-                            <a href="bible-corner.html">Bible Corner</a>
+                            <a href="Free eBooks.html">Free eBooks</a>
+                            <a href="Photos.html">Photos</a>
+                            <a href="Videos.html">Videos</a>
+                            <a href="Bible Corner.html">Bible Corner</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-hand-holding-heart"></i> Give</a>
                         <div class="dropdown-content">
-                            <a href="vehicle-donations.html">Vehicle Donations</a>
+                            <a href="Vehicle Donations.html">Vehicle Donations</a>
                             <a href="donation.html">Donations</a>
                         </div>
                     </li>
@@ -668,66 +663,66 @@
             <p class="gallery-intro">Browse through our collection of photos showcasing the work of Revival Now America. From community outreach to mission trips, training sessions, and spiritual retreats, these images capture the heart of our ministry.</p>
             
             <div class="gallery-tabs">
-                <div class="gallery-tab active" data-tab="all">All Photos</div>
-                <div class="gallery-tab" data-tab="community">Community Outreach</div>
-                <div class="gallery-tab" data-tab="training">Training & Discipleship</div>
-                <div class="gallery-tab" data-tab="missions">Missions</div>
-                <div class="gallery-tab" data-tab="retreats">Retreats & Events</div>
+                <div class="gallery-tab active" data-tab="all"><i class="fas fa-images"></i> All Photos</div>
+                <div class="gallery-tab" data-tab="community"><i class="fas fa-users"></i> Community Outreach</div>
+                <div class="gallery-tab" data-tab="training"><i class="fas fa-chalkboard-teacher"></i> Training & Discipleship</div>
+                <div class="gallery-tab" data-tab="missions"><i class="fas fa-globe"></i> Missions</div>
+                <div class="gallery-tab" data-tab="retreats"><i class="fas fa-pray"></i> Retreats & Events</div>
             </div>
             
             <div class="gallery-content active" id="all">
                 <div class="gallery-grid">
                     <div class="gallery-item" data-category="community">
-                        <img src="images/Farm Community.webp" alt="Community Farm Project">
+                        <img src="images/Farm Community.webp" alt="Community Farm Project" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>Community Farm Project</h4>
                             <p>Working together to grow food for local families in need</p>
                         </div>
                     </div>
                     <div class="gallery-item" data-category="training">
-                        <img src="images/Training.webp" alt="Leadership Training">
+                        <img src="images/Training.webp" alt="Leadership Training" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>Leadership Training</h4>
                             <p>Equipping the next generation of ministry leaders</p>
                         </div>
                     </div>
                     <div class="gallery-item" data-category="missions">
-                        <img src="images/Mission.webp" alt="International Missions">
+                        <img src="images/Mission.webp" alt="International Missions" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>International Missions</h4>
                             <p>Sharing the Gospel and providing aid around the world</p>
                         </div>
                     </div>
                     <div class="gallery-item" data-category="retreats">
-                        <img src="images/Retreat.webp" alt="Spiritual Retreat">
+                        <img src="images/Retreat.webp" alt="Spiritual Retreat" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>Spiritual Retreat</h4>
                             <p>A time of prayer, reflection, and renewal</p>
                         </div>
                     </div>
                     <div class="gallery-item" data-category="community">
-                        <img src="images/book.png" alt="Bible Study Resources">
+                        <img src="images/book.png" alt="Bible Study Resources" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>Bible Study Resources</h4>
                             <p>Materials developed for community Bible studies</p>
                         </div>
                     </div>
                     <div class="gallery-item" data-category="community">
-                        <img src="images/Farm Community.webp" alt="Food Distribution">
+                        <img src="images/Farm Community.webp" alt="Food Distribution" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>Food Distribution</h4>
                             <p>Providing fresh produce to underserved communities</p>
                         </div>
                     </div>
                     <div class="gallery-item" data-category="training">
-                        <img src="images/Training.webp" alt="Youth Mentorship">
+                        <img src="images/Training.webp" alt="Youth Mentorship" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>Youth Mentorship</h4>
                             <p>Building relationships that transform lives</p>
                         </div>
                     </div>
                     <div class="gallery-item" data-category="missions">
-                        <img src="images/Mission.webp" alt="Global Partners">
+                        <img src="images/Mission.webp" alt="Global Partners" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>Global Partners</h4>
                             <p>Collaborating with ministries worldwide</p>
@@ -739,21 +734,21 @@
             <div class="gallery-content" id="community">
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="images/Farm Community.webp" alt="Community Farm Project">
+                        <img src="images/Farm Community.webp" alt="Community Farm Project" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>Community Farm Project</h4>
                             <p>Working together to grow food for local families in need</p>
                         </div>
                     </div>
                     <div class="gallery-item">
-                        <img src="images/book.png" alt="Bible Study Resources">
+                        <img src="images/book.png" alt="Bible Study Resources" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>Bible Study Resources</h4>
                             <p>Materials developed for community Bible studies</p>
                         </div>
                     </div>
                     <div class="gallery-item">
-                        <img src="images/Farm Community.webp" alt="Food Distribution">
+                        <img src="images/Farm Community.webp" alt="Food Distribution" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>Food Distribution</h4>
                             <p>Providing fresh produce to underserved communities</p>
@@ -765,14 +760,14 @@
             <div class="gallery-content" id="training">
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="images/Training.webp" alt="Leadership Training">
+                        <img src="images/Training.webp" alt="Leadership Training" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>Leadership Training</h4>
                             <p>Equipping the next generation of ministry leaders</p>
                         </div>
                     </div>
                     <div class="gallery-item">
-                        <img src="images/Training.webp" alt="Youth Mentorship">
+                        <img src="images/Training.webp" alt="Youth Mentorship" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>Youth Mentorship</h4>
                             <p>Building relationships that transform lives</p>
@@ -784,14 +779,14 @@
             <div class="gallery-content" id="missions">
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="images/Mission.webp" alt="International Missions">
+                        <img src="images/Mission.webp" alt="International Missions" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>International Missions</h4>
                             <p>Sharing the Gospel and providing aid around the world</p>
                         </div>
                     </div>
                     <div class="gallery-item">
-                        <img src="images/Mission.webp" alt="Global Partners">
+                        <img src="images/Mission.webp" alt="Global Partners" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>Global Partners</h4>
                             <p>Collaborating with ministries worldwide</p>
@@ -803,7 +798,7 @@
             <div class="gallery-content" id="retreats">
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="images/Retreat.webp" alt="Spiritual Retreat">
+                        <img src="images/Retreat.webp" alt="Spiritual Retreat" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>Spiritual Retreat</h4>
                             <p>A time of prayer, reflection, and renewal</p>
@@ -822,12 +817,12 @@
 
     <!-- Modal for Image Popup -->
     <div class="modal" id="imageModal">
-        <span class="close-modal" id="closeModal">&times;</span>
+        <span class="close-modal" id="closeModal">×</span>
         <div class="modal-content">
             <img class="modal-img" id="modalImg" src="">
             <div class="modal-caption" id="modalCaption"></div>
-            <span class="prev" id="prevImg">&#10094;</span>
-            <span class="next" id="nextImg">&#10095;</span>
+            <span class="prev" id="prevImg">❮</span>
+            <span class="next" id="nextImg">❯</span>
         </div>
     </div>
 
@@ -850,7 +845,7 @@
                 <ul>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="our-message.html">Our Message</a></li>
-                    <li><a href="weekly-devotionals.html">Weekly Devotionals</a></li>
+                    <li><a href="Weekly Devotionals.html">Weekly Devotionals</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </div>
@@ -858,9 +853,9 @@
             <div class="footer-section footer-links">
                 <h3 class="footer-heading">Resources</h3>
                 <ul>
-                    <li><a href="free-ebooks.html">Free eBooks</a></li>
-                    <li><a href="videos.html">Videos</a></li>
-                    <li><a href="bible-corner.html">Bible Corner</a></li>
+                    <li><a href="Free eBooks.html">Free eBooks</a></li>
+                    <li><a href="Videos.html">Videos</a></li>
+                    <li><a href="Bible Corner.html">Bible Corner</a></li>
                     <li><a href="donation.html">Support Our Mission</a></li>
                 </ul>
             </div>
@@ -874,149 +869,129 @@
         </div>
         
         <div class="container footer-bottom">
-            <p>&copy; 2025 Revival Now America. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+            <p>© 2025 Revival Now America. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
         </div>
     </footer>
 
     <script>
-       // Mobile menu toggle
-document.getElementById('menuToggle').addEventListener('click', function() {
-    document.getElementById('navMenu').classList.toggle('show');
-});
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('show');
+        });
 
-// Gallery tab functionality
-const galleryTabs = document.querySelectorAll('.gallery-tab');
-const galleryContents = document.querySelectorAll('.gallery-content');
+        // Gallery tab functionality
+        const galleryTabs = document.querySelectorAll('.gallery-tab');
+        const galleryContents = document.querySelectorAll('.gallery-content');
 
-galleryTabs.forEach(tab => {
-    tab.addEventListener('click', function() {
-        // Remove active class from all tabs
-        galleryTabs.forEach(t => t.classList.remove('active'));
-        // Add active class to clicked tab
-        this.classList.add('active');
-        
-        // Hide all gallery contents
-        galleryContents.forEach(content => content.classList.remove('active'));
-        
-        // Show the corresponding gallery content
-        const tabId = this.getAttribute('data-tab');
-        document.getElementById(tabId).classList.add('active');
-    });
-});
+        galleryTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                galleryTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                galleryContents.forEach(content => content.classList.remove('active'));
+                
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+                
+                // Trigger visibility for newly active items
+                setTimeout(() => {
+                    document.querySelectorAll(`#${tabId} .gallery-item`).forEach(item => item.classList.add('visible'));
+                }, 10);
+            });
+        });
 
-// Image modal functionality
-const galleryItems = document.querySelectorAll('.gallery-item');
-const modal = document.getElementById('imageModal');
-const modalImg = document.getElementById('modalImg');
-const modalCaption = document.getElementById('modalCaption');
-const closeModal = document.getElementById('closeModal');
-const prevImg = document.getElementById('prevImg');
-const nextImg = document.getElementById('nextImg');
-let currentIndex = 0;
+        // Image modal functionality
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalCaption = document.getElementById('modalCaption');
+        const closeModal = document.getElementById('closeModal');
+        const prevImg = document.getElementById('prevImg');
+        const nextImg = document.getElementById('nextImg');
+        let currentIndex = 0;
 
-// Open modal when clicking on gallery item
-galleryItems.forEach((item, index) => {
-    item.addEventListener('click', function() {
-        const imgSrc = this.querySelector('img').src;
-        const imgTitle = this.querySelector('h4').textContent;
-        const imgDesc = this.querySelector('p').textContent;
-        
-        modalImg.src = imgSrc;
-        modalCaption.innerHTML = `<h4>${imgTitle}</h4><p>${imgDesc}</p>`;
-        modal.style.display = 'flex';
-        
-        currentIndex = index;
-        updateNavigationButtons();
-    });
-});
+        // Open modal when clicking on gallery item
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', function() {
+                const imgSrc = this.querySelector('img').src;
+                const imgTitle = this.querySelector('h4').textContent;
+                const imgDesc = this.querySelector('p').textContent;
+                
+                modalImg.src = imgSrc;
+                modalCaption.innerHTML = `<h4>${imgTitle}</h4><p>${imgDesc}</p>`;
+                modal.style.display = 'flex';
+                
+                currentIndex = index;
+                updateNavigationButtons();
+            });
+        });
 
-// Close modal
-closeModal.addEventListener('click', function() {
-    modal.style.display = 'none';
-});
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
 
-// Close modal when clicking outside the image
-window.addEventListener('click', function(event) {
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-});
+        // Close modal when clicking outside the image
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
 
-// Navigation buttons for modal
-function updateNavigationButtons() {
-    prevImg.style.display = currentIndex > 0 ? 'block' : 'none';
-    nextImg.style.display = currentIndex < galleryItems.length - 1 ? 'block' : 'none';
-}
-
-prevImg.addEventListener('click', function() {
-    if (currentIndex > 0) {
-        currentIndex--;
-        const imgSrc = galleryItems[currentIndex].querySelector('img').src;
-        const imgTitle = galleryItems[currentIndex].querySelector('h4').textContent;
-        const imgDesc = galleryItems[currentIndex].querySelector('p').textContent;
-        
-        modalImg.src = imgSrc;
-        modalCaption.innerHTML = `<h4>${imgTitle}</h4><p>${imgDesc}</p>`;
-        updateNavigationButtons();
-    }
-});
-
-nextImg.addEventListener('click', function() {
-    if (currentIndex < galleryItems.length - 1) {
-        currentIndex++;
-        const imgSrc = galleryItems[currentIndex].querySelector('img').src;
-        const imgTitle = galleryItems[currentIndex].querySelector('h4').textContent;
-        const imgDesc = galleryItems[currentIndex].querySelector('p').textContent;
-        
-        modalImg.src = imgSrc;
-        modalCaption.innerHTML = `<h4>${imgTitle}</h4><p>${imgDesc}</p>`;
-        updateNavigationButtons();
-    }
-});
-
-// Keyboard navigation
-document.addEventListener('keydown', function(event) {
-    if (modal.style.display === 'flex') {
-        if (event.key === 'ArrowLeft' && currentIndex > 0) {
-            prevImg.click();
-        } else if (event.key === 'ArrowRight' && currentIndex < galleryItems.length - 1) {
-            nextImg.click();
-        } else if (event.key === 'Escape') {
-            closeModal.click();
+        // Navigation buttons for modal
+        function updateNavigationButtons() {
+            prevImg.style.display = currentIndex > 0 ? 'block' : 'none';
+            nextImg.style.display = currentIndex < galleryItems.length - 1 ? 'block' : 'none';
         }
-    }
-});
-you are a full-stack developer with a decade of experience specializing in the creation and enhancement of websites and web
- applications. Your role is to efficiently design, troubleshoot, and optimize a website or application based on the specific tasks and issues communicated by the user.
-Strict Guidelines for Execution:
-rewrite photo.html
-1. Adherence to Instructions: 
-   - Do not modify or eliminate any existing code ,images or  design elements unless you receive explicit permission to do so.*Design Enhancements:
-   - Incorporate various design elements such as icons, borders, headlines, calls to action (CTAs), overlays, gradients, and animations to enrich the user experience.
-Use lightweight CSS and minimal JavaScript.
-remove the logo on the header 
 
-Ensure compatibility with low‑end computers by optimizing image sizes and avoiding heavy libraries.
-2. Additional Links: 
-   - create an home button  in the header with a dropdown link the fallowing html
-     -- about.html
-Our Projects.html
-   - our-message.html
-     - who-we-are.html
-     - what-we-believe.html
-Thoughts on Revival.html
-create an Ministries button in the header with a dropdown link the fallowing html
-bible-corner.html
-Discipleship.html
-Weekly Devotionals.html
-Global-Christian-Village.html
-create an Resources button in the header with a dropdown link the fallowing html
-Free eBooks.html
-Photos.html
-Videos.html
-Bible Corner.html
-create an Give button  in the header with a dropdown link the fallowing html
-Vehicle Donations.html
-donation.html
-create an Give Contact button in the header with a dropdown the fallowing html
-esure all sitelinks are link together to avoide errors  
+        prevImg.addEventListener('click', function() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                const imgSrc = galleryItems[currentIndex].querySelector('img').src;
+                const imgTitle = galleryItems[currentIndex].querySelector('h4').textContent;
+                const imgDesc = galleryItems[currentIndex].querySelector('p').textContent;
+                
+                modalImg.src = imgSrc;
+                modalCaption.innerHTML = `<h4>${imgTitle}</h4><p>${imgDesc}</p>`;
+                updateNavigationButtons();
+            }
+        });
+
+        nextImg.addEventListener('click', function() {
+            if (currentIndex < galleryItems.length - 1) {
+                currentIndex++;
+                const imgSrc = galleryItems[currentIndex].querySelector('img').src;
+                const imgTitle = galleryItems[currentIndex].querySelector('h4').textContent;
+                const imgDesc = galleryItems[currentIndex].querySelector('p').textContent;
+                
+                modalImg.src = imgSrc;
+                modalCaption.innerHTML = `<h4>${imgTitle}</h4><p>${imgDesc}</p>`;
+                updateNavigationButtons();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (modal.style.display === 'flex') {
+                if (event.key === 'ArrowLeft' && currentIndex > 0) {
+                    prevImg.click();
+                } else if (event.key === 'ArrowRight' && currentIndex < galleryItems.length - 1) {
+                    nextImg.click();
+                } else if (event.key === 'Escape') {
+                    closeModal.click();
+                }
+            }
+        });
+
+        // Animate gallery items on page load and tab switch
+        document.addEventListener('DOMContentLoaded', function() {
+            const initialItems = document.querySelectorAll('#all .gallery-item');
+            initialItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('visible');
+                }, index * 100); // Staggered animation
+            });
+        });
+    </script>
+</body>
+</html>

@@ -46,17 +46,9 @@
         
         .header-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end; /* Changed to align nav to the right */
             align-items: center;
-        }
-        
-        .logo {
-            height: 60px;
-            transition: transform 0.3s ease;
-        }
-        
-        .logo:hover {
-            transform: scale(1.05);
+            position: relative;
         }
         
         nav ul {
@@ -139,6 +131,10 @@
             color: white;
             font-size: 24px;
             cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
         }
         
         /* Hero Section */
@@ -579,9 +575,6 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html">
-                <img src="images/logo.svg" alt="Revival Now America Logo" class="logo">
-            </a>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -737,7 +730,7 @@
         <div class="cta-content">
             <h2>Ready to Dive Deeper Into These Truths?</h2>
             <p>Download our free eBook that expands on these foundational doctrines and discover how they can transform your spiritual walk.</p>
-            <a href="free-ebook.html" class="btn">Get Your Free eBook Now</a>
+            <a href="free-ebooks.html" class="btn">Get Your Free eBook Now</a>
         </div>
     </section>
 
@@ -752,7 +745,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="who-we-are.html">Who We Are</a></li>
                         <li><a href="our-message.html">Our Message</a></li>
-                        <li><a href="free-ebook.html">Free eBook</a></li>
+                        <li><a href="free-ebooks.html">Free eBook</a></li>
                         <li><a href="about.html">About Us</a></li>
                     </ul>
                 </div>
@@ -794,7 +787,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 Revival Now America. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--secondary);"></i> for God's Glory</p>
+                <p>© 2023 Revival Now America. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--secondary);"></i> for God's Glory</p>
             </div>
         </div>
     </footer>

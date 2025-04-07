@@ -43,20 +43,6 @@
             align-items: center;
         }
         
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-decoration: none;
-            color: #fff;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo i {
-            margin-right: 10px;
-            font-size: 2rem;
-        }
-        
         /* Navigation */
         nav ul {
             display: flex;
@@ -76,10 +62,16 @@
             padding: 10px 15px;
             border-radius: 5px;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
         }
         
         nav ul li a:hover {
             background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        nav ul li a i {
+            margin-right: 8px;
         }
         
         .dropdown {
@@ -204,6 +196,12 @@
             position: relative;
         }
         
+        .section-title i {
+            margin-right: 10px;
+            color: #fdbb2d;
+            font-size: 28px;
+        }
+        
         .section-title::after {
             content: "";
             position: absolute;
@@ -217,6 +215,14 @@
         .donation-intro {
             margin-bottom: 30px;
             font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .donation-intro.scrolled {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .process-steps {
@@ -236,6 +242,13 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .step.scrolled {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .step:hover {
@@ -293,6 +306,14 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .godhead-image img.scrolled {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .faq-section {
@@ -438,10 +459,6 @@
                 text-align: center;
             }
             
-            .logo {
-                margin-bottom: 15px;
-            }
-            
             nav ul {
                 display: none;
                 flex-direction: column;
@@ -492,9 +509,6 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-church"></i> Revival Now America
-            </a>
             <button class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
             </button>
@@ -504,48 +518,40 @@
                         <a href="#"><i class="fas fa-home"></i> Home</a>
                         <div class="dropdown-content">
                             <a href="about.html">About</a>
-                            <a href="our-projects.html">Our Projects</a>
+                            <a href="Our-Projects.html">Our Projects</a>
                             <a href="our-message.html">Our Message</a>
                             <a href="who-we-are.html">Who We Are</a>
                             <a href="what-we-believe.html">What We Believe</a>
-                            <a href="thoughts-on-revival.html">Thoughts on Revival</a>
+                            <a href="Thoughts-on-Revival.html">Thoughts on Revival</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-pray"></i> Ministries</a>
                         <div class="dropdown-content">
                             <a href="bible-corner.html">Bible Corner</a>
-                            <a href="discipleship.html">Discipleship</a>
-                            <a href="weekly-devotionals.html">Weekly Devotionals</a>
-                            <a href="global-christian-village.html">Global Christian Village</a>
+                            <a href="Discipleship.html">Discipleship</a>
+                            <a href="Weekly-Devotionals.html">Weekly Devotionals</a>
+                            <a href="Global-Christian-Village.html">Global Christian Village</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-book-open"></i> Resources</a>
                         <div class="dropdown-content">
-                            <a href="free-ebooks.html">Free eBooks</a>
-                            <a href="photos.html">Photos</a>
-                            <a href="videos.html">Videos</a>
-                            <a href="bible-corner.html">Bible Corner</a>
+                            <a href="Free-eBooks.html">Free eBooks</a>
+                            <a href="Photos.html">Photos</a>
+                            <a href="Videos.html">Videos</a>
+                            <a href="Bible-Corner.html">Bible Corner</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-hand-holding-heart"></i> Give</a>
                         <div class="dropdown-content">
-                            <a href="vehicle-donations.html">Vehicle Donations</a>
+                            <a href="Vehicle-Donations.html">Vehicle Donations</a>
                             <a href="donation.html">Donations</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-envelope"></i> Contact</a>
-                        <div class="dropdown-content">
-                            <a href="contact.html">Contact Us</a>
-                            <a href="prayer-request.html">Prayer Request</a>
-                            <a href="https://youtu.be/TltoaXcJXVs">Video 1</a>
-                            <a href="https://youtu.be/ifanw_I6dKo">Video 2</a>
-                            <a href="https://youtu.be/ERgIOM5Bm2A">Video 3</a>
-                            <a href="https://youtu.be/n1WD5vQQM3A">Video 4</a>
-                        </div>
                     </li>
                 </ul>
             </nav>
@@ -564,12 +570,12 @@
     <!-- Main Content -->
     <main class="container">
         <section class="donation-section">
-            <h2 class="section-title">Vehicle Donations</h2>
+            <h2 class="section-title"><i class="fas fa-car"></i> Vehicle Donations</h2>
             <p class="donation-intro">Your generous, tax deductible donation to Revival Now America will make a positive difference in the lives of veterans and their families. Don't just make an investment. Have an impact.</p>
-            <p>Through our partnership with Charitable Adult Rides and Services (CARS), the process of making a charitable car donation is quick and easy.</p>
+            <p class="donation-intro">Through our partnership with Charitable Adult Rides and Services (CARS), the process of making a charitable car donation is quick and easy.</p>
             
-            <h3 class="section-title">Vehicle Donation Process</h3>
-            <p>Donate your car, truck, motorcycle, RV, or boat to Revival Now America by completing this simple form. CARS will reach out to you to arrange the free pick-up of your vehicle donation, which typically can be arranged within 24-72 hours. You'll receive an initial car donation receipt upon pick-up, and then CARS will work to turn your car into cash to support the Center. Once your vehicle is sold, CARS will provide you any additional tax forms for your deduction. If you have any questions, donor support representatives are available seven days a week to assist you.</p>
+            <h3 class="section-title"><i class="fas fa-road"></i> Vehicle Donation Process</h3>
+            <p class="donation-intro">Donate your car, truck, motorcycle, RV, or boat to Revival Now America by completing this simple form. CARS will reach out to you to arrange the free pick-up of your vehicle donation, which typically can be arranged within 24-72 hours. You'll receive an initial car donation receipt upon pick-up, and then CARS will work to turn your car into cash to support the Center. Once your vehicle is sold, CARS will provide you any additional tax forms for your deduction. If you have any questions, donor support representatives are available seven days a week to assist you.</p>
             
             <div class="process-steps">
                 <div class="step">
@@ -598,7 +604,7 @@
             </div>
             
             <div class="faq-section">
-                <h3 class="section-title">Frequently asked Questions</h3>
+                <h3 class="section-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h3>
                 
                 <div class="faq-item">
                     <div class="faq-question">Is my donation tax-deductible?</div>
@@ -657,7 +663,7 @@
         </div>
         
         <div class="container footer-bottom">
-            <p>&copy; 2025 Revival Now America. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a> | Designed with WordPress</p>
+            <p>© 2025 Revival Now America. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a> | Designed with WordPress</p>
         </div>
     </footer>
 
@@ -689,40 +695,38 @@
         // Show the first FAQ answer by default
         document.querySelector('.faq-question').classList.add('active');
         document.querySelector('.faq-answer').classList.add('show');
+
+        // Scroll animation for content
+        const elements = document.querySelectorAll('.donation-intro, .step, .godhead-image img');
+        
+        const elementInView = (el, percentageScroll = 100) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= 
+                ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
+            );
+        };
+        
+        const displayScrollElement = (element) => {
+            element.classList.add('scrolled');
+        };
+        
+        const hideScrollElement = (element) => {
+            element.classList.remove('scrolled');
+        };
+        
+        const handleScrollAnimation = () => {
+            elements.forEach((el) => {
+                if (elementInView(el, 90)) {
+                    displayScrollElement(el);
+                } else {
+                    hideScrollElement(el);
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', handleScrollAnimation);
+        handleScrollAnimation();
     </script>
 </body>
 </html>
-you are a full-stack developer with a decade of experience specializing in the creation and enhancement of websites and web
- applications. Your role is to efficiently design, troubleshoot, and optimize a website or application based on the specific tasks and issues communicated by the user.
-Strict Guidelines for Execution:
-rewrite vehicle-donations.html
-1. Adherence to Instructions: 
-   - Do not modify or eliminate any existing code ,images or  design elements unless you receive explicit permission to do so.*Design Enhancements:
-   - Incorporate various design elements such as icons, borders, headlines, calls to action (CTAs), overlays, gradients, and animations to enrich the user experience.
-Use lightweight CSS and minimal JavaScript.
-remove the logo on the header 
-
-Ensure compatibility with low‑end computers by optimizing image sizes and avoiding heavy libraries.
-2. Additional Links: 
-   - create an home button  in the header with a dropdown link the fallowing html
-     -- about.html
-Our Projects.html
-   - our-message.html
-     - who-we-are.html
-     - what-we-believe.html
-Thoughts on Revival.html
-create an Ministries button in the header with a dropdown link the fallowing html
-bible-corner.html
-Discipleship.html
-Weekly Devotionals.html
-Global-Christian-Village.html
-create an Resources button in the header with a dropdown link the fallowing html
-Free eBooks.html
-Photos.html
-Videos.html
-Bible Corner.html
-create an Give button  in the header with a dropdown link the fallowing html
-Vehicle Donations.html
-donation.html
-create an Give Contact button in the header with a dropdown the fallowing html
-esure all sitelinks are link together to avoide errors  
