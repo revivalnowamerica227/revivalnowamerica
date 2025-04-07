@@ -1,0 +1,1429 @@
+/* style.css */
+/* home */
+
+/* Animation for the logo */
+@keyframes logoPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.logo {
+    animation: logoPulse 4s infinite;
+}
+
+/* Hover effect for social icons */
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--secondary);
+    color: var(--primary) !important;
+    transform: translateY(-3px);
+}
+
+/* Footer link hover effects */
+.footer-section a {
+    color: #ccc;
+    transition: all 0.3s ease;
+    display: inline-block;
+    padding: 5px 0;
+}
+
+.footer-section a:hover {
+    color: var(--secondary) !important;
+    transform: translateX(5px);
+}
+
+.footer-section a i {
+    margin-right: 8px;
+    color: var(--secondary);
+}
+
+/* Section spacing */
+section {
+    padding: 80px 0;
+}
+
+/* Contact info styling */
+.contact-info i {
+    color: var(--secondary);
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+    
+    .footer-section {
+        margin-bottom: 30px;
+        width: 100%;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+}
+/* --- What we believe --- */
+:root {
+    --primary-color: #8e44ad; /* Example Purple */
+    --secondary-color: #3498db; /* Example Blue */
+    --light-color: #f4f4f4;
+    --dark-color: #333;
+    --text-color: #555;
+    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --gradient-overlay: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+    --gradient-footer: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)); /* Darker for footer */
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* Choose a suitable font */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-color);
+}
+
+h1, h2, h3 {
+    color: var(--dark-color);
+    margin-bottom: 0.8em;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove extra space below images */
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* --- Utility Classes --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.section-padding {
+    padding: 60px 0;
+}
+
+.section-headline {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    position: relative; /* For potential underlines or borders */
+}
+
+/* --- Header --- */
+.site-header {
+    background: var(--light-color); /* Or a subtle gradient/image */
+    padding: 15px 0;
+    border-bottom: 2px solid var(--primary-color);
+    position: sticky; /* Optional: makes header stick */
+    top: 0;
+    z-index: 100;
+    background: #fff; /* Sticky header needs solid background */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Adjust if nav is added */
+    align-items: center;
+}
+
+.logo img {
+    height: 50px; /* Adjust size as needed */
+    width: auto;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    height: 40vh; /* Adjust height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    background: var(--gradient-primary); /* Fallback if image fails */
+    /* background: url('path/to/your/hero-background.jpg') no-repeat center center/cover; /* Optional Background Image */
+}
+
+.overlay { /* General overlay class */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.gradient-overlay { /* Specific overlay for hero */
+    background: var(--gradient-overlay);
+}
+
+.hero-content {
+    position: relative; /* To stay above overlay */
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    color: #fff;
+    margin-bottom: 0.5em;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+}
+
+/* --- Message Details & Grid --- */
+.message-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 30px;
+}
+
+.message-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; /* Keep overlay and content contained */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.message-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-container img {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Crop image nicely */
+}
+
+.hover-overlay {
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black on hover */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.image-container:hover .hover-overlay {
+    opacity: 1;
+}
+
+.item-content {
+    position: absolute;
+    bottom: 0; /* Position at the bottom */
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    color: #fff;
+    z-index: 3; /* Above image and overlay */
+    box-sizing: border-box;
+    text-align: center;
+    /* Fancy entrance (optional) */
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.image-container:hover .item-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.item-content h3 {
+    margin: 0.5em 0 0 0;
+    color: #fff;
+    font-size: 1.4em;
+}
+
+.item-icon {
+    font-size: 1.5em; /* Icon size */
+    margin-bottom: 5px;
+    display: block; /* Center icon */
+}
+
+.item-description {
+    padding: 20px;
+    border-top: 1px solid #eee; /* Separator line */
+}
+
+/* --- Call to Action (CTA) --- */
+.cta-section {
+    margin-top: 50px;
+    padding: 30px;
+    /* background: var(--light-color); Optional background */
+    border-radius: 8px;
+    /* border: 1px dashed var(--primary-color); Optional border */
+}
+
+.cta-headline {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 25px;
+    margin: 10px;
+    font-weight: bold;
+    transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+.button-primary {
+    background: var(--gradient-primary);
+    color: #fff;
+}
+
+.button-secondary {
+    background: none;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+.button-secondary:hover {
+     background: var(--primary-color);
+     color: #fff;
+}
+
+
+/* --- Footer --- */
+.site-footer {
+    background: var(--dark-color); /* Fallback */
+    color: var(--light-color);
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 60px; /* Space above footer */
+    position: relative;
+}
+
+.gradient-overlay-footer {
+    background: var(--gradient-footer);
+}
+
+.footer-content {
+    position: relative; /* Above overlay */
+    z-index: 2;
+}
+
+.footer-headline {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.social-icons, .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 15px; /* Space between items */
+}
+
+.social-icons li a {
+    color: var(--light-color);
+    font-size: 1.8em; /* Larger icons */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons li a:hover {
+    color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+.footer-links li a {
+    color: #ccc; /* Slightly dimmer links */
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-links li a:hover {
+    color: #fff;
+}
+
+.copyright {
+    margin-top: 30px;
+    font-size: 0.85em;
+    color: #aaa;
+}
+
+/* --- Animations --- */
+
+/* Pulse effect for CTA button */
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Fade-in Up effect for scroll animation */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition-delay: var(--animation-delay, 0s); /* Use CSS variable if set inline */
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fade-in effect for scroll animation */
+.animate-on-scroll.fade-in {
+    opacity: 0;
+    transform: translateY(0); /* No vertical movement for simple fade */
+    transition: opacity 0.8s ease-out;
+     transition-delay: var(--animation-delay, 0s);
+}
+.animate-on-scroll.fade-in.visible {
+    opacity: 1;
+}
+
+
+/* --- Responsive Design (Mobile Friendly) --- */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.2em;
+    }
+    .section-headline {
+        font-size: 2em;
+    }
+    .message-grid {
+        grid-template-columns: 1fr; /* Stack items on smaller screens */
+    }
+     .footer-links, .social-icons {
+        gap: 10px;
+    }
+    .social-icons li a {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+     .container {
+        padding: 0 15px;
+    }
+     .hero-content h1 {
+        font-size: 1.8em;
+    }
+     .hero-content p {
+        font-size: 1em;
+    }
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+        display: block; /* Stack buttons */
+        width: 80%;
+        margin: 10px auto;
+    }
+    .footer-links {
+        flex-direction: column; /* Stack footer links vertically */
+        gap: 8px;
+    }
+}
+
+/* our Message Banner specific styles */
+.message-banner {
+    /* Path assumes 'who.webp' is inside an 'images' folder relative to style.css */
+    background-image: url('images/who.webp');
+    background-position: center center; /* Adjust as needed */
+    height: 50vh; /* Adjust height */
+}
+
+/* Style for the intro heading "Revival! Revival! Revival!" */
+.message-intro {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #1a2a4a;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 10px; /* Add some space above */
+}
+
+/* Scripture Quote Styling */
+.scripture-quote {
+    background-color: #f8f9fa; /* Light background */
+    border-left: 4px solid #adb5bd; /* Grey accent border */
+    padding: 15px 20px;
+    margin: 25px 0; /* Space around the quote */
+    font-style: italic;
+    color: #495057; /* Darker grey text */
+    border-radius: 0 4px 4px 0;
+}
+
+.scripture-quote p {
+    margin-bottom: 5px; /* Reduce space below paragraph inside quote */
+}
+
+.scripture-quote footer {
+    text-align: right;
+    font-style: normal;
+    font-size: 0.9em;
+    color: #6c757d; /* Lighter grey for citation */
+    margin-top: 5px;
+}
+
+.scripture-quote footer cite {
+    font-style: normal; /* Ensure cite tag isn't italic */
+}
+
+/* Inline Scripture Reference Styling */
+.inline-scripture {
+    font-weight: bold;
+    color: #0056b3; /* Use a distinct color */
+    font-style: normal; /* Override potential italics from surrounding text */
+}
+
+
+/* Footer Links Adjustment (if needed for more links) */
+.footer-links {
+    display: flex;
+    flex-wrap: wrap; /* Allow links to wrap on small screens */
+    justify-content: center;
+    gap: 10px 20px; /* Add gap between links */
+}
+
+.footer-links a {
+     margin: 0; /* Remove default margin if using gap */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .message-banner {
+        height: 40vh;
+    }
+    .message-intro {
+        font-size: 1.5rem;
+    }
+     .scripture-quote {
+        margin: 20px 0;
+    }
+}
+/*our massage */
+
+/*who we are */
+/* Add or modify these styles in your existing style.css */
+
+/* Adjust page banner for this page if needed */
+.page-banner h1 {
+    margin-top: 10px; /* Add space above main title */
+}
+.page-banner h2 { /* Style for the subtitle 'Revival Now America' */
+    font-size: 1.5rem;
+    color: #eee;
+    margin-bottom: 5px;
+    font-weight: normal;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+/* Compiler Note Styling */
+.compiler-note {
+    font-style: italic;
+    color: #555;
+    margin-top: -20px; /* Pull closer to heading */
+    margin-bottom: 40px;
+}
+
+/* Quotes Container */
+.quotes-container {
+    max-width: 900px; /* Limit width for readability */
+    margin: 0 auto; /* Center the container */
+}
+
+/* Individual Quote Block Styling */
+.quote-block {
+    background-color: #ffffff; /* White background for quotes */
+    border-left: 5px solid #007bff; /* Accent border */
+    padding: 20px 30px;
+    margin-bottom: 30px;
+    border-radius: 0 8px 8px 0; /* Rounded corners on right side */
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quote-block:hover {
+    transform: translateY(-3px);
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Blockquote Styling */
+.quote-block blockquote {
+    margin: 0; /* Reset default margins */
+    padding: 0;
+    font-size: 1.05rem;
+    color: #333;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+.quote-block blockquote p {
+    margin-bottom: 1em; /* Space between paragraphs within a quote */
+}
+
+.quote-block blockquote p:last-child {
+    margin-bottom: 0; /* No margin after the last paragraph */
+}
+
+/* Quote Author Styling */
+.quote-author {
+    text-align: right;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #555;
+    font-style: normal;
+}
+
+/* Responsive adjustments for quotes */
+@media (max-width: 768px) {
+    .quote-block {
+        padding: 15px 20px;
+    }
+    .quote-block blockquote {
+        font-size: 1rem;
+    }
+}
+/*who we are */
+/* Add or modify these styles in your existing style.css */
+
+/* Page Banner Styling (Simple version) */
+.page-banner {
+    padding: 40px 0; /* Adjust padding */
+    text-align: center;
+    color: #fff; /* Ensure text is readable on gradient */
+}
+
+.page-banner h1 {
+    font-size: 2.5rem; /* Adjust size as needed */
+    margin-bottom: 5px;
+    color: #fff; /* Ensure heading is white */
+     text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+.page-banner .subtitle {
+    font-size: 1.2rem;
+    color: #eee; /* Lighter subtitle color */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+/* Styling for h3 within bio-text */
+.bio-text h3 {
+    font-size: 1.6rem;
+    color: #1a2a4a;
+    margin-top: 30px; /* Space above subheadings */
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #007bff; /* Add an underline */
+    display: inline-block; /* Make border only as wide as text */
+}
+
+/* Section Divider */
+hr.section-divider {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+    margin: 40px 0; /* Adjust spacing */
+}
+
+
+/* Mission List Styling (reusing vision-mission styles) */
+.mission-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.mission-list li {
+    padding-left: 1.5em;
+    text-indent: -1.5em;
+    margin-bottom: 15px; /* More spacing for list items */
+    line-height: 1.7; /* Improve readability */
+}
+
+.mission-list li::before {
+    content: "\f14a"; /* Font Awesome check-square icon (alternative) */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900; /* Ensure solid icon */
+    color: #28a745; /* Green color for icon */
+    margin-right: 10px;
+    font-size: 1em; /* Match text size */
+}
+
+/* Secondary Call to Action Button Style */
+.cta-button.secondary-cta {
+    background-color: #6c757d; /* Grey background */
+    color: #fff;
+    margin-left: 10px; /* Add space next to primary button */
+}
+
+.cta-button.secondary-cta:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Ensure text-center helper works if needed */
+.text-center {
+    text-align: center;
+}
+
+/* Adjustments for about page specific layout if needed */
+.about-section .bio-container {
+    /* Any specific overrides for the about page layout */
+    gap: 50px; /* Slightly larger gap maybe */
+}
+
+/* Responsive adjustments for page banner */
+@media (max-width: 768px) {
+    .page-banner h1 {
+        font-size: 2rem;
+    }
+    .page-banner .subtitle {
+        font-size: 1rem;
+    }
+     .bio-text h3 {
+        font-size: 1.4rem;
+    }
+}
+/* Basic Reset & Body Styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    overflow-x: hidden; /* Prevent horizontal scroll caused by animations */
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Prevents extra space below image */
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Header */
+.site-header {
+    background-color: #ffffff;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    position: sticky; /* Make header sticky */
+    top: 0;
+    z-index: 1000; /* Ensure header is above other content */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Adjust if adding nav items */
+}
+
+.logo {
+    height: 50px; /* Adjust height as needed */
+    width: auto;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 70vh; /* Adjust height as needed */
+    /* Updated Image Path for Background */
+    background-image: url('images/home1.webp');
+    /* Note: Assumes 'home1.webp' is inside an 'images' folder relative to style.css */
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden; /* Ensure overlay fits */
+}
+
+/* Overlay & Gradient */
+.hero-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)); /* Example gradient */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative; /* Ensure content is above overlay */
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-weight: bold;
+}
+
+.hero-section .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Call to Action Button */
+.cta-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.hero-cta {
+    background-color: #ffc107; /* Different color for hero button */
+    color: #333;
+}
+
+.hero-cta:hover {
+    background-color: #e0a800;
+}
+
+/* General Content Sections */
+.content-section {
+    padding: 60px 0;
+    overflow: hidden; /* Contain elements affected by animations */
+}
+
+.content-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    color: #1a2a4a; /* A darker blue */
+}
+
+/* Bio Section */
+.bio-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 40px;
+    align-items: flex-start; /* Align items at the top */
+}
+
+.bio-image-wrapper {
+    flex: 0 0 250px; /* Fixed width for image container */
+    text-align: center;
+}
+
+.bio-image {
+    border-radius: 50%; /* Make image circular */
+    border: 5px solid #eee;
+    margin-bottom: 15px;
+    width: 200px; /* Ensure consistent size */
+    height: 200px;
+    object-fit: cover; /* Ensure image covers the area */
+}
+
+.bio-image-wrapper h2 {
+    font-size: 1.8rem; /* Slightly smaller heading for the name */
+    margin-bottom: 0; /* Remove bottom margin */
+    color: #333;
+}
+
+.bio-text {
+    flex: 1; /* Take remaining space */
+    min-width: 300px; /* Prevent text from becoming too narrow */
+}
+
+.bio-text p {
+    margin-bottom: 15px;
+}
+
+.bio-text strong {
+    color: #0056b3;
+}
+
+/* Gallery Section (for home2.webp) */
+.gallery-section .container {
+    text-align: center; /* Center the content */
+}
+
+.gallery-image-wrapper {
+     display: inline-block; /* Allows centering and respects text-align */
+     max-width: 80%; /* Control max width */
+     margin-top: 20px; /* Add space below heading if present */
+}
+
+.gallery-image {
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Optional: Add subtle shadow */
+    border: 1px solid #ddd;
+}
+
+
+/* Vision & Mission Section */
+.vision-mission-section ul {
+    list-style: none; /* Remove default bullets */
+    padding-left: 0;
+}
+
+.vision-mission-section li {
+    padding-left: 1.5em;
+    text-indent: -1.5em;
+    margin-bottom: 10px;
+}
+
+.vision-mission-section li::before {
+    content: "\f00c"; /* Font Awesome check icon */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: #28a745; /* Green color for icon */
+    margin-right: 10px;
+}
+
+/* Background Variations */
+.bg-light {
+    background-color: #ffffff;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.bg-gradient {
+     background: linear-gradient(to right, #007bff, #0056b3);
+     color: #fff;
+     text-align: center;
+}
+
+.bg-gradient h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.bg-gradient p {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.bg-gradient .cta-button {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.bg-gradient .cta-button:hover {
+    background-color: #e0a800;
+}
+
+/* Footer */
+.site-footer {
+    background-color: #1a2a4a; /* Dark blue footer */
+    color: #ccc;
+    padding: 40px 0 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-media a {
+    color: #ccc;
+    font-size: 1.8rem;
+    margin: 0 12px;
+    transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+    color: #00aaff; /* Lighter blue on hover */
+    text-decoration: none;
+}
+
+.footer-links a {
+    color: #ccc;
+    margin: 0 10px;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.copyright {
+    font-size: 0.85rem;
+    margin-top: 10px;
+    color: #aaa;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-100%); } /* Start further left */
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100%); } /* Start further right */
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Apply animations - adjust timing and delay as needed */
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0; /* Start hidden for JS scroll trigger OR ensure it runs */
+}
+
+.slide-in-left {
+    animation: slideInLeft 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* Smoother ease */
+    opacity: 0; /* Start hidden */
+}
+
+.slide-in-right {
+    animation: slideInRight 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* Smoother ease */
+     opacity: 0; /* Start hidden */
+}
+
+/* Stagger animation delays */
+.hero-content { animation-delay: 0.2s; animation-name: fadeIn; }
+#bio .bio-container { animation-delay: 0.4s; animation-name: slideInLeft;}
+#gallery .container { animation-delay: 0.6s; animation-name: slideInRight;}
+#vision .container { animation-delay: 0.8s; animation-name: slideInLeft;} /* Alternate slide direction */
+#mission .container { animation-delay: 1.0s; animation-name: slideInRight;} /* Alternate slide direction */
+.cta-section .container { animation-delay: 1.2s; animation-name: fadeIn;}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+    .hero-section .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .content-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .bio-container {
+        flex-direction: column; /* Stack image and text */
+        align-items: center; /* Center items when stacked */
+    }
+
+    .bio-image-wrapper {
+        flex: 0 0 auto; /* Reset flex basis */
+        margin-bottom: 20px;
+    }
+
+    .gallery-image-wrapper {
+        max-width: 95%; /* Allow slightly wider on tablet */
+    }
+
+    .social-media a {
+        font-size: 1.6rem;
+        margin: 0 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        overflow-x: hidden; /* Reinforce hiding overflow on mobile */
+    }
+    .hero-section {
+        height: 60vh;
+    }
+     .hero-section h1 {
+        font-size: 1.8rem;
+    }
+    .hero-section .subtitle {
+        font-size: 1rem;
+    }
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+     .content-section {
+        padding: 40px 0;
+    }
+     .content-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+    }
+    /* Ensure animations don't cause overflow on small screens */
+    .slide-in-left, .slide-in-right {
+        animation-duration: 0.8s; /* Faster animation on mobile maybe */
+    }
+}
+/* --- Basic Reset & Variables --- */
+:root {
+    --primary-color: #23a6d5;
+    --secondary-color: #e73c7e;
+    --accent-color: #ee7752;
+    --light-color: #ffffff;
+    --dark-color: #333333;
+    --overlay-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: #f4f4f4; /* Fallback background */
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2rem; text-align: center; margin-bottom: 1em; color: var(--primary-color);}
+h3 { font-size: 1.4rem; color: var(--secondary-color);}
+
+p { margin-bottom: 1em; }
+a { color: var(--primary-color); text-decoration: none; }
+img { max-width: 100%; height: auto; }
+section { padding: 40px 20px; }
+
+/* --- Utility Classes --- */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* --- Hero Section --- */
+.hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-color);
+    text-align: left;
+    padding: 40px 20px;
+    overflow: hidden; /* Contain pseudo-elements */
+
+    /* Animated Gradient Background */
+    background: linear-gradient(-45deg, var(--accent-color), var(--secondary-color), var(--primary-color), #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 18s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Overlay */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--overlay-color);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px; /* Space between text and image */
+    max-width: 1200px;
+    width: 100%;
+}
+
+.hero-text {
+    flex-basis: 60%; /* Take more space */
+}
+
+.hero-image {
+    flex-basis: 35%; /* Take less space */
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 300px; /* Adjust size as needed */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.hero h1 {
+    margin-bottom: 0.2em;
+    font-weight: 700;
+}
+.hero h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.9);
+}
+.hero .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 1.5em;
+}
+.hero .subtitle strong {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+
+/* --- CTA Button --- */
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--light-color);
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.cta-button:hover {
+    background-color: color-mix(in srgb, var(--accent-color) 85%, black);
+    transform: translateY(-2px);
+}
+.cta-button i {
+    margin-right: 8px;
+}
+
+/* --- Endorsement Section --- */
+.endorsement {
+    background-color: #e9eef2; /* Light background */
+    text-align: center;
+}
+.endorsement blockquote {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #555;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 20px;
+}
+.endorsement footer {
+    margin-top: 1em;
+    font-style: normal;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+.endorsement cite {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: normal;
+    margin-top: 0.3em;
+}
+
+/* --- About Section --- */
+.about {
+    background-color: var(--light-color);
+}
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+.about-point {
+    text-align: center;
+}
+.about-point .icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5em;
+}
+
+/* --- Sign-up Form Section --- */
+.signup {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    text-align: center;
+}
+.signup h2 {
+    color: var(--light-color);
+}
+.signup h2 i {
+    margin-right: 10px;
+    color: var(--accent-color);
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 20px auto 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for name */
+    gap: 15px;
+    text-align: left;
+}
+.form-group {
+    margin-bottom: 5px; /* Reduced bottom margin */
+}
+.form-group.full-width {
+    grid-column: 1 / -1; /* Span full width */
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-group input[type="text"],
+.form-group input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding in width */
+}
+.form-group.consent {
+    display: flex;
+    align-items: center;
+}
+.form-group.consent input[type="checkbox"] {
+    margin-right: 10px;
+    width: auto; /* Don't force checkbox width */
+    accent-color: var(--accent-color); /* Style checkbox */
+}
+.form-group.consent label {
+    margin-bottom: 0; /* Align label with checkbox */
+    font-weight: normal;
+}
+.submit-button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #e4e4e4;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column; /* Stack text and image vertically */
+        text-align: center;
+    }
+    .hero-text {
+        flex-basis: auto; /* Reset basis */
+        margin-bottom: 30px;
+    }
+    .hero-image {
+       flex-basis: auto; /* Reset basis */
+    }
+    .hero h1 { font-size: 2.2rem; }
+    .hero h2 { font-size: 1.3rem; text-align: center; }
+
+    .form-container {
+        grid-template-columns: 1fr; /* Stack form fields */
+    }
+    .form-group {
+       grid-column: 1 / -1; /* Ensure all take full width */
+    }
+}

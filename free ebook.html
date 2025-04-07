@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What We Believe - Revival Now America</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            position: relative;
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            top: 100%;
+            left: 0;
+        }
+        
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #b21f1f;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 300px;
+            background-image: url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 42, 108, 0.8), rgba(178, 31, 31, 0.8), rgba(253, 187, 45, 0.8));
+            animation: gradientAnimation 10s ease infinite;
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+        
+        .beliefs-section {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #1a2a6c;
+            border-bottom: 2px solid #b21f1f;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #fdbb2d;
+        }
+        
+        .belief-item {
+            margin-bottom: 30px;
+            border-left: 3px solid #b21f1f;
+            padding-left: 20px;
+            animation: fadeInRight 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .belief-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #1a2a6c;
+            display: flex;
+            align-items: center;
+        }
+        
+        .belief-title i {
+            margin-right: 10px;
+            color: #b21f1f;
+        }
+        
+        .belief-content {
+            line-height: 1.8;
+        }
+        
+        .tithing-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-description {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #fdbb2d;
+            color: #1a2a6c;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            background-color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a2a6c;
+            color: #fff;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+        
+        .footer-heading {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-heading::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #fdbb2d;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links ul li a:hover {
+            color: #fdbb2d;
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: #fff;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: #fdbb2d;
+            color: #1a2a6c;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .footer-bottom a {
+            color: #fdbb2d;
+            text-decoration: none;
+        }
+        
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                width: 100%;
+                padding-left: 20px;
+            }
+            
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-church"></i> Revival Now America
+            </a>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-home"></i> Home</a>
+                        <div class="dropdown-content">
+                            <a href="about.html">About</a>
+                            <a href="our-projects.html">Our Projects</a>
+                            <a href="our-message.html">Our Message</a>
+                            <a href="who-we-are.html">Who We Are</a>
+                            <a href="what-we-believe.html">What We Believe</a>
+                            <a href="thoughts-on-revival.html">Thoughts on Revival</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-pray"></i> Ministries</a>
+                        <div class="dropdown-content">
+                            <a href="bible-corner.html">Bible Corner</a>
+                            <a href="discipleship.html">Discipleship</a>
+                            <a href="weekly-devotionals.html">Weekly Devotionals</a>
+                            <a href="global-christian-village.html">Global Christian Village</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-book-open"></i> Resources</a>
+                        <div class="dropdown-content">
+                            <a href="free-ebooks.html">Free eBooks</a>
+                            <a href="photos.html">Photos</a>
+                            <a href="videos.html">Videos</a>
+                            <a href="bible-corner.html">Bible Corner</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-hand-holding-heart"></i> Give</a>
+                        <div class="dropdown-content">
+                            <a href="vehicle-donations.html">Vehicle Donations</a>
+                            <a href="donation.html">Donations</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+                        <div class="dropdown-content">
+                            <a href="contact.html">Contact Us</a>
+                            <a href="prayer-request.html">Prayer Request</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>What We Believe</h1>
+            <p>Our foundation is built on Biblical truths that guide our ministry and mission.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <section class="beliefs-section">
+            <h2 class="section-title">Our Core Beliefs</h2>
+            
+            <div class="belief-item">
+                <h3 class="belief-title"><i class="fas fa-bible"></i> The Bible</h3>
+                <div class="belief-content">
+                    <p>We believe the Bible is the inspired, infallible, and authoritative Word of God. It is completely trustworthy and is our guide for faith and practice. We believe in the divine inspiration of both Old and New Testaments.</p>
+                </div>
+            </div>
+            
+            <div class="belief-item">
+                <h3 class="belief-title"><i class="fas fa-cross"></i> Jesus Christ</h3>
+                <div class="belief-content">
+                    <p>We believe in Jesus Christ, God's only Son, who was born of a virgin, lived a sinless life, performed miracles, died on the cross for our sins, was resurrected on the third day, ascended to heaven, and will return in power and glory.</p>
+                </div>
+            </div>
+            
+            <div class="belief-item">
+                <h3 class="belief-title"><i class="fas fa-dove"></i> The Holy Spirit</h3>
+                <div class="belief-content">
+                    <p>We believe in the Holy Spirit who indwells every believer, empowering them to live a godly life and equipping them with gifts for service. The Holy Spirit convicts, guides, comforts, and produces the fruit of a Christ-like character in the believer.</p>
+                </div>
+            </div>
+            
+            <div class="belief-item">
+                <h3 class="belief-title"><i class="fas fa-hands-helping"></i> Salvation</h3>
+                <div class="belief-content">
+                    <p>We believe salvation is a gift from God received through faith in Jesus Christ. It cannot be earned through good works but is offered freely by God's grace. Through Jesus's sacrifice, we are forgiven of our sins and reconciled to God.</p>
+                </div>
+            </div>
+            
+            <div class="belief-item">
+                <h3 class="belief-title"><i class="fas fa-church"></i> The Church</h3>
+                <div class="belief-content">
+                    <p>We believe the Church is the body of Christ, consisting of all believers worldwide. The Church is called to worship God, build up believers in their faith, and share the Gospel message with the world.</p>
+                </div>
+            </div>
+            
+            <div class="belief-item">
+                <h3 class="belief-title"><i class="fas fa-globe-americas"></i> Revival</h3>
+                <div class="belief-content">
+                    <p>We believe that God desires to bring spiritual renewal and revival to America and the world. This revival begins with individuals surrendering fully to Christ and allowing the Holy Spirit to transform their lives, which then impacts communities and nations.</p>
+                </div>
+            </div>
+            
+            <div class="belief-item">
+                <h3 class="belief-title"><i class="fas fa-hand-holding-usd"></i> Tithing and Stewardship</h3>
+                <div class="belief-content">
+                    <p>We believe in the biblical principle of tithing and generous giving. As stewards of God's resources, we are called to support the work of ministry and care for those in need through our financial gifts.</p>
+                    <img src="images/tithing.png" alt="Tithing and Stewardship" class="tithing-image">
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-section">
+            <h2 class="cta-title">Join Us in the Journey of Faith</h2>
+            <p class="cta-description">We invite you to connect with Revival Now America as we seek to bring spiritual renewal to our nation and beyond.</p>
+            <a href="contact.html" class="cta-button">Get Involved Today</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3 class="footer-heading">Revival Now America</h3>
+                <p>Dedicated to bringing spiritual renewal and revival to America and beyond through the transformative power of Jesus Christ.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/RevivalNowAmerica" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/Revival4Now" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@revivalnowamerica" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@brotheramartey" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section footer-links">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="our-message.html">Our Message</a></li>
+                    <li><a href="weekly-devotionals.html">Weekly Devotionals</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section footer-links">
+                <h3 class="footer-heading">Resources</h3>
+                <ul>
+                    <li><a href="free-ebooks.html">Free eBooks</a></li>
+                    <li><a href="videos.html">Videos</a></li>
+                    <li><a href="bible-corner.html">Bible Corner</a></li>
+                    <li><a href="donation.html">Support Our Mission</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-heading">Contact Info</h3>
+                <p><i class="fas fa-envelope"></i> Email: info@revivalnowamerica.org</p>
+                <p><i class="fas fa-phone"></i> Phone: (555) 123-4567</p>
+                <p><i class="fas fa-map-marker-alt"></i> Address: P.O. Box 12345, City, State 12345</p>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <p>&copy; 2025 Revival Now America. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('show');
+        });
+        
+        // Add animation to belief items on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const beliefItems = document.querySelectorAll('.belief-item');
+            
+            function checkScroll() {
+                const triggerBottom = window.innerHeight * 0.8;
+                
+                beliefItems.forEach(item => {
+                    const itemTop = item.getBoundingClientRect().top;
+                    
+                    if(itemTop < triggerBottom) {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateX(0)';
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateX(-20px)';
+                    }
+                });
+            }
+            
+            // Initial check
+            checkScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
+        });
+    </script>
+</body>
+</html>
+you are a full-stack developer with a decade of experience specializing in the creation and enhancement of websites and web
+ applications. Your role is to efficiently design, troubleshoot, and optimize a website or application based on the specific tasks and issues communicated by the user.
+Strict Guidelines for Execution:
+rewrite free ebook.html
+1. Adherence to Instructions: 
+   - Do not modify or eliminate any existing code ,images or  design elements unless you receive explicit permission to do so.*Design Enhancements:
+   - Incorporate various design elements such as icons, borders, headlines, calls to action (CTAs), overlays, gradients, and animations to enrich the user experience.
+Use lightweight CSS and minimal JavaScript.
+remove the logo on the header 
+
+Ensure compatibility with low‑end computers by optimizing image sizes and avoiding heavy libraries.
+2. Additional Links: 
+   - create an home button  in the header with a dropdown link the fallowing html
+     -- about.html
+Our Projects.html
+   - our-message.html
+     - who-we-are.html
+     - what-we-believe.html
+Thoughts on Revival.html
+create an Ministries button in the header with a dropdown link the fallowing html
+bible-corner.html
+Discipleship.html
+Weekly Devotionals.html
+Global-Christian-Village.html
+create an Resources button in the header with a dropdown link the fallowing html
+Free eBooks.html
+Photos.html
+Videos.html
+Bible Corner.html
+create an Give button  in the header with a dropdown link the fallowing html
+Vehicle Donations.html
+donation.html
+create an Give Contact button in the header with a dropdown the fallowing html
+esure all sitelinks are link together to avoide errors  
