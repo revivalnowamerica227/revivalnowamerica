@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Message - Revival Now America</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #f8c353;
+        }
+
+        .nav-link i {
+            margin-right: 8px;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            min-width: 200px;
+            display: none;
+            z-index: 1;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        .dropdown a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #f8c353;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Nav Toggle */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/home1.webp');
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            z-index: 1;
+            animation: fadeUp 1s ease-out;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: normal;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Content Styles */
+        .content-section {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+
+        .message-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .message-content h2 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f8c353;
+            padding-bottom: 10px;
+        }
+
+        .message-content h2 i {
+            margin-right: 10px;
+            color: #f8c353;
+            font-size: 28px;
+        }
+
+        .message-content p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #444;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .message-content p.scrolled {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .message-content blockquote {
+            border-left: 4px solid #f8c353;
+            padding-left: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #555;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .message-content blockquote.scrolled {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: #333;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section h2 i {
+            margin-right: 10px;
+            color: #f8c353;
+            font-size: 32px;
+        }
+
+        .cta-section p {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #f8c353;
+            color: #333;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e6b043;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #222;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin-bottom: 30px;
+            min-width: 250px;
+            padding: 0 15px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #f8c353;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bbb;
+            margin-bottom: 10px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #f8c353;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 40px;
+            background-color: #333;
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #f8c353;
+            color: #333;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            margin-top: 30px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        .footer-bottom a {
+            color: #bbb;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: #f8c353;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.9);
+                padding: 20px 0;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-item {
+                margin: 10px 0;
+            }
+
+            .dropdown {
+                position: static;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                display: block;
+                box-shadow: none;
+            }
+
+            .nav-item:hover .dropdown {
+                max-height: 500px;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container nav-container">
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                    <div class="dropdown">
+                        <a href="about.html">About</a>
+                        <a href="Our-Projects.html">Our Projects</a>
+                        <a href="our-message.html">Our Message</a>
+                        <a href="who-we-are.html">Who We Are</a>
+                        <a href="what-we-believe.html">What We Believe</a>
+                        <a href="Thoughts-on-Revival.html">Thoughts on Revival</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="fas fa-church"></i> Ministries</a>
+                    <div class="dropdown">
+                        <a href="bible-corner.html">Bible Corner</a>
+                        <a href="Discipleship.html">Discipleship</a>
+                        <a href="Weekly-Devotionals.html">Weekly Devotionals</a>
+                        <a href="Global-Christian-Village.html">Global Christian Village</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="fas fa-book"></i> Resources</a>
+                    <div class="dropdown">
+                        <a href="Free-eBooks.html">Free eBooks</a>
+                        <a href="Photos.html">Photos</a>
+                        <a href="Videos.html">Videos</a>
+                        <a href="Bible-Corner.html">Bible Corner</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Give</a>
+                    <div class="dropdown">
+                        <a href="Vehicle-Donations.html">Vehicle Donations</a>
+                        <a href="donation.html">Donation</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>IGNITING REVIVAL FIRES ACROSS AMERICA</h1>
+            <h2>Understanding the Call for Revival</h2>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="container message-content">
+            <h2><i class="fas fa-question-circle"></i> What is Revival?</h2>
+            <p>Revival! Revival! Revival! We have often heard this word, but what is revival? Revival means different things to different people, but basically it means bringing back to life. When we talk about the revival of the church, it means bringing the church back to life.</p>
+            <p>Does it mean the church is dead? Unless we lack any spiritual discernment at all, we should be humble to admit that the church as we see it today – is dead, without life, without power. We have lost our light and shine – we have lost our salt and taste; we have lost our witness to the world and rather we are being swallowed up by the world daily.</p>
+            
+            <h2><i class="fas fa-church"></i> The Current Condition of the Church</h2>
+            <blockquote>"...I know your works, that you have a name that you are alive, but you are dead..." — Revelation 3:1</blockquote>
+            <blockquote>"...you are neither cold nor hot – because you say, I am rich and increased with goods and have need of nothing, but do not know that you are wretched and miserable and poor and blind and naked..." — Revelation 3:15-17</blockquote>
+            <p>These are the two conditions of the churches in Sardis and Laodicea, and they epitomize the condition of the church in America today. It is a double tragedy for the church in America, in spite of all the activities and programs and seminars, conferences and workshops. It is time we admit that all our efforts have failed and that we cannot do the work of God by the arm of the flesh, but by His Spirit.</p>
+            <blockquote>"It is not by might or by power but by My Spirit," says the Lord. — Zechariah 4:6</blockquote>
+            
+            <h2><i class="fas fa-cross"></i> True Revival vs. Ordinary Church Meetings</h2>
+            <p>I have seen church signs announcing "revival" in some churches, and to most people, the only "revival" they know is what happens at their churches during these "revival" meetings. Sad to say, these are not revivals at all, but are just ordinary church meetings. This is because revival is a sovereign work of God, by His Spirit, and no one can plan, organize or schedule a revival. Certainly, we can pray for revival, but only the Lord can send revival in His own time and manner.</p>
+            
+            <h2><i class="fas fa-bible"></i> Biblical Basis for Revival</h2>
+            <p>Some have asked me, "Is the word, "revival," in the Bible? Sure there is the verb, "revive," from which we got the noun, "revival"!</p>
+            <blockquote>"...revive us, and we will call upon Your name; restore us, O Lord God of hosts, cause Your face to shine and we shall be saved." — Psalm 80:18-19</blockquote>
+            <p>As the Lord's people desperately sought for revival, they cried out to the Lord,</p>
+            <blockquote>"Would You not revive us again, that Your people may rejoice in You?" — Psalm 85:6</blockquote>
+            <p>In Habakkuk 3:2, the prophet prayed,</p>
+            <blockquote>"O LORD, REVIVE YOUR WORK IN THE MIDST OF THE YEARS." — Habakkuk 3:2</blockquote>
+            <p>"Revive" is also mentioned in Psalm 138:7; Isaiah 57:15 and Hosea 6:2.</p>
+            
+            <h2><i class="fas fa-clock"></i> Why We Need Revival Now</h2>
+            <p>We need revival now, because we are dead, and cannot revive ourselves. Only the Lord who is the source of life can revive us and we need to seek His face in true humility, fasting, prayer and repentance.</p>
+            <p>We need revival now, America, because America is in big trouble. God's judgment is upon the land because of our many transgressions, apathy, apostasy, hypocrisy, compromise and worldliness. There is a spiritual, moral and economic decline, and this is a reflection of the condition of the church. When the church is revived, America would be revived and restored.</p>
+            <p>We need revival now, America, because the harvest is plentiful...</p>
+            <blockquote>"Look around you and look at the fields, they are already white for the harvest." — Matthew 9:37-38; Luke 10:2; John 4:35</blockquote>
+            <p>We need revival now, America, because multitudes and multitudes are in the valley of decision, waiting to hear the gospel of salvation. Joel 3:14.</p>
+            
+            <h2><i class="fas fa-lightbulb"></i> Hope in Dark Times</h2>
+            <p>The conditions around us today provide a fertile ground for revival. As Brother Andrew Gih says, "God's time for revival is the very darkest hour, when everything seems hopeless. It is always the Lord's way to go to the very worst cases to manifest His glory." Consequently, we should not be discouraged and throw our arms up in despair, and ask the Lord to come and rapture us from the world. We should not be despondent and say that these are the end times and the Lord is coming soon. But rather, we should pray for the Lord to revive us!</p>
+            <p>Certainly, the Lord will come back, and is coming back for an overcoming church, for a victorious church, for a triumphant church and not a dead church! We should be occupying effectively and powerfully until He comes. He says, "Occupy till I come!" Luke 19:13.</p>
+            
+            <h2><i class="fas fa-pray"></i> God's Promise of Revival</h2>
+            <p>Is it the Lord's will to revive us? Certainly, it is the Lord's will to revive us. We have His precious promises to stand upon. He says, "Call upon Me in the day of trouble and I will deliver you and you will glorify Me." Psalm 50:15. Are we in trouble? Yes, we are! Let us be humble and call upon Him.</p>
+            <blockquote>"If My people, who are called by My name, would humble themselves and pray, and seek My face, and turn from their wicked ways, then will I hear from heaven, and will forgive their sin and will heal their land." — 2 Chronicles 7:14</blockquote>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container cta-content">
+            <h2><i class="fas fa-hands-praying"></i> Join Us in Prayer for Revival</h2>
+            <p>We invite you to join us in seeking God's face for spiritual revival in America. Together, we can make a difference.</p>
+            <a href="contact.html" class="btn">Connect With Us</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>Revival Now America</h3>
+                <p>Igniting revival fires across America through prayer, repentance, and the proclamation of God's Word.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/RevivalNowAmerica" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/Revival4Now" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@revivalnowamerica" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@brotheramartey" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="about.html">About Us</a>
+                <a href="our-message.html">Our Message</a>
+                <a href="Thoughts-on-Revival.html">Thoughts on Revival</a>
+                <a href="what-whe-believe.html">What We Believe</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <a href="Free-eBooks.html">Free eBooks</a>
+                <a href="bible-corner.html">Bible Corner</a>
+                <a href="Weekly-Devotionals.html">Weekly Devotionals</a>
+                <a href="Videos.html">Videos</a>
+            </div>
+            <div class="footer-section">
+                <h3>Get Involved</h3>
+                <a href="donation.html">Make a Donation</a>
+                <a href="Vehicle-Donations.html">Vehicle Donations</a>
+                <a href="contact.html">Volunteering</a>
+                <a href="Discipleship.html">Discipleship Programs</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© 2025 Revival Now America. All Rights Reserved. <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        });
+
+        // Animate elements on scroll
+        const elements = document.querySelectorAll('.message-content p, .message-content blockquote');
+        
+        const elementInView = (el, percentageScroll = 100) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= 
+                ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
+            );
+        };
+        
+        const displayScrollElement = (element) => {
+            element.classList.add('scrolled');
+        };
+        
+        const hideScrollElement = (element) => {
+            element.classList.remove('scrolled');
+        };
+        
+        const handleScrollAnimation = () => {
+            elements.forEach((el) => {
+                if (elementInView(el, 90)) {
+                    displayScrollElement(el);
+                } else {
+                    hideScrollElement(el);
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', handleScrollAnimation);
+        handleScrollAnimation();
+    </script>
+</body>
+</html>

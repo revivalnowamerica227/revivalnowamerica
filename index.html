@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revival Now America</title>
+    <style>
+        /* Lightweight CSS with animations and gradients */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 1rem 2rem;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            position: relative;
+            margin-left: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        nav a i {
+            margin-right: 8px;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: 4px;
+            overflow: hidden;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            color: var(--dark-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--light-color);
+            color: var(--secondary-color);
+            padding-left: 20px;
+        }
+        
+        .hero {
+            position: relative;
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('images/home1.webp') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(46, 134, 222, 0.3), rgba(231, 76, 60, 0.3));
+            animation: gradientShift 8s ease infinite alternate;
+        }
+        
+        @keyframes gradientShift {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary-color);
+            animation: pulse 2s infinite;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--secondary-color);
+        }
+        
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .about-image:hover {
+            transform: translateY(-10px);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .vision-mission {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .vision-card, .mission-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .mission-card {
+            border-top-color: var(--secondary-color);
+        }
+        
+        .vision-card:hover, .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .vision-card h3, .mission-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/home2.webp') center/cover no-repeat;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-about p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-bottom p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 1rem;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .dropdown-content {
+                position: static;
+                display: none;
+                width: 100%;
+                box-shadow: none;
+                animation: none;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-fire"></i>
+                <span>Revival Now America</span>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                        <div class="dropdown-content">
+                            <a href="about.html">About Us</a>
+                            <a href="Our-Projects.html">Our Projects</a>
+                            <a href="our-message.html">Our Message</a>
+                            <a href="who-we-are.html">Who We Are</a>
+                            <a href="what-whe-believe.html">What We Believe</a>
+                            <a href="Thoughts-on-Revival.html">Thoughts on Revival</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-church"></i> Ministries</a>
+                        <div class="dropdown-content">
+                            <a href="bible-corner.html">Bible Corner</a>
+                            <a href="Discipleship.html">Discipleship</a>
+                            <a href="Weekly-Devotionals.html">Weekly Devotionals</a>
+                            <a href="Global-Christian-Village.html">Global Christian Village</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-book-open"></i> Resources</a>
+                        <div class="dropdown-content">
+                            <a href="Free-eBooks.html">Free eBooks</a>
+                            <a href="Photos.html">Photos</a>
+                            <a href="Videos.html">Videos</a>
+                            <a href="bible-corner.html">Bible Corner</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-hand-holding-heart"></i> Give</a>
+                        <div class="dropdown-content">
+                            <a href="Vehicle-Donations.html">Vehicle Donations</a>
+                            <a href="donation.html">Donation</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+                        <div class="dropdown-content">
+                            <a href="contact.html">Contact Us</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Revival Now America!</h1>
+            <p>Join us as we seek God for a mighty outpouring of His Spirit in our generation.</p>
+            <a href="our-message.html" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-title">
+            <h2>Brother Amartey Welcomes You</h2>
+        </div>
+        <div class="about-container">
+            <div class="about-image">
+                <img src="images/Brother-Amartey.webp" alt="Brother Amartey">
+            </div>
+            <div class="about-content">
+                <h3>We're glad you are here!</h3>
+                <p>Perhaps you have come here out of mere curiosity. Or perhaps, you are one of the few hopefuls, the few who believe that all is not lost, that God is able to turn a hopeless situation around for His own glory, that in spite of the many transgressions, apostasy, apathy, hypocrisy, worldliness and compromise, God will surely hear us when we cry out to Him in humility and repentance and will revive us and restore us, according to the precious promises we have in His word. Perhaps, like some believers, you have a burning desire to see the manifestation of God's power and glory and the exaltation of the name of Jesus Christ throughout the world. That is what Revival Now America! is all about!</p>
+                <p>We desire to see revival in America and across the world, and are calling the church to prayer and repentance, stirring up the saints and encouraging them to seek the Lord for revival. We believe in the power of prayer and intercession and trust that the Lord will hear and answer us in His own time. Revival will come and is coming.</p>
+                <p>We concur with Brother Adrian Rogers, that God has always sent revival in the darkest days and will send revival to this generation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="background-color: #f5f5f5;">
+        <div class="section-title">
+            <h2>Our Vision & Mission</h2>
+        </div>
+        <div class="vision-mission">
+            <div class="vision-card">
+                <h3>Our Vision</h3>
+                <p>To see a mighty move of God in our generation, to turn the hearts of people from lawlessness to righteousness, and to Jesus Christ, the only Mediator between God and mankind. 1 Timothy 2:5. To this end, we will continue to seek the Lord in prayer, in supplication, in fasting and in weeping, till He answers us in the demonstration of His power and glory.</p>
+            </div>
+            <div class="mission-card">
+                <h3>Our Mission</h3>
+                <p>To preach the gospel of Jesus Christ in the demonstration of the Spirit and of the power, and not with enticing words of man's wisdom, to lead people to salvation. 1 Corinthians 2:4; Mark 16:20</p>
+                <p>To identify those with God's call upon their lives and assist them to fulfill their calling in ministry; to teach, train and equip them to do the work of ministry and who would also train others to do the same in accordance with 2 Timothy 2:2.</p>
+                <p>To offer physical, spiritual and financial assistance to the needy in our communities and abroad, as the Lord blesses us to meet these needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="about-container">
+            <div class="about-content">
+                <h3>About Brother Amartey</h3>
+                <p>We know that it is the Lord's desire to send revival, as He has done many times past in church history. We remember the revivals in Wales and Scotland. We remember the Great Awakenings in America. We remember the great revival at Azusa Street in California that impacted the whole world, and we are expecting an even greater outpouring than Azusa in our generation.</p>
+                <p>Lord Jesus, it is time You do it again, to glorify and exalt Your name in all the world, that You alone are the Redeemer and the only Mediator between God and mankind! Show us Your mercy and forgive our transgressions! We stand upon Your precious promises in Revelations 3:18, and have come to buy from You refined gold so that we may rich; and white garments to cover our nakedness; and eyesalve to anoint our eyes so that we may see. We confess our poverty, wretchedness, powerlessness, nakedness and blindness and pray: "Revive us, and we will call upon Your name; restore us, O Lord God of hosts, cause Your face to shine, and we shall be saved."</p>
+                <a href="who-we-are.html" class="btn" style="margin-top: 20px;">Learn More About Us</a>
+            </div>
+            <div class="about-image">
+                <img src="images/home2.webp" alt="Revival Now America Image">
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Join Us in Prayer for Revival</h2>
+            <p>Together, let's seek God for a mighty outpouring of His Spirit in our generation.</p>
+            <div class="cta-buttons">
+                <a href="donation.html" class="btn">Get Involved Today</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <i class="fas fa-fire"></i> Revival Now America
+                </div>
+                <p>We are calling the church to prayer and repentance, stirring up the saints and encouraging them to seek the Lord for revival. We believe in the power of prayer and intercession and trust that the Lord will hear and answer us in His own time.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/RevivalNowAmerica" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/Revival4Now" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@revivalnowamerica" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@brotheramartey" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="our-message.html">Our Message</a></li>
+                    <li><a href="what-we-believe.html">What We Believe</a></li>
+                    <li><a href="who-we-are.html">Who We Are</a></li>
+                    <li><a href="bible-corner.html">Bible Corner</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Information</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Revival Now America</p>
+                <p><i class="fas fa-envelope"></i> info@revivalnowamerica.org</p>
+                <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Revival Now America. All Rights Reserved</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Minimal JavaScript for dropdown functionality on mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            // For mobile devices, toggle dropdown on click
+            if (window.innerWidth <= 768) {
+                dropdowns.forEach(dropdown => {
+                    const link = dropdown.querySelector('a');
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('active');
+                        
+                        // Close other open dropdowns
+                        dropdowns.forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('active');
+                            }
+                        });
+                    });
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.dropdown')) {
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                });
+            }
+            
+            // Simple animation for elements when they come into view
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.about-container, .vision-card, .mission-card');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Set initial state for animated elements
+            const animatedElements = document.querySelectorAll('.about-container, .vision-card, .mission-card');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on load
+        });
+    </script>
+</body>
+</html>

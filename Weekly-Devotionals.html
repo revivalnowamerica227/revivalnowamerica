@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Devotionals | Revival Now America</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0c4da2;
+            --secondary-color: #f39c12;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --dark-bg: #2c3e50;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            position: relative;
+            margin-left: 20px;
+        }
+        
+        .nav-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary-color);
+            background-color: rgba(12, 77, 162, 0.1);
+            border-radius: 5px;
+        }
+        
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 999;
+            border-radius: 5px;
+        }
+        
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-link {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-link:hover {
+            background-color: var(--light-bg);
+            color: var(--primary-color);
+        }
+        
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 22px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        /* Content Sections */
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-dark {
+            background-color: var(--dark-bg);
+            color: var(--white);
+        }
+        
+        .section-light {
+            background-color: var(--light-bg);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            font-size: 36px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .section-dark .section-title {
+            color: var(--white);
+        }
+        
+        .content-box {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .content-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .content-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(12,77,162,0.1) 0%, rgba(243,156,18,0.1) 100%);
+            z-index: 0;
+        }
+        
+        .content-box > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-dark .content-box {
+            background-color: rgba(255,255,255,0.1);
+            color: var(--white);
+        }
+        
+        h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .section-dark h3 {
+            color: var(--secondary-color);
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+        
+        blockquote {
+            font-style: italic;
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 20px;
+            margin: 20px 0;
+            color: var(--text-color);
+        }
+        
+        .section-dark blockquote {
+            color: var(--white);
+        }
+        
+        .author-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--secondary-color);
+            margin: 0 auto 20px;
+            display: block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .author-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .devotional {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .devotional.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .devotional-title {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 28px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .devotional-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .devotional-author {
+            font-style: italic;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .scripture {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 20px 0;
+            padding-left: 20px;
+            border-left: 3px solid var(--secondary-color);
+        }
+        
+        .section-dark .scripture {
+            color: var(--secondary-color);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: #fff;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: var(--white);
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #bdc3c7;
+        }
+        
+        .copyright a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+                z-index: 1001;
+                position: relative;
+                right: 10px;
+                top: 0;
+                color: var(--primary-color);
+                background: none;
+                border: none;
+                font-size: 24px;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                flex-direction: column;
+                background-color: #fff;
+                width: 100%;
+                height: 100vh;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+                overflow-y: auto;
+                z-index: 1000;
+                padding-top: 80px;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 0;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .nav-item.active .dropdown {
+                max-height: 500px;
+            }
+            
+            .nav-link {
+                padding: 15px;
+            }
+            
+            .dropdown-link {
+                padding-left: 30px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .author-img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+        
+        /* Performance optimization for low-end devices */
+        @media (prefers-reduced-motion: reduce) {
+            .content-box, .devotional, .author-img, .nav-link, .cta-button {
+                transition: none;
+                animation: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <button class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="about.html" class="dropdown-link">About</a></li>
+                        <li><a href="Our Projects.html" class="dropdown-link">Our Projects</a></li>
+                        <li><a href="our-message.html" class="dropdown-link">Our Message</a></li>
+                        <li><a href="who-we-are.html" class="dropdown-link">Who We Are</a></li>
+                        <li><a href="what-whe-believe.html" class="dropdown-link">What We Believe</a></li>
+                        <li><a href="Thoughts on Revival.html" class="dropdown-link">Thoughts on Revival</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-church"></i> Ministries
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="bible-corner.html" class="dropdown-link">Bible Corner</a></li>
+                        <li><a href="Discipleship.html" class="dropdown-link">Discipleship</a></li>
+                        <li><a href="Weekly Devotionals.html" class="dropdown-link">Weekly Devotionals</a></li>
+                        <li><a href="Global-Christian-Village.html" class="dropdown-link">Global Christian Village</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-book-open"></i> Resources
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="Free eBooks.html" class="dropdown-link">Free eBooks</a></li>
+                        <li><a href="Photos.html" class="dropdown-link">Photos</a></li>
+                        <li><a href="Videos.html" class="dropdown-link">Videos</a></li>
+                        <li><a href="Bible Corner.html" class="dropdown-link">Bible Corner</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-hand-holding-heart"></i> Give
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="Vehicle Donations.html" class="dropdown-link">Vehicle Donations</a></li>
+                        <li><a href="donation.html" class="dropdown-link">Donation</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="contact.html" class="dropdown-link">Contact Us</a></li>
+                        <li><a href="prayer-request.html" class="dropdown-link">Prayer Request</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Weekly Devotionals</h1>
+            <p>Watch Here Every Week For Encouragement, Edification and Hope</p>
+        </div>
+    </section>
+    
+    <!-- Devotionals Section -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="section-title">Weekly Devotionals</h2>
+            <div class="content-box">
+                <img src="images/Brother-Amartey.webp" alt="Brother Amartey" class="author-img" loading="lazy">
+                
+                <div class="devotional">
+                    <h2 class="devotional-title">1. DO YOU HAVE TRUST ISSUES?</h2>
+                    <span class="devotional-author">- Brother Amartey</span>
+                    
+                    <p class="scripture">"It is better to trust in the Lord than to put confidence in man. It is better to trust in the Lord than to put confidence in princes" (Psalm 118:8-9).</p>
+                    
+                    <p>Many of us have issues with trust. It is hard to trust people these days, because many of us have been betrayed by friends, family, loved ones, co-workers and even in the church. But the question is this: Are we ourselves trustworthy? Are we honest with ourselves? Can we be relied upon to deliver, to keep our word? We may fail, we may fall, we may disappoint, but there is One who does not fail, One who does not disappoint, One who always keeps His word. And it is better to trust in Him alone.</p>
+                    
+                    <p>It is better to trust in the Lord, than to put confidence in man. It is better to trust in the Lord than to put confidence in princes.</p>
+                    
+                    <p>We cannot be disappointed when we put our trust in the Lord and not in people. And when our trust is in the Lord, we cannot have trust issues. Even when things don't work out the way we expect, we know that our trust is not in people or our circumstances but in Him, "for we walk by faith and not by sight" (2 Cor 5:7). And no matter how things appear to be, "we know that all things work together for good to those who love God and are called according to His purpose (Rom 8:28).</p>
+                    
+                    <p class="scripture">"Trust in the Lord with all your heart and lean not unto your own understanding. In all your ways acknowledge Him and He will direct your paths" (Prov 3:5-6).</p>
+                    
+                    <a href="Weekly-Devotionals.html#trust-issues" class="cta-button">Read More Devotionals</a>
+                </div>
+                
+                <div class="devotional">
+                    <h2 class="devotional-title">2. TAKE HEED THAT NO ONE DECEIVES YOU!</h2>
+                    <span class="devotional-author">- Brother Amartey</span>
+                    
+                    <p class="scripture">".....And as He sat on the Mount of Olives, the disciples came to Him privately, saying, tell us, when shall these things be and what shall be the sign of your coming and of the end of the world? And Jesus answered and said to them, take heed that no one deceives you......and many false prophets shall arise and shall deceive many.....believe it not......if it were possible, they shall deceive the very elect. Behold, I have told you before.....He is in the secret chambers, believe it not" (Matt 24:1-26).</p>
+                    
+                    <p>"Take heed that no one deceives you"! This is a warning, and we must take this warning seriously! Warnings are always given to keep people out of danger and Jesus was warning the disciples (and us), about endtime deception to avoid being deceived. When asked about the signs of His coming, the first thing Jesus spoke about was deception! And why is that? Because Jesus knew that there will be massive deception in the end times and many people will be deceived. As a result, he cautions the disciples (and us), against this massive deception so we can be on the alert and not be deceived. Remember, Jesus was speaking to His chosen, the elect, and not to the multitudes because He knew they were in danger of being deceived (Matt 24:4-5; 11). Two times, He warned them not to believe a secret coming (Matt 24:23; 26). And He tells them, "Behold, I have told you before" (Matt 24:25). That means, He has warned them ahead of time before it happens! Why do you think these warnings are necessary if the disciples or the elect cannot be deceived? Why should anyone receive warnings when there is no danger?</p>
+                    
+                    <p>It horrifies me when I hear a preacher say that "it is not possible for the elect to be deceived." What? This is very pathetic and shows that such preachers and their followers are already deceived. I mean, people are being deceived everyday by people, by the government, by the news media and even by science that is supposed to be true to facts. Do you remember how "science" and unscrupulous doctors deceived the whole world with Covid? Well, we all can be deceived and that's why Jesus warned us to be on guard against false prophets and teachers and messiahs in this discourse (Matt 24:1-26).</p>
+                    
+                    <p>Beloved, do not think you are too smart to be deceived. Do not think the elect cannot be deceived. We have been warned, and let the word of God be your guide. We are already in that stage of massive deception where millions have been deceived by false teachers and doctrines. Abide in His word to guard yourself against endtime deception. Let no one deceive you!</p>
+                    
+                    <a href="Weekly-Devotionals.html#deception" class="cta-button">Read More Devotionals</a>
+                </div>
+                
+                <div class="devotional">
+                    <h2 class="devotional-title">3. GOD WILL SEND THEM DELUSION!</h2>
+                    <span class="devotional-author">- Brother Amartey</span>
+                    
+                    <p class="scripture">"And for this cause, God shall send them a strong delusion, that they should believe a lie: That they ALL might be DAMNED, who believed not the truth......(2 Thess 2:11-12).</p>
+                    
+                    <p>Now, my brethren, if you have ears to hear, then listen to the word of the Lord. God says He will damn them! And why would a loving God damn anyone? Because they received not the love of the truth, that they might be saved (2 Thess 2:10). That is why! Do you have itching ears? Do you love your ears to be tickled with sweet and smooth lies from lying preachers? Then you are in danger of damnation!</p>
+                    
+                    <p class="scripture">"For the time will come when they will not endure sound doctrine, but having itching ears, they shall heap to themselves teachers in accordance with their own lusts" (2 Timothy 4:3).</p>
+                    
+                    <p>When you put the word of man above the word of God, then you are setting up yourself for damnation! It is your responsibility to search the Scriptures to make sure every teaching is in accordance with the word (Acts 17:10-11). And if it doesn't align with the word, it means there's no light in them (Isaiah 8:20), and must be rejected!</p>
+                    
+                    <p>My beloved, you have heard that Antichrist is coming, but there are many antichrists already in the world and in the pulpits (1 John 2:18). And these false pastors and teachers and prophets are teaching doctrines of demons (1 Timothy 4:1), and misleading people.</p>
+                    
+                    <p>See that you abide in His word and don't be deceived (2 John 9; Matt 24:4; 11; ). We live in an age of massive deception, and if you think you cannot be deceived, then you're already deceived. Yes, it's possible for the elect to be deceived, and many are deceived already by the government, by the lying media, by people and by false prophets, pastors and teachers. The Lord Himself says many false prophets, pastors and teachers will arise and deceive many people.</p>
+                    
+                    <p>And how do we avoid deception? Abide in His word, that is how! Don't take my word for it, but believe in His word and you will have life and save yourself from damnation (John 8:31-32).</p>
+                    
+                    <a href="Weekly-Devotionals.html#delusion" class="cta-button">Read More Devotionals</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <p>Revival Now America is dedicated to spreading the Gospel and fostering spiritual growth through Biblical teachings and community outreach.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="Discipleship.html">Discipleship</a></li>
+                        <li><a href="donation.html">Give</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="Free eBooks.html">Free eBooks</a></li>
+                        <li><a href="Videos.html">Videos</a></li>
+                        <li><a href="Weekly Devotionals.html">Weekly Devotionals</a></li>
+                        <li><a href="Bible Corner.html">Bible Corner</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/RevivalNowAmerica" class="social-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/Revival4Now" class="social-link" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@revivalnowamerica" class="social-link" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@brotheramartey" class="social-link" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 Revival Now America. All Rights Reserved | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        });
+        
+        // Handle dropdown on mobile
+        if (window.innerWidth <= 768) {
+            navItems.forEach(item => {
+                const link = item.querySelector('.nav-link');
+                
+                if (link && item.querySelector('.dropdown')) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        item.classList.toggle('active');
+                    });
+                }
+            });
+        }
+        
+        // Animation for devotional sections on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.devotional').forEach(devotional => {
+            observer.observe(devotional);
+        });
+    </script>
+</body>
+</html>

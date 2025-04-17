@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos - Revival Now America</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0d47a1;
+            --secondary-color: #f44336;
+            --accent-color: #ffeb3b;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+            --dark-bg: #121212;
+            --header-height: 80px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            height: var(--header-height);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            position: relative;
+            margin-left: 20px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link i {
+            margin-right: 8px;
+        }
+        
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+        
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-link {
+            display: block;
+            color: var(--text-color);
+            padding: 12px 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .dropdown-link:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-link:hover {
+            background-color: #f8f9fa;
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Main Content Styles */
+        main {
+            margin-top: var(--header-height);
+            padding: 40px 0;
+        }
+        
+        .hero-section {
+            position: relative;
+            height: 400px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(13, 71, 161, 0.8) 0%, rgba(244, 67, 54, 0.7) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .hero-title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero-subtitle {
+            font-size: 20px;
+            max-width: 800px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1.2s ease-out;
+        }
+        
+        .cta-button {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 24px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1.4s ease-out;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            background-color: #d32f2f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button i {
+            margin-right: 10px;
+        }
+        
+        .video-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+            font-size: 28px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .video-container {
+            width: 100%;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .video-container.scrolled {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-gallery {
+            margin-top: 40px;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .video-item {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .video-item.scrolled {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 48px;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        
+        .video-item:hover .play-icon {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-info {
+            padding: 15px;
+        }
+        
+        .video-title {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+        
+        .video-date {
+            font-size: 14px;
+            color: #777;
+            display: flex;
+            align-items: center;
+        }
+        
+        .video-date i {
+            margin-right: 5px;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+            margin-right: 20px;
+        }
+        
+        .footer-column:last-child {
+            margin-right: 0;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .footer-desc {
+            margin-bottom: 20px;
+            color: #bbb;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-link {
+            margin-bottom: 12px;
+        }
+        
+        .footer-link a {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-link a:hover {
+            color: white;
+        }
+        
+        .footer-link a i {
+            margin-right: 8px;
+            color: var(--secondary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .newsletter-form {
+            margin-top: 20px;
+        }
+        
+        .newsletter-input {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 4px;
+            padding: 12px 15px;
+            color: white;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .newsletter-input::placeholder {
+            color: #bbb;
+        }
+        
+        .newsletter-button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .newsletter-button:hover {
+            background-color: #d32f2f;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #bbb;
+        }
+        
+        .footer-bottom a {
+            color: #ddd;
+            text-decoration: none;
+        }
+        
+        .footer-bottom a:hover {
+            color: white;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .header-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: var(--header-height);
+                left: -100%;
+                flex-direction: column;
+                background-color: var(--primary-color);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+                height: calc(100vh - var(--header-height));
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 10px 0;
+            }
+            
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+                box-shadow: none;
+                background-color: rgba(0, 0, 0, 0.1);
+                display: none;
+                margin: 10px;
+                border-radius: 4px;
+            }
+            
+            .dropdown.show {
+                display: block;
+            }
+            
+            .dropdown-link {
+                color: white;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .dropdown-link:hover {
+                background-color: rgba(255, 255, 255, 0.05);
+                color: white;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 32px;
+            }
+            
+            .hero-section {
+                height: 300px;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+            }
+            
+            .footer-column {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container container">
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <div class="dropdown">
+                        <a href="about.html" class="dropdown-link">About</a>
+                        <a href="Our-Projects.html" class="dropdown-link">Our Projects</a>
+                        <a href="our-message.html" class="dropdown-link">Our Message</a>
+                        <a href="who-we-are.html" class="dropdown-link">Who We Are</a>
+                        <a href="what-whe-believe.html" class="dropdown-link">What We Believe</a>
+                        <a href="Thoughts-on-Revival.html" class="dropdown-link">Thoughts on Revival</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-hands-helping"></i> Ministries
+                    </a>
+                    <div class="dropdown">
+                        <a href="bible-corner.html" class="dropdown-link">Bible Corner</a>
+                        <a href="Discipleship.html" class="dropdown-link">Discipleship</a>
+                        <a href="Weekly-Devotionals.html" class="dropdown-link">Weekly Devotionals</a>
+                        <a href="Global-Christian-Village.html" class="dropdown-link">Global Christian Village</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-book-open"></i> Resources
+                    </a>
+                    <div class="dropdown">
+                        <a href="Free-eBooks.html" class="dropdown-link">Free eBooks</a>
+                        <a href="Photos.html" class="dropdown-link">Photos</a>
+                        <a href="Videos.html" class="dropdown-link">Videos</a>
+                        <a href="Bible-Corner.html" class="dropdown-link">Bible Corner</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-hand-holding-heart"></i> Give
+                    </a>
+                    <div class="dropdown">
+                        <a href="Vehicle-Donations.html" class="dropdown-link">Vehicle Donations</a>
+                        <a href="donation.html" class="dropdown-link">Donation</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-phone-alt"></i> Contact
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-overlay">
+                    <h1 class="hero-title">Revival Now America Videos</h1>
+                    <p class="hero-subtitle">Experience the message of revival through our collection of inspiring and transformative videos</p>
+                    <a href="#featured-video" class="cta-button">
+                        <i class="fas fa-play-circle"></i> Watch Featured Video
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Featured Video Section -->
+            <section class="video-section" id="featured-video">
+                <h2 class="section-title"><i class="fas fa-video"></i> Featured Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/TltoaXcJXVs" title="Revival Now America Featured Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </section>
+            
+            <!-- Video Gallery Section -->
+            <section class="video-gallery">
+                <h2 class="section-title"><i class="fas fa-film"></i> More Videos</h2>
+                <div class="video-grid">
+                    <div class="video-item">
+                        <a href="https://youtu.be/ifanw_I6dKo" target="_blank" class="video-thumbnail">
+                            <img src="/api/placeholder/400/320" alt="Revival Video Thumbnail">
+                            <div class="play-icon">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3 class="video-title">Revival Message</h3>
+                            <div class="video-date">
+                                <i class="far fa-calendar-alt"></i> March 15, 2023
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-item">
+                        <a href="https://youtu.be/ERgIOM5Bm2A" target="_blank" class="video-thumbnail">
+                            <img src="/api/placeholder/400/320" alt="Revival Video Thumbnail">
+                            <div class="play-icon">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3 class="video-title">Worship and Prayer</h3>
+                            <div class="video-date">
+                                <i class="far fa-calendar-alt"></i> April 22, 2023
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-item">
+                        <a href="https://youtu.be/n1WD5vQQM3A" target="_blank" class="video-thumbnail">
+                            <img src="/api/placeholder/400/320" alt="Revival Video Thumbnail">
+                            <div class="play-icon">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3 class="video-title">Bible Study</h3>
+                            <div class="video-date">
+                                <i class="far fa-calendar-alt"></i> May 8, 2023
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="fas fa-church"></i> Revival Now America
+                    </div>
+                    <p class="footer-desc">
+                        Our mission is to ignite spiritual revival across America through prayer, worship, and the spreading of God's word. Join us in our journey to restore faith and hope in our communities.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/RevivalNowAmerica" class="social-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/Revival4Now" class="social-link" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@revivalnowamerica" class="social-link" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@brotheramartey" class="social-link" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link">
+                            <a href="about.html"><i class="fas fa-angle-right"></i> About Us</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="Our-Projects.html"><i class="fas fa-angle-right"></i> Our Projects</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="what-we-believe.html"><i class="fas fa-angle-right"></i> What We Believe</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="Weekly-Devotionals.html"><i class="fas fa-angle-right"></i> Weekly Devotionals</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="Videos.html"><i class="fas fa-angle-right"></i> Videos</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">Resources</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link">
+                            <a href="Free-eBooks.html"><i class="fas fa-angle-right"></i> Free eBooks</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="Bible-Corner.html"><i class="fas fa-angle-right"></i> Bible Corner</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="Photos.html"><i class="fas fa-angle-right"></i> Photo Gallery</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="Discipleship.html"><i class="fas fa-angle-right"></i> Discipleship</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="Global-Christian-Village.html"><i class="fas fa-angle-right"></i> Global Christian Village</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p class="footer-desc">
+                        Subscribe to our newsletter to receive updates on our events, resources, and messages of revival.
+                    </p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Your Email Address" required>
+                        <button type="submit" class="newsletter-button">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Revival Now America. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        });
+        
+        // Mobile Dropdown Toggle
+        document.querySelectorAll('.nav-link').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    this.nextElementSibling.classList.toggle('show');
+                }
+            });
+        });
+        
+        // Hero Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroOverlay = document.querySelector('.hero-overlay');
+            heroOverlay.style.animation = 'fadeInUp 1s ease-out';
+        });
+        
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Scroll Animation for Video Content
+        const videoElements = document.querySelectorAll('.video-container, .video-item');
+        
+        const elementInView = (el, percentageScroll = 100) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= 
+                ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
+            );
+        };
+        
+        const displayScrollElement = (element) => {
+            element.classList.add('scrolled');
+        };
+        
+        const hideScrollElement = (element) => {
+            element.classList.remove('scrolled');
+        };
+        
+        const handleScrollAnimation = () => {
+            videoElements.forEach((el) => {
+                if (elementInView(el, 90)) {
+                    displayScrollElement(el);
+                } else {
+                    hideScrollElement(el);
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', handleScrollAnimation);
+        handleScrollAnimation();
+    </script>
+</body>
+</html>

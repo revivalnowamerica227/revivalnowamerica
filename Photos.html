@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - Revival Now America</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            position: relative;
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            top: 100%;
+            left: 0;
+        }
+        
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #b21f1f;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 300px;
+            background-image: url('images/photos-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 42, 108, 0.8), rgba(178, 31, 31, 0.8), rgba(253, 187, 45, 0.8));
+            animation: gradientAnimation 10s ease infinite;
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+        
+        .photo-gallery-section {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #1a2a6c;
+            border-bottom: 2px solid #b21f1f;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #fdbb2d;
+        }
+        
+        .gallery-intro {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .gallery-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .gallery-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-tab.active {
+            background-color: #1a2a6c;
+            color: #fff;
+        }
+        
+        .gallery-tab:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .gallery-tab.active:hover {
+            background-color: #1a2a6c;
+        }
+        
+        .gallery-content {
+            display: none;
+        }
+        
+        .gallery-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .gallery-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: #fff;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1100;
+            overflow: auto;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 80%;
+            max-height: 80%;
+        }
+        
+        .modal-img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 1101;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: #fdbb2d;
+        }
+        
+        .modal-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+        }
+        
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .prev {
+            left: 20px;
+        }
+        
+        .next {
+            right: 20px;
+        }
+        
+        .prev:hover, .next:hover {
+            color: #fdbb2d;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-description {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #fdbb2d;
+            color: #1a2a6c;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            background-color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a2a6c;
+            color: #fff;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+        
+        .footer-heading {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-heading::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #fdbb2d;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links ul li a:hover {
+            color: #fdbb2d;
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: #fff;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: #fdbb2d;
+            color: #1a2a6c;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .footer-bottom a {
+            color: #fdbb2d;
+            text-decoration: none;
+        }
+        
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                width: 100%;
+                padding-left: 20px;
+            }
+            
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .gallery-tabs {
+                flex-direction: column;
+                border-bottom: none;
+            }
+            
+            .gallery-tab {
+                margin-right: 0;
+                margin-bottom: 5px;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+            }
+        }
+        
+        /* Performance optimization for low-end devices */
+        @media (prefers-reduced-motion: reduce) {
+            .gallery-item, .gallery-overlay, .gallery-item img, .modal {
+                transition: none;
+                animation: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-home"></i> Home</a>
+                        <div class="dropdown-content">
+                            <a href="about.html">About</a>
+                            <a href="Our Projects.html">Our Projects</a>
+                            <a href="our-message.html">Our Message</a>
+                            <a href="who-we-are.html">Who We Are</a>
+                            <a href="what-whe-believe.html">What We Believe</a>
+                            <a href="Thoughts-on-Revival.html">Thoughts on Revival</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-pray"></i> Ministries</a>
+                        <div class="dropdown-content">
+                            <a href="bible-corner.html">Bible Corner</a>
+                            <a href="Discipleship.html">Discipleship</a>
+                            <a href="Weekly Devotionals.html">Weekly Devotionals</a>
+                            <a href="Global-Christian-Village.html">Global Christian Village</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-book-open"></i> Resources</a>
+                        <div class="dropdown-content">
+                            <a href="Free eBooks.html">Free eBooks</a>
+                            <a href="Photos.html">Photos</a>
+                            <a href="Videos.html">Videos</a>
+                            <a href="Bible Corner.html">Bible Corner</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-hand-holding-heart"></i> Give</a>
+                        <div class="dropdown-content">
+                            <a href="Vehicle Donations.html">Vehicle Donations</a>
+                            <a href="donation.html">Donations</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+                        <div class="dropdown-content">
+                            <a href="contact.html">Contact Us</a>
+                            <a href="prayer-request.html">Prayer Request</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Photo Gallery</h1>
+            <p>Capturing moments of faith, fellowship, and revival across America and beyond.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <section class="photo-gallery-section">
+            <h2 class="section-title">Our Ministry in Action</h2>
+            <p class="gallery-intro">Browse through our collection of photos showcasing the work of Revival Now America. From community outreach to mission trips, training sessions, and spiritual retreats, these images capture the heart of our ministry.</p>
+            
+            <div class="gallery-tabs">
+                <div class="gallery-tab active" data-tab="all"><i class="fas fa-images"></i> All Photos</div>
+                <div class="gallery-tab" data-tab="community"><i class="fas fa-users"></i> Community Outreach</div>
+                <div class="gallery-tab" data-tab="training"><i class="fas fa-chalkboard-teacher"></i> Training & Discipleship</div>
+                <div class="gallery-tab" data-tab="missions"><i class="fas fa-globe"></i> Missions</div>
+                <div class="gallery-tab" data-tab="retreats"><i class="fas fa-pray"></i> Retreats & Events</div>
+            </div>
+            
+            <div class="gallery-content active" id="all">
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="community">
+                        <img src="images/Farm Community.webp" alt="Community Farm Project" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Community Farm Project</h4>
+                            <p>Working together to grow food for local families in need</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="training">
+                        <img src="images/Training.webp" alt="Leadership Training" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Leadership Training</h4>
+                            <p>Equipping the next generation of ministry leaders</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="missions">
+                        <img src="images/Mission.webp" alt="International Missions" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>International Missions</h4>
+                            <p>Sharing the Gospel and providing aid around the world</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="retreats">
+                        <img src="images/Retreat.webp" alt="Spiritual Retreat" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Spiritual Retreat</h4>
+                            <p>A time of prayer, reflection, and renewal</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="community">
+                        <img src="images/book.png" alt="Bible Study Resources" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Bible Study Resources</h4>
+                            <p>Materials developed for community Bible studies</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="community">
+                        <img src="images/Farm Community.webp" alt="Food Distribution" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Food Distribution</h4>
+                            <p>Providing fresh produce to underserved communities</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="training">
+                        <img src="images/Training.webp" alt="Youth Mentorship" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Youth Mentorship</h4>
+                            <p>Building relationships that transform lives</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="missions">
+                        <img src="images/Mission.webp" alt="Global Partners" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Global Partners</h4>
+                            <p>Collaborating with ministries worldwide</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-content" id="community">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/Farm Community.webp" alt="Community Farm Project" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Community Farm Project</h4>
+                            <p>Working together to grow food for local families in need</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/book.png" alt="Bible Study Resources" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Bible Study Resources</h4>
+                            <p>Materials developed for community Bible studies</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/Farm Community.webp" alt="Food Distribution" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Food Distribution</h4>
+                            <p>Providing fresh produce to underserved communities</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-content" id="training">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/Training.webp" alt="Leadership Training" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Leadership Training</h4>
+                            <p>Equipping the next generation of ministry leaders</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/Training.webp" alt="Youth Mentorship" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Youth Mentorship</h4>
+                            <p>Building relationships that transform lives</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-content" id="missions">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/Mission.webp" alt="International Missions" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>International Missions</h4>
+                            <p>Sharing the Gospel and providing aid around the world</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/Mission.webp" alt="Global Partners" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Global Partners</h4>
+                            <p>Collaborating with ministries worldwide</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-content" id="retreats">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/Retreat.webp" alt="Spiritual Retreat" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Spiritual Retreat</h4>
+                            <p>A time of prayer, reflection, and renewal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-section">
+            <h2 class="cta-title">Join Our Mission</h2>
+            <p class="cta-description">Help us continue our work of spiritual revival and community transformation across America.</p>
+            <a href="donation.html" class="cta-button">Support Our Work</a>
+        </section>
+    </main>
+
+    <!-- Modal for Image Popup -->
+    <div class="modal" id="imageModal">
+        <span class="close-modal" id="closeModal">×</span>
+        <div class="modal-content">
+            <img class="modal-img" id="modalImg" src="">
+            <div class="modal-caption" id="modalCaption"></div>
+            <span class="prev" id="prevImg">❮</span>
+            <span class="next" id="nextImg">❯</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3 class="footer-heading">Revival Now America</h3>
+                <p>Dedicated to bringing spiritual renewal and revival to America and beyond through the transformative power of Jesus Christ.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/RevivalNowAmerica" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/Revival4Now" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@revivalnowamerica" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@brotheramartey" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section footer-links">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="our-message.html">Our Message</a></li>
+                    <li><a href="Weekly Devotionals.html">Weekly Devotionals</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section footer-links">
+                <h3 class="footer-heading">Resources</h3>
+                <ul>
+                    <li><a href="Free eBooks.html">Free eBooks</a></li>
+                    <li><a href="Videos.html">Videos</a></li>
+                    <li><a href="Bible Corner.html">Bible Corner</a></li>
+                    <li><a href="donation.html">Support Our Mission</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-heading">Contact Info</h3>
+                <p><i class="fas fa-envelope"></i> Email: info@revivalnowamerica.org</p>
+                <p><i class="fas fa-phone"></i> Phone: (555) 123-4567</p>
+                <p><i class="fas fa-map-marker-alt"></i> Address: P.O. Box 12345, City, State 12345</p>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <p>© 2025 Revival Now America. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('show');
+        });
+
+        // Gallery tab functionality
+        const galleryTabs = document.querySelectorAll('.gallery-tab');
+        const galleryContents = document.querySelectorAll('.gallery-content');
+
+        galleryTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                galleryTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                galleryContents.forEach(content => content.classList.remove('active'));
+                
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+                
+                // Trigger visibility for newly active items
+                setTimeout(() => {
+                    document.querySelectorAll(`#${tabId} .gallery-item`).forEach(item => item.classList.add('visible'));
+                }, 10);
+            });
+        });
+
+        // Image modal functionality
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalCaption = document.getElementById('modalCaption');
+        const closeModal = document.getElementById('closeModal');
+        const prevImg = document.getElementById('prevImg');
+        const nextImg = document.getElementById('nextImg');
+        let currentIndex = 0;
+
+        // Open modal when clicking on gallery item
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', function() {
+                const imgSrc = this.querySelector('img').src;
+                const imgTitle = this.querySelector('h4').textContent;
+                const imgDesc = this.querySelector('p').textContent;
+                
+                modalImg.src = imgSrc;
+                modalCaption.innerHTML = `<h4>${imgTitle}</h4><p>${imgDesc}</p>`;
+                modal.style.display = 'flex';
+                
+                currentIndex = index;
+                updateNavigationButtons();
+            });
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside the image
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Navigation buttons for modal
+        function updateNavigationButtons() {
+            prevImg.style.display = currentIndex > 0 ? 'block' : 'none';
+            nextImg.style.display = currentIndex < galleryItems.length - 1 ? 'block' : 'none';
+        }
+
+        prevImg.addEventListener('click', function() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                const imgSrc = galleryItems[currentIndex].querySelector('img').src;
+                const imgTitle = galleryItems[currentIndex].querySelector('h4').textContent;
+                const imgDesc = galleryItems[currentIndex].querySelector('p').textContent;
+                
+                modalImg.src = imgSrc;
+                modalCaption.innerHTML = `<h4>${imgTitle}</h4><p>${imgDesc}</p>`;
+                updateNavigationButtons();
+            }
+        });
+
+        nextImg.addEventListener('click', function() {
+            if (currentIndex < galleryItems.length - 1) {
+                currentIndex++;
+                const imgSrc = galleryItems[currentIndex].querySelector('img').src;
+                const imgTitle = galleryItems[currentIndex].querySelector('h4').textContent;
+                const imgDesc = galleryItems[currentIndex].querySelector('p').textContent;
+                
+                modalImg.src = imgSrc;
+                modalCaption.innerHTML = `<h4>${imgTitle}</h4><p>${imgDesc}</p>`;
+                updateNavigationButtons();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (modal.style.display === 'flex') {
+                if (event.key === 'ArrowLeft' && currentIndex > 0) {
+                    prevImg.click();
+                } else if (event.key === 'ArrowRight' && currentIndex < galleryItems.length - 1) {
+                    nextImg.click();
+                } else if (event.key === 'Escape') {
+                    closeModal.click();
+                }
+            }
+        });
+
+        // Animate gallery items on page load and tab switch
+        document.addEventListener('DOMContentLoaded', function() {
+            const initialItems = document.querySelectorAll('#all .gallery-item');
+            initialItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('visible');
+                }, index * 100); // Staggered animation
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation - Revival Now America</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --gradient: linear-gradient(135deg, #3498db, #2c3e50);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 0.5s ease-out;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            position: relative;
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        nav ul li a i {
+            margin-right: 8px;
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .dropdown-content a {
+            color: var(--dark-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: var(--secondary-color);
+        }
+        
+        main {
+            padding: 2rem 0;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .hero {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: zoomIn 10s infinite alternate;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.6));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .donation-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .donation-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-group label i {
+            margin-right: 5px;
+            color: var(--secondary-color);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .donation-option {
+            background-color: var(--light-color);
+            border-radius: 4px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .donation-option:hover {
+            background-color: #d6eaf8;
+            border-color: var(--secondary-color);
+        }
+        
+        .donation-option.active {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .donation-option.active::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .donation-amount {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .payment-method {
+            flex:  instructions;
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--light-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .payment-method:hover {
+            background-color: #d6eaf8;
+            border-color: var(--secondary-color);
+        }
+        
+        .payment-method.active {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .payment-method.active::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .payment-method i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .image-section {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-section img:hover {
+            transform: scale(1.02);
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            margin-top: 1rem;
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            background: var(--gradient);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .dropdown-content {
+                position: static;
+                display: none;
+                width: 100%;
+                box-shadow: none;
+                opacity: 1;
+                transform: none;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            
+            .hero {
+                height: 300px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .donation-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .donation-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .payment-methods {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                height: 250px;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .donation-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-home"></i> Home</a>
+                        <div class="dropdown-content">
+                            <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                            <a href="Our Projects.html"><i class="fas fa-project-diagram"></i> Our Projects</a>
+                            <a href="our-message.html"><i class="fas fa-bullhorn"></i> Our Message</a>
+                            <a href="who-we-are.html"><i class="fas fa-users"></i> Who We Are</a>
+                            <a href="what-we-believe.html"><i class="fas fa-pray"></i> What We Believe</a>
+                            <a href="Thoughts on Revival.html"><i class="fas fa-lightbulb"></i> Thoughts on Revival</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-church"></i> Ministries</a>
+                        <div class="dropdown-content">
+                            <a href="bible-corner.html"><i class="fas fa-bible"></i> Bible Corner</a>
+                            <a href="Discipleship.html"><i class="fas fa-hands-praying"></i> Discipleship</a>
+                            <a href="Weekly Devotionals.html"><i class="fas fa-calendar-week"></i> Weekly Devotionals</a>
+                            <a href="Global-Christian-Village.html"><i class="fas fa-globe"></i> Global Christian Village</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-book-open"></i> Resources</a>
+                        <div class="dropdown-content">
+                            <a href="Free eBooks.html"><i class="fas fa-book"></i> Free eBooks</a>
+                            <a href="Photos.html"><i class="fas fa-camera"></i> Photos</a>
+                            <a href="Videos.html"><i class="fas fa-video"></i> Videos</a>
+                            <a href="Bible Corner.html"><i class="fas fa-bible"></i> Bible Corner</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-hand-holding-heart"></i> Give</a>
+                        <div class="dropdown-content">
+                            <a href="Vehicle Donations.html"><i class="fas fa-car"></i> Vehicle Donations</a>
+                            <a href="donation.html"><i class="fas fa-donate"></i> Donation</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+                        <div class="dropdown-content">
+                            <a href="#"><i class="fas fa-phone"></i> Phone</a>
+                            <a href="#"><i class="fas fa-envelope"></i> Email</a>
+                            <a href="#"><i class="fas fa-map-marker-alt"></i> Location</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <img src="images/The Godhead.webp" alt="Revival Now America" class="hero-image">
+                <div class="hero-overlay">
+                    <h1 class="hero-title">Support Our Ministry</h1>
+                    <p class="hero-subtitle">Your generous donation helps us spread the message of revival across America and beyond.</p>
+                    <a href="#donate" class="btn">Donate Now</a>
+                </div>
+            </section>
+
+            <section id="donate" class="donation-section">
+                <h2 class="section-title">Make a Donation</h2>
+                <p>Thank you for considering a donation to Revival Now America. Your support enables us to continue our mission of spreading the Gospel and fostering revival. Please fill out the form below to make your secure donation.</p>
+                
+                <form class="donation-form">
+                    <div class="form-group full-width">
+                        <h3>Select Donation Amount</h3>
+                        <div class="donation-options">
+                            <div class="donation-option">
+                                <div class="donation-amount">$25</div>
+                                <small>One-time gift</small>
+                            </div>
+                            <div class="donation-option">
+                                <div class="donation-amount">$50</div>
+                                <small>One-time gift</small>
+                            </div>
+                            <div class="donation-option active">
+                                <div class="donation-amount">$100</div>
+                                <small>One-time gift</small>
+                            </div>
+                            <div class="donation-option">
+                                <div class="donation-amount">$250</div>
+                                <small>One-time gift</small>
+                            </div>
+                            <div class="donation-option">
+                                <div class="donation-amount">$500</div>
+                                <small>One-time gift</small>
+                            </div>
+                            <div class="donation-option">
+                                <div class="donation-amount">Other</div>
+                                <input type="number" placeholder="Enter amount" style="width: 100%; margin-top: 5px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <h3>Payment Method</h3>
+                        <div class="payment-methods">
+                            <div class="payment-method active">
+                                <i class="fab fa-cc-visa"></i>
+                                <div>Credit Card</div>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fab fa-cc-paypal"></i>
+                                <div>PayPal</div>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fas fa-university"></i>
+                                <div>Bank Transfer</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="first-name"><i class="fas fa-user"></i> First Name</label>
+                        <input type="text" id="first-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last-name"><i class="fas fa-user"></i> Last Name</label>
+                        <input type="text" id="last-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                        <input type="email" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+                        <input type="tel" id="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Street Address</label>
+                        <input type="text" id="address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state">State/Province</label>
+                        <input type="text" id="state" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zip">ZIP/Postal Code</label>
+                        <input type="text" id="zip" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <select id="country" required>
+                            <option value="">Select Country</option>
+                            <option value="US">United States</option>
+                            <option value="CA">Canada</option>
+                            <option value="UK">United Kingdom</option>
+                            <!-- Add more countries as needed -->
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="message"><i class="fas fa-comment"></i> Special Instructions (Optional)</label>
+                        <textarea id="message" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>
+                            <input type="checkbox" required> I would like to receive updates and newsletters
+                        </label>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn">Submit Donation</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="image-section">
+                <img src="images/The Godhead.webp" alt="The Godhead">
+                <p class="image-caption">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver." - 2 Corinthians 9:7</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="who-we-are.html">Who We Are</a></li>
+                        <li><a href="what-we-believe.html">What We Believe</a></li>
+                        <li><a href="our-message.html">Our Message</a></li>
+                        <li><a href="about.html">About Revival Now America</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Ministries</h3>
+                    <ul>
+                        <li><a href="bible-corner.html">Bible Corner</a></li>
+                        <li><a href="Discipleship.html">Discipleship</a></li>
+                        <li><a href="Weekly Devotionals.html">Weekly Devotionals</a></li>
+                        <li><a href="Global-Christian-Village.html">Global Christian Village</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="Free eBooks.html">Free eBooks</a></li>
+                        <li><a href="Photos.html">Photos</a></li>
+                        <li><a href="Videos.html">Videos</a></li>
+                        <li><a href="Bible Corner.html">Bible Corner</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/RevivalNowAmerica" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/Revival4Now" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@revivalnowamerica" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@brotheramartey" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    <h3 style="margin-top: 1.5rem;">Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2023 Revival Now America. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const donationOptions = document.querySelectorAll('.donation-option');
+            donationOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    donationOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forsequencing(function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdowns.forEach(d => {
+                        if (d !== this) d.classList.remove('active');
+                    });
+                    this.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What We Believe - Revival Now America</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a2342;  /* Dark blue/navy from the image */
+            --secondary: #ffc72c;  /* Gold/yellow from the image */
+            --light: #f8f9fa;
+            --dark: #212529;
+            --overlay: rgba(10, 35, 66, 0.8);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary), #1a3a6a);
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: flex-end; /* Changed to align nav to the right */
+            align-items: center;
+            position: relative;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        nav ul li a.active {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+            animation: fadeIn 0.3s ease;
+            transform-origin: top center;
+        }
+        
+        .dropdown-content a {
+            color: var(--primary) !important;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: var(--primary);
+            padding-left: 20px;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .dropdown-icon {
+            margin-left: 5px;
+            font-size: 0.8em;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 60vh;
+            background: linear-gradient(rgba(10, 35, 66, 0.8), rgba(10, 35, 66, 0.8)), 
+                        url('images/The Godhead.webp') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            animation: fadeIn 1.5s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 35, 66, 0.6) 0%, rgba(26, 58, 106, 0.8) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.5s ease-out;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: var(--secondary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 199, 44, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 199, 44, 0.4);
+            background-color: #ffd700;
+        }
+        
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+        
+        /* Message Grid */
+        .message-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .message-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border-top: 4px solid var(--secondary);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .message-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .message-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .message-card:hover .message-img {
+            transform: scale(1.05);
+        }
+        
+        .message-content {
+            padding: 20px;
+            position: relative;
+        }
+        
+        .message-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 15%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .message-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .message-content p {
+            margin-bottom: 20px;
+            color: #555;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+        
+        .message-card:hover .icon {
+            transform: rotate(10deg);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(to right, var(--primary), #1a3a6a);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/The Bible.webp') no-repeat center center/cover;
+            opacity: 0.2;
+            z-index: 0;
+            animation: slowZoom 20s infinite alternate;
+        }
+        
+        @keyframes slowZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: slideInUp 1s ease;
+            color: var(--secondary);
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: slideInUp 1.2s ease;
+        }
+        
+        .cta-content .btn {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, var(--primary), #1a3a6a);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            animation: shake 0.5s ease;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateY(-3px); }
+            25% { transform: translateY(-3px) translateX(2px); }
+            50% { transform: translateY(-3px) translateX(-2px); }
+            75% { transform: translateY(-3px) translateX(2px); }
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 20px;
+                display: none;
+                width: 100%;
+            }
+        
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+                width: 100%;
+            }
+            
+            nav ul li a {
+                width: 100%;
+                text-align: left;
+                padding: 12px;
+            }
+            
+            .dropdown-content {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                background-color: rgba(255,255,255,0.1);
+                padding-left: 20px;
+            }
+            
+            .dropdown-content a {
+                color: white !important;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+            
+            .message-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li class="dropdown">
+                        <a href="index.html"><i class="fas fa-home"></i> Home <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                        <div class="dropdown-content">
+                            <a href="about.html">About</a>
+                            <a href="Our-Projects.html">Our Projects</a>
+                            <a href="our-message.html">Our Message</a>
+                            <a href="who-we-are.html">Who We Are</a>
+                            <a href="what-whe-believe.html">What We Believe</a>
+                            <a href="Thoughts-on-Revival.html">Thoughts on Revival</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Ministries <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                        <div class="dropdown-content">
+                            <a href="bible-corner.html">Bible Corner</a>
+                            <a href="discipleship.html">Discipleship</a>
+                            <a href="weekly-devotionals.html">Weekly Devotionals</a>
+                            <a href="global-christian-village.html">Global Christian Village</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Resources <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                        <div class="dropdown-content">
+                            <a href="free-ebooks.html">Free eBooks</a>
+                            <a href="photos.html">Photos</a>
+                            <a href="videos.html">Videos</a>
+                            <a href="bible-corner.html">Bible Corner</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Give <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                        <div class="dropdown-content">
+                            <a href="vehicle-donations.html">Vehicle Donations</a>
+                            <a href="donation.html">Donation</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Contact <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                        <div class="dropdown-content">
+                            <a href="contact.html">Contact Us</a>
+                            <a href="prayer-requests.html">Prayer Requests</a>
+                            <a href="testimonies.html">Share Your Testimony</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>What We Believe</h1>
+            <p>The foundational truths that guide our mission and ministry</p>
+            <a href="#message" class="btn">Explore Our Beliefs</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container" id="message">
+        <div class="section-title">
+            <h2>WHAT WE BELIEVE</h2>
+        </div>
+        
+        <div class="message-grid">
+            <!-- Message Card 1 -->
+            <div class="message-card">
+                <img src="images/The Godhead.webp" alt="The Godhead" class="message-img">
+                <div class="message-content">
+                    <div class="icon">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <h3>The Godhead</h3>
+                    <p>We believe in one God eternally existing in three persons: Father, Son, and Holy Spirit - equal in power and glory.</p>
+                    <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Learn More</a>
+                </div>
+            </div>
+            
+            <!-- Message Card 2 -->
+            <div class="message-card">
+                <img src="images/The Bible.webp" alt="The Bible" class="message-img">
+                <div class="message-content">
+                    <div class="icon">
+                        <i class="fas fa-bible"></i>
+                    </div>
+                    <h3>The Bible</h3>
+                    <p>We hold that the Bible is the inspired, infallible Word of God, our supreme authority in all matters of faith and conduct.</p>
+                    <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Learn More</a>
+                </div>
+            </div>
+            
+            <!-- Message Card 3 -->
+            <div class="message-card">
+                <img src="images/The Messiah.webp" alt="The Messiah" class="message-img">
+                <div class="message-content">
+                    <div class="icon">
+                        <i class="fas fa-cross"></i>
+                    </div>
+                    <h3>The Messiah</h3>
+                    <p>We proclaim Jesus Christ as the only begotten Son of God, our Savior who died for our sins and rose again for our justification.</p>
+                    <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Learn More</a>
+                </div>
+            </div>
+            
+            <!-- Message Card 4 -->
+            <div class="message-card">
+                <img src="images/The Five Solas.webp" alt="The Five Solas" class="message-img">
+                <div class="message-content">
+                    <div class="icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>The Five Solas</h3>
+                    <p>We stand on the Reformation principles: Scripture alone, Christ alone, Grace alone, Faith alone, and Glory to God alone.</p>
+                    <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Learn More</a>
+                </div>
+            </div>
+            
+            <!-- Message Card 5 -->
+            <div class="message-card">
+                <img src="images/The Two Baptisms.webp" alt="The Two Baptisms" class="message-img">
+                <div class="message-content">
+                    <div class="icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>The Two Baptisms</h3>
+                    <p>We practice water baptism by immersion and believe in the baptism of the Holy Spirit with the evidence of speaking in tongues.</p>
+                    <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Learn More</a>
+                </div>
+            </div>
+            
+            <!-- Message Card 6 -->
+            <div class="message-card">
+                <img src="images/The Two Baptisms.webp" alt="The Great Commission" class="message-img">
+                <div class="message-content">
+                    <div class="icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>The Great Commission</h3>
+                    <p>We are committed to fulfilling Christ's command to make disciples of all nations, baptizing and teaching them to obey all His commands.</p>
+                    <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Dive Deeper Into These Truths?</h2>
+            <p>Download our free eBook that expands on these foundational doctrines and discover how they can transform your spiritual walk.</p>
+            <a href="free-ebooks.html" class="btn">Get Your Free eBook Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Column 1 -->
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="who-we-are.html">Who We Are</a></li>
+                        <li><a href="our-message.html">Our Message</a></li>
+                        <li><a href="free-ebooks.html">Free eBook</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 2 -->
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="sermons.html">Sermons</a></li>
+                        <li><a href="prayer-requests.html">Prayer Requests</a></li>
+                        <li><a href="testimonies.html">Testimonies</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div class="footer-col">
+                    <h3>Connect With Us</h3>
+                    <p>Follow us on social media to stay updated with our latest content and events.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/RevivalNowAmerica" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/Revival4Now" target="_blank" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@revivalnowamerica" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@brotheramartey" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 Revival Now America. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--secondary);"></i> for God's Glory</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+        
+        // Mobile dropdown toggle
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('active');
+                }
+            });
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation on Scroll
+        function animateOnScroll() {
+            const cards = document.querySelectorAll('.message-card');
+            const windowHeight = window.innerHeight;
+            
+            cards.forEach((card, index) => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const cardVisible = 150;
+                
+                if (cardPosition < windowHeight - cardVisible) {
+                    setTimeout(() => {
+                        card.style.opacity = "1";
+                        card.style.transform = "translateY(0)";
+                    }, index * 150);
+                }
+            });
+        }
+        
+        // Trigger animations on page load
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.message-card');
+            cards.forEach((card, index) => {
+                card.style.transition = `all 0.5s ease ${index * 0.1}s`;
+                card.style.opacity = "0";
+                card.style.transform = "translateY(20px)";
+            });
+            
+            // Trigger the scroll event to check initial positions
+            animateOnScroll();
+        });
+        
+        // Add scroll event listener for animations
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>

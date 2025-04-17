@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Corner - The Six Foundational Doctrines of Christ | Revival America</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0c4da2;
+            --secondary-color: #f39c12;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --dark-bg: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            height: 50px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            position: relative;
+            margin-left: 20px;
+        }
+        
+        .nav-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-link {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-link:hover {
+            background-color: var(--light-bg);
+            color: var(--primary-color);
+        }
+        
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 50px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('images/The%20Bible.webp');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 50px 0;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .intro h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+        
+        .doctrines-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .doctrine-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .doctrine-card.scrolled {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .doctrine-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .doctrine-card h3 {
+            font-size: 22px;
+            padding: 20px;
+            color: #fff;
+            background: linear-gradient(135deg, var(--primary-color), #1a6eb7);
+        }
+        
+        .doctrine-card h3 i {
+            margin-right: 10px;
+            color: #fff;
+            font-size: 24px;
+        }
+        
+        .doctrine-card .content {
+            padding: 20px;
+        }
+        
+        .doctrine-card p {
+            margin-bottom: 15px;
+        }
+        
+        .learn-more {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .learn-more:hover {
+            background-color: #0a3b7c;
+        }
+        
+        .teacher-section {
+            margin: 60px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .teacher-flex {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .teacher-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .teacher-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .teacher-content {
+            flex: 2;
+            padding: 30px;
+        }
+        
+        .teacher-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), #1a6eb7);
+            color: #fff;
+            text-align: center;
+            padding: 60px 0;
+            margin: 40px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #e67e22;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: #fff;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-col ul li a:hover {
+            color: #fff;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #bdc3c7;
+        }
+        
+        .copyright a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media screen and (max-width: 991px) {
+            .teacher-flex {
+                flex-direction: column;
+            }
+            
+            .teacher-image {
+                min-height: 300px;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background-color: #fff;
+                width: 100%;
+                height: calc(100vh - 80px);
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 0;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .nav-item.active .dropdown {
+                max-height: 500px;
+            }
+            
+            .nav-link {
+                padding: 15px;
+            }
+            
+            .dropdown-link {
+                padding-left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <button class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="about.html" class="dropdown-link">About</a></li>
+                        <li><a href="Our-Projects.html" class="dropdown-link">Our Projects</a></li>
+                        <li><a href="our-message.html" class="dropdown-link">Our Message</a></li>
+                        <li><a href="who-we-are.html" class="dropdown-link">Who We Are</a></li>
+                        <li><a href="what-we-believe.html" class="dropdown-link">What We Believe</a></li>
+                        <li><a href="Thoughts-on-Revival.html" class="dropdown-link">Thoughts on Revival</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-church"></i> Ministries
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="bible-corner.html" class="dropdown-link">Bible Corner</a></li>
+                        <li><a href="Discipleship.html" class="dropdown-link">Discipleship</a></li>
+                        <li><a href="Weekly-Devotionals.html" class="dropdown-link">Weekly Devotionals</a></li>
+                        <li><a href="Global-Christian-Village.html" class="dropdown-link">Global Christian Village</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-book-open"></i> Resources
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="Free-eBooks.html" class="dropdown-link">Free eBooks</a></li>
+                        <li><a href="Photos.html" class="dropdown-link">Photos</a></li>
+                        <li><a href="Videos.html" class="dropdown-link">Videos</a></li>
+                        <li><a href="bible-corner.html" class="dropdown-link">Bible Corner</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-hand-holding-heart"></i> Give
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="Vehicle-Donations.html" class="dropdown-link">Vehicle Donations</a></li>
+                        <li><a href="donation.html" class="dropdown-link">Donation</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="Contact.html" class="nav-link">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>The Six Foundational Doctrines of Christ</h1>
+            <p>Essential teachings for every believer from Hebrews 6:1-2</p>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="container">
+            <div class="intro">
+                <h2>Foundational Christian Doctrines</h2>
+                <p>
+                    "Therefore, leaving the principles of the doctrine of Christ, let us go on unto perfection; not laying again the foundation of repentance from dead works, and of faith toward God, of the doctrine of baptisms, and of laying on of hands, and of resurrection of the dead, and of eternal judgment" (Hebrews 6:1-2).
+                </p>
+                <p>
+                    These six foundational teachings are elementary, and every believer needs to know and understand these basics to move on to maturity in the faith.
+                </p>
+            </div>
+            
+            <div class="teacher-section">
+                <div class="teacher-flex">
+                    <div class="teacher-image">
+                        <img src="images/Brother%20Amartey.webp" alt="Brother Amartey">
+                    </div>
+                    <div class="teacher-content">
+                        <h2>Biblical Foundations</h2>
+                        <p>
+                            What are the six foundational doctrines of the Christian faith? This is one question which millions of believers cannot answer, even here in America, let alone third world countries, because they just do not know because they have never been taught!
+                        </p>
+                        <p>
+                            Before we go into the details of the doctrine of Christ, let us start with the basics of the Christian faith, and our starting point is the book of Hebrews which gives us the six foundational doctrines of Christ.
+                        </p>
+                        <p>
+                            These teachings are elementary, and every believer needs to know and understand these basics and move on to further essential doctrines as taught in the Bible.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="doctrines-container">
+                <div class="doctrine-card">
+                    <h3><i class="fas fa-heart-broken"></i> 1. Repentance</h3>
+                    <div class="content">
+                        <p>
+                            Repentance, with regards to salvation, simply means, "to change one's mind," about sin and about God; to acknowledge we are sinners and need God to save us (Acts 2:36-38: Mark 1:15; Matthew 3:1-2).
+                        </p>
+                        <p>
+                            It is the first step to salvation. Jesus came to call sinners to repentance (Luke 5:32). Repentance is not a work we do to be saved, but a gift of God to draw us to Himself in order to be saved.
+                        </p>
+                        <a href="#" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="doctrine-card">
+                    <h3><i class="fas fa-cross"></i> 2. Faith</h3>
+                    <div class="content">
+                        <p>
+                            Faith is having belief, trust or confidence in God. Whoever comes to God must believe that He is real and that He rewards those who diligently seek Him, and without faith it is impossible to please God (Hebrews 11:6).
+                        </p>
+                        <p>
+                            Faith is not something we do; it is something we receive; it is a gift of God. "We are saved by grace, through faith... Not of works, lest any man should boast" (Ephesians 2:8-9).
+                        </p>
+                        <a href="#" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="doctrine-card">
+                    <h3><i class="fas fa-tint"></i> 3. Baptisms</h3>
+                    <div class="content">
+                        <p>
+                            The Bible speaks of three baptisms: John's baptism, Believers' baptism, and Holy Spirit baptism (Matthew 3:11; 28:19; Acts 1:8).
+                        </p>
+                        <p>
+                            Water baptism is an ordinance which the Lord commanded us to observe, as an outward expression of our faith and our identification with His death, burial and resurrection.
+                        </p>
+                        <a href="#" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="doctrine-card">
+                    <h3><i class="fas fa-hands"></i> 4. Laying on of Hands</h3>
+                    <div class="content">
+                        <p>
+                            This is the ceremony by which hands are laid on the individual for impartation of the gift of the Holy Spirit, spiritual gifts, blessings, authority or for an induction or ordination into an office or ministry (Acts 6:6; 8:5-17; 13:2-3).
+                        </p>
+                        <p>
+                            Hands could also be laid for healing (Luke 4:40; Mark 6:4-5).
+                        </p>
+                        <a href="#" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="doctrine-card">
+                    <h3><i class="fas fa-sun"></i> 5. Resurrection of the Dead</h3>
+                    <div class="content">
+                        <p>
+                            The Lord Jesus lived, died, was buried and rose again from the dead on the third day, conquering death, to become the "firstfruits" of the dead (John 20:1-31; 1 Corinthians 15:1-23; 29-54).
+                        </p>
+                        <p>
+                            His resurrection gives us the assurance that the dead will also arise at the end of the age when the Lord returns (1 Thessalonians 4:16-17).
+                        </p>
+                        <a href="#" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="doctrine-card">
+                    <h3><i class="fas fa-balance-scale"></i> 6. Eternal Judgment</h3>
+                    <div class="content">
+                        <p>
+                            "It is appointed unto man once to die, but after this, the judgment" (Hebrew 9:27). God has appointed a final judgment in which both the living and the dead will be judged.
+                        </p>
+                        <p>
+                            Judgment has been entrusted to Jesus Christ who shall judge all flesh upon His return (Matthew 25:31-32; John 5:22; 27; Acts 10:42; Revelation 20:12).
+                        </p>
+                        <a href="#" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="teacher-section" style="margin-top: 60px;">
+                <div class="teacher-flex">
+                    <div class="teacher-content">
+                        <h2>Understanding Biblical Doctrines</h2>
+                        <p>
+                            These foundational doctrines are the starting point for every believer's spiritual journey. As we understand and apply these teachings, we grow in our faith and become more effective in our Christian walk.
+                        </p>
+                        <p>
+                            The book of Hebrews encourages us not just to know these principles, but to move beyond them into spiritual maturity. Building on this foundation, we can explore the depths of God's word and grow in our relationship with Christ.
+                        </p>
+                        <p>
+                            Join us as we explore these foundational teachings and discover how they shape our understanding of God, salvation, and our purpose as believers.
+                        </p>
+                    </div>
+                    <div class="teacher-image">
+                        <img src="images/Brother%20and%20Doctrines.png" alt="Brother teaching biblical doctrines">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Deepen Your Understanding</h2>
+            <p>Join our weekly Bible studies to explore these foundational doctrines in greater depth and discover how to apply them in your daily walk with Christ.</p>
+            <a href="#" class="cta-button">Sign Up Now</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <p>Revival America is dedicated to spreading the Gospel and fostering spiritual growth through Biblical teachings and community outreach.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="bible-corner.html">Bible Corner</a></li>
+                        <li><a href="donation.html">Give</a></li>
+                        <li><a href="Contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="Free-eBooks.html">Free eBooks</a></li>
+                        <li><a href="Videos.html">Videos</a></li>
+                        <li><a href="Weekly-Devotionals.html">Weekly Devotionals</a></li>
+                        <li><a href="Bible-Corner.html">Bible Corner</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/RevivalNowAmerica" class="social-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/Revival4Now" class="social-link" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@revivalnowamerica" class="social-link" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@brotheramartey" class="social-link" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 Revival America. All Rights Reserved | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        if (window.innerWidth <= 768) {
+            navItems.forEach(item => {
+                const link = item.querySelector('.nav-link');
+                
+                if (link && item.querySelector('.dropdown')) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        item.classList.toggle('active');
+                    });
+                }
+            });
+        }
+        
+        const scrollElements = document.querySelectorAll('.doctrine-card, .teacher-section');
+        
+        const elementInView = (el, percentageScroll = 100) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= 
+                ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
+            );
+        };
+        
+        const displayScrollElement = (element) => {
+            element.classList.add('scrolled');
+        };
+        
+        const hideScrollElement = (element) => {
+            element.classList.remove('scrolled');
+        };
+        
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 90)) {
+                    displayScrollElement(el);
+                } else {
+                    hideScrollElement(el);
+                }
+            })
+        }
+        
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+        });
+        
+        handleScrollAnimation();
+    </script>
+</body>
+</html>
