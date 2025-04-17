@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revival Now America</title>
+    <meta name="description" content="Revival Now America - Seeking God for a mighty outpouring of His Spirit in our generation through prayer, repentance, and revival">
+    <meta name="keywords" content="revival, prayer, America, Christian, ministry, Brother Amartey, spiritual awakening">
+    <meta name="author" content="Revival Now America">
+    <title>Revival Now America | Spiritual Awakening & Prayer Movement</title>
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Revival Now America | Spiritual Awakening & Prayer Movement">
+    <meta property="og:description" content="Seeking God for a mighty outpouring of His Spirit in our generation through prayer, repentance, and revival">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.revivalnowamerica.org">
+    <meta property="og:image" content="https://www.revivalnowamerica.org/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
     <style>
-        /* Lightweight CSS with animations and gradients */
+        /* Lightweight CSS with animations and gradients optimized for performance */
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #e74c3c;
             --accent-color: #3498db;
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
+            --transition-speed: 0.3s;
         }
         
         * {
@@ -26,14 +42,18 @@
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
         
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
             color: white;
             padding: 1rem 2rem;
-            position: relative;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            will-change: transform;
         }
         
         .header-container {
@@ -72,7 +92,7 @@
             font-weight: 500;
             padding: 0.5rem 1rem;
             border-radius: 4px;
-            transition: all 0.3s ease;
+            transition: all var(--transition-speed) ease;
             display: flex;
             align-items: center;
         }
@@ -83,6 +103,7 @@
         
         nav a i {
             margin-right: 8px;
+            font-size: 0.9rem;
         }
         
         .dropdown {
@@ -99,7 +120,7 @@
             z-index: 1;
             border-radius: 4px;
             overflow: hidden;
-            animation: fadeIn 0.3s ease;
+            animation: fadeIn var(--transition-speed) ease;
         }
         
         @keyframes fadeIn {
@@ -118,6 +139,7 @@
             display: block;
             transition: all 0.2s ease;
             border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
         }
         
         .dropdown-content a:hover {
@@ -129,6 +151,8 @@
         .hero {
             position: relative;
             height: 80vh;
+            min-height: 500px;
+            max-height: 800px;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                         url('images/home1.webp') center/cover no-repeat;
             display: flex;
@@ -148,6 +172,7 @@
             height: 100%;
             background: linear-gradient(45deg, rgba(46, 134, 222, 0.3), rgba(231, 76, 60, 0.3));
             animation: gradientShift 8s ease infinite alternate;
+            will-change: opacity;
         }
         
         @keyframes gradientShift {
@@ -163,14 +188,14 @@
         }
         
         .hero h1 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             animation: fadeInUp 1s ease;
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             margin-bottom: 2rem;
             animation: fadeInUp 1s ease 0.3s both;
         }
@@ -188,9 +213,11 @@
             border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
-            transition: all 0.3s ease;
+            transition: all var(--transition-speed) ease;
             border: 2px solid var(--secondary-color);
             animation: pulse 2s infinite;
+            font-size: 1rem;
+            cursor: pointer;
         }
         
         .btn:hover {
@@ -230,7 +257,7 @@
         }
         
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             color: var(--primary-color);
             display: inline-block;
             padding-bottom: 10px;
@@ -261,7 +288,7 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            transition: transform var(--transition-speed) ease;
         }
         
         .about-image:hover {
@@ -280,7 +307,7 @@
         }
         
         .about-content h3 {
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 3vw, 1.8rem);
             margin-bottom: 1.5rem;
             color: var(--primary-color);
         }
@@ -297,7 +324,7 @@
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
             border-top: 4px solid var(--accent-color);
         }
         
@@ -345,7 +372,7 @@
         }
         
         .cta-content h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             margin-bottom: 1.5rem;
         }
         
@@ -379,6 +406,7 @@
         
         .footer-about p {
             margin-bottom: 1.5rem;
+            font-size: 0.9rem;
         }
         
         .footer-links h3, .footer-contact h3 {
@@ -409,7 +437,8 @@
         .footer-links a {
             color: #ddd;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color var(--transition-speed) ease;
+            font-size: 0.9rem;
         }
         
         .footer-links a:hover {
@@ -421,6 +450,7 @@
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
+            font-size: 0.9rem;
         }
         
         .footer-contact i {
@@ -443,7 +473,8 @@
             background-color: rgba(255,255,255,0.1);
             border-radius: 50%;
             color: white;
-            transition: all 0.3s ease;
+            transition: all var(--transition-speed) ease;
+            text-decoration: none;
         }
         
         .social-links a:hover {
@@ -460,6 +491,7 @@
         
         .footer-bottom p {
             margin-bottom: 0.5rem;
+            font-size: 0.8rem;
         }
         
         .footer-links {
@@ -472,11 +504,28 @@
         .footer-links a {
             color: #ddd;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color var(--transition-speed) ease;
+            font-size: 0.8rem;
         }
         
         .footer-links a:hover {
             color: var(--accent-color);
+        }
+        
+        /* Performance optimizations */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Reduced motion media query */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
         
         /* Responsive styles */
@@ -489,10 +538,16 @@
             nav ul {
                 flex-direction: column;
                 margin-top: 1rem;
+                width: 100%;
             }
             
             nav li {
                 margin: 0.5rem 0;
+                width: 100%;
+            }
+            
+            nav a {
+                justify-content: center;
             }
             
             .dropdown-content {
@@ -509,6 +564,11 @@
             
             .dropdown.active .dropdown-content {
                 display: block;
+            }
+            
+            .hero {
+                height: 70vh;
+                min-height: 400px;
             }
             
             .hero h1 {
@@ -540,9 +600,37 @@
                 margin-left: 0;
                 margin-top: 15px;
             }
+            
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+        
+        /* Very small devices */
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0.5rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .hero {
+                height: 60vh;
+                min-height: 300px;
+            }
+            
+            .hero-content {
+                padding: 1rem;
+            }
+            
+            .vision-mission {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header>
@@ -560,7 +648,7 @@
                             <a href="Our-Projects.html">Our Projects</a>
                             <a href="our-message.html">Our Message</a>
                             <a href="who-we-are.html">Who We Are</a>
-                            <a href="what-we-believe.html">What We Believe</a>
+                            <a href="what-whe-believe.html">What We Believe</a>
                             <a href="Thoughts-on-Revival.html">Thoughts on Revival</a>
                         </div>
                     </li>
@@ -579,7 +667,7 @@
                             <a href="Free-eBooks.html">Free eBooks</a>
                             <a href="Photos.html">Photos</a>
                             <a href="Videos.html">Videos</a>
-                            <a href="bible-corner.html">Bible Corner</a>
+                            <a href="Bible-Corner.html">Bible Corner</a>
                         </div>
                     </li>
                     <li class="dropdown">
@@ -592,7 +680,8 @@
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-envelope"></i> Contact</a>
                         <div class="dropdown-content">
-                            <a href="Contact.html">Contact Us</a>
+                            <a href="Contact-us.html">Contact Us</a>
+                            <a href="prayer-request.html">Prayer Request</a>
                         </div>
                     </li>
                 </ul>
@@ -614,7 +703,7 @@
         </div>
         <div class="about-container">
             <div class="about-image">
-                <img src="images/Brother-Amartey.webp" alt="Brother Amartey">
+                <img src="images/Brother-Amartey.webp" alt="Brother Amartey" loading="lazy">
             </div>
             <div class="about-content">
                 <h3>We're glad you are here!</h3>
@@ -652,7 +741,7 @@
                 <a href="who-we-are.html" class="btn" style="margin-top: 20px;">Learn More About Us</a>
             </div>
             <div class="about-image">
-                <img src="images/home2.webp" alt="Revival Now America Image">
+                <img src="images/home2.webp" alt="Revival Now America Image" loading="lazy">
             </div>
         </div>
     </section>
@@ -662,7 +751,8 @@
             <h2>Join Us in Prayer for Revival</h2>
             <p>Together, let's seek God for a mighty outpouring of His Spirit in our generation.</p>
             <div class="cta-buttons">
-                <a href="donation.html" class="btn">Get Involved Today</a>
+                <a href="donation.html" class="btn">Support Our Mission</a>
+                <a href="prayer-request.html" class="btn btn-outline">Submit Prayer Request</a>
             </div>
         </div>
     </section>
@@ -675,10 +765,10 @@
                 </div>
                 <p>We are calling the church to prayer and repentance, stirring up the saints and encouraging them to seek the Lord for revival. We believe in the power of prayer and intercession and trust that the Lord will hear and answer us in His own time.</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/RevivalNowAmerica" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/Revival4Now" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.youtube.com/@revivalnowamerica" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.tiktok.com/@brotheramartey" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/RevivalNowAmerica" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/Revival4Now" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@revivalnowamerica" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@brotheramartey" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
             <div class="footer-links">
@@ -689,7 +779,7 @@
                     <li><a href="what-we-believe.html">What We Believe</a></li>
                     <li><a href="who-we-are.html">Who We Are</a></li>
                     <li><a href="bible-corner.html">Bible Corner</a></li>
-                    <li><a href="Contact.html">Contact Us</a></li>
+                    <li><a href="Contact-us.html">Contact Us</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
@@ -697,23 +787,28 @@
                 <p><i class="fas fa-map-marker-alt"></i> Revival Now America</p>
                 <p><i class="fas fa-envelope"></i> info@revivalnowamerica.org</p>
                 <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                <p><i class="fas fa-clock"></i> Monday-Friday: 9AM - 5PM</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Revival Now America. All Rights Reserved</p>
+            <p>&copy; <span id="year"></span> Revival Now America. All Rights Reserved</p>
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms of Service</a>
+                <a href="sitemap.html">Sitemap</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Minimal JavaScript for dropdown functionality on mobile
+        // Minimal JavaScript for performance
         document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+            
+            // Mobile dropdown functionality
             const dropdowns = document.querySelectorAll('.dropdown');
             
-            // For mobile devices, toggle dropdown on click
             if (window.innerWidth <= 768) {
                 dropdowns.forEach(dropdown => {
                     const link = dropdown.querySelector('a');
@@ -740,31 +835,42 @@
                 });
             }
             
-            // Simple animation for elements when they come into view
-            const animateOnScroll = function() {
-                const elements = document.querySelectorAll('.about-container, .vision-card, .mission-card');
+            // Simple intersection observer for animations
+            if ('IntersectionObserver' in window) {
+                const animateOnScroll = function(entries, observer) {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                };
                 
-                elements.forEach(element => {
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const screenPosition = window.innerHeight / 1.2;
-                    
-                    if (elementPosition < screenPosition) {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
-                    }
+                const observer = new IntersectionObserver(animateOnScroll, {
+                    threshold: 0.1
                 });
-            };
-            
-            // Set initial state for animated elements
-            const animatedElements = document.querySelectorAll('.about-container, .vision-card, .mission-card');
-            animatedElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            });
-            
-            window.addEventListener('scroll', animateOnScroll);
-            animateOnScroll(); // Run once on load
+                
+                document.querySelectorAll('.about-container, .vision-card, .mission-card').forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    observer.observe(el);
+                });
+            }
+        });
+        
+        // Load critical CSS first, then non-critical
+        function loadCSS(href) {
+            var link = document.createElement('link');
+            link.href = href;
+            link.rel = 'stylesheet';
+            document.head.appendChild(link);
+        }
+        
+        // Load non-critical CSS after page load
+        window.addEventListener('load', function() {
+            loadCSS('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
         });
     </script>
 </body>

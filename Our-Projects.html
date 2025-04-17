@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Projects - Revival Now America</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* General Styles */
         * {
@@ -46,6 +47,13 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #e67e22;
         }
         
         nav {
@@ -94,19 +102,22 @@
             display: block;
             color: white;
             text-decoration: none;
+            transition: all 0.3s ease;
         }
         
         .dropdown-content a:hover {
             background-color: #435d78;
+            padding-left: 20px;
         }
         
         .dropdown:hover .dropdown-content {
             display: block;
+            animation: fadeIn 0.3s ease;
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://source.unsplash.com/random/1600x900/?christian,revival');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('E:/Revival amarica/images/The-Messiah-Crusade.png');
             background-size: cover;
             background-position: center;
             color: white;
@@ -117,10 +128,27 @@
             overflow: hidden;
         }
         
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.7) 0%, rgba(230, 126, 34, 0.5) 100%);
+            z-index: 0;
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 20px;
             animation: fadeInDown 1s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
         .hero p {
@@ -130,6 +158,7 @@
             margin-left: auto;
             margin-right: auto;
             animation: fadeInUp 1.2s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
         
         /* Our Projects Section */
@@ -139,6 +168,7 @@
             margin-bottom: 40px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             border-radius: 8px;
+            border-top: 5px solid #e67e22;
         }
         
         .section-title {
@@ -147,6 +177,11 @@
             margin-bottom: 30px;
             color: #2c3e50;
             position: relative;
+        }
+        
+        .section-title i {
+            color: #e67e22;
+            margin-right: 10px;
         }
         
         .section-title::after {
@@ -166,6 +201,7 @@
         
         .project-item {
             margin-bottom: 20px;
+            position: relative;
         }
         
         .project-image {
@@ -174,6 +210,7 @@
             overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
         }
         
         .project-image img {
@@ -189,6 +226,13 @@
             font-size: 1.5rem;
             color: #2c3e50;
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .project-title i {
+            color: #e67e22;
+            margin-right: 10px;
         }
         
         .project-description {
@@ -214,6 +258,7 @@
             border-radius: 8px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 3px solid #e67e22;
         }
         
         .resource-item:hover {
@@ -225,6 +270,13 @@
             margin-bottom: 15px;
             color: #2c3e50;
             font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .resource-item h3 i {
+            color: #e67e22;
+            margin-right: 10px;
         }
         
         /* Media Content Section */
@@ -267,16 +319,37 @@
             margin-bottom: 40px;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('E:/Revival amarica/images/Global-Christian-Village.webp') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .cta .container {
+            position: relative;
+            z-index: 1;
         }
         
         .cta h2 {
             margin-bottom: 20px;
             font-size: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
         
         .cta p {
             max-width: 700px;
             margin: 0 auto 20px;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
         }
         
         .cta-button {
@@ -293,12 +366,30 @@
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            position: relative;
+            overflow: hidden;
         }
         
         .cta-button:hover {
             background-color: #d35400;
             transform: translateY(-3px);
             box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+        }
+        
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(30deg);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover::after {
+            left: 100%;
         }
         
         /* Footer */
@@ -321,6 +412,13 @@
         .footer-section h3 {
             margin-bottom: 15px;
             font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-section h3 i {
+            color: #e67e22;
+            margin-right: 10px;
         }
         
         .footer-links {
@@ -333,10 +431,19 @@
             text-decoration: none;
             margin-bottom: 10px;
             transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a i {
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
         }
         
         .footer-links a:hover {
             color: #e67e22;
+            padding-left: 5px;
         }
         
         .social-links {
@@ -349,11 +456,19 @@
             color: white;
             font-size: 1.5rem;
             transition: transform 0.3s ease;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
         }
         
         .social-links a:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.1);
             color: #e67e22;
+            background: rgba(255,255,255,0.2);
         }
         
         .footer-bottom {
@@ -379,6 +494,17 @@
         }
         
         /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -424,6 +550,7 @@
                 position: static;
                 box-shadow: none;
                 display: none;
+                width: 100%;
             }
             
             .dropdown:hover .dropdown-content {
@@ -440,6 +567,10 @@
             
             .cta h2 {
                 font-size: 1.5rem;
+            }
+            
+            .resources {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -463,47 +594,49 @@
 <body>
     <header>
         <nav class="container">
-            <div class="logo">REVIVAL NOW AMERICA</div>
+            <div class="logo"><i class="fas fa-cross"></i> REVIVAL NOW AMERICA</div>
             <ul>
                 <li class="dropdown">
-                    <a href="index.html">Home</a>
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
                     <div class="dropdown-content">
-                        <a href="about.html">About</a>
-                        <a href="Our-Projects.html">Our Projects</a>
-                        <a href="our-message.html">Our Message</a>
-                        <a href="who-we-are.html">Who We Are</a>
-                        <a href="what-whe-believe.html">What We Believe</a>
-                        <a href="Thoughts-on-Revival.html">Thoughts on Revival</a>
+                        <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                        <a href="Our-Projects.html"><i class="fas fa-project-diagram"></i> Our Projects</a>
+                        <a href="our-message.html"><i class="fas fa-bullhorn"></i> Our Message</a>
+                        <a href="who-we-are.html"><i class="fas fa-users"></i> Who We Are</a>
+                        <a href="what-we-believe.html"><i class="fas fa-book-bible"></i> What We Believe</a>
+                        <a href="Thoughts-on-Revival.html"><i class="fas fa-pray"></i> Thoughts on Revival</a>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#">Ministries</a>
+                    <a href="#"><i class="fas fa-hands-praying"></i> Ministries</a>
                     <div class="dropdown-content">
-                        <a href="bible-corner.html">Bible Corner</a>
-                        <a href="Discipleship.html">Discipleship</a>
-                        <a href="Weekly-Devotionals.html">Weekly Devotionals</a>
-                        <a href="Global-Christian-Village.html">Global Christian Village</a>
+                        <a href="bible-corner.html"><i class="fas fa-bible"></i> Bible Corner</a>
+                        <a href="Discipleship.html"><i class="fas fa-user-graduate"></i> Discipleship</a>
+                        <a href="Weekly-Devotionals.html"><i class="fas fa-calendar-week"></i> Weekly Devotionals</a>
+                        <a href="Global-Christian-Village.html"><i class="fas fa-globe"></i> Global Christian Village</a>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#">Resources</a>
+                    <a href="#"><i class="fas fa-book-open"></i> Resources</a>
                     <div class="dropdown-content">
-                        <a href="Free-eBooks.html">Free eBooks</a>
-                        <a href="Photos.html">Photos</a>
-                        <a href="Videos.html">Videos</a>
+                        <a href="Free-eBooks.html"><i class="fas fa-book"></i> Free eBooks</a>
+                        <a href="Photos.html"><i class="fas fa-camera"></i> Photos</a>
+                        <a href="Videos.html"><i class="fas fa-video"></i> Videos</a>
+                        <a href="Bible-Corner.html"><i class="fas fa-bible"></i> Bible Corner</a>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#">Give</a>
+                    <a href="#"><i class="fas fa-hand-holding-heart"></i> Give</a>
                     <div class="dropdown-content">
-                        <a href="Vehicle-Donations.html">Vehicle Donations</a>
-                        <a href="donation.html">Donation</a>
+                        <a href="Vehicle-Donations.html"><i class="fas fa-car"></i> Vehicle Donations</a>
+                        <a href="donation.html"><i class="fas fa-donate"></i> Donation</a>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#">Contact</a>
+                    <a href="#"><i class="fas fa-envelope"></i> Contact</a>
                     <div class="dropdown-content">
-                        <a href="contact.html">Contact Us</a>
+                        <a href="contact-us.html"><i class="fas fa-address-book"></i> Contact Us</a>
+                        <a href="prayer-request.html"><i class="fas fa-praying-hands"></i> Prayer Request</a>
                     </div>
                 </li>
             </ul>
@@ -512,66 +645,76 @@
 
     <section class="hero">
         <div class="container">
-            <h1>OUR PROJECTS</h1>
+            <h1><i class="fas fa-project-diagram"></i> OUR PROJECTS</h1>
             <p>Discover the impactful work we're doing to spread the message of Christ across America and beyond.</p>
-            <a href="donation.html" class="cta-button">Support Our Projects</a>
+            <a href="donation.html" class="cta-button">Support Our Projects <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
 
     <main class="container">
         <section class="projects">
-            <h2 class="section-title">Our Current Initiatives</h2>
+            <h2 class="section-title"><i class="fas fa-tasks"></i> Our Current Initiatives</h2>
             
             <div class="project-grid">
                 <article class="project-item">
-                    <h3 class="project-title">The Messiah Crusade</h3>
+                    <h3 class="project-title"><i class="fas fa-cross"></i> The Messiah Crusade</h3>
                     <div class="project-description">
                         <p>We are committed to the Great Commission of our Lord Jesus Christ, to go into all the world with the gospel. To this end, the Messiah Crusade, which is an evangelistic meeting and the bedrock of this ministry, shall be held throughout the states and cities across America and other parts of the world, to proclaim Jesus as the Messiah and the only Saviour of the world.</p>
                         <p>The first Messiah Crusade held at the Covington Square, Georgia, was solely sponsored by Brother Tom Davis. Would you help to sponsor the Messiah crusades?</p>
                     </div>
                     <div class="project-image">
-                        <img src="https://source.unsplash.com/random/800x600/?preaching,christian" alt="Teaching and Equipping">
+                        <img src="E:/Revival amarica/images/The-Messiah-Crusade.png" alt="The Messiah Crusade Event">
                     </div>
                 </article>
                 
                 <article class="project-item">
-                    <h3 class="project-title">Teaching and Equipping</h3>
+                    <h3 class="project-title"><i class="fas fa-chalkboard-teacher"></i> Teaching and Equipping</h3>
                     <div class="project-description">
                         <p>In furtherance of the Great Commission, we are involved with seeking, identifying, teaching, training and equipping those with divine calling to do the work of ministry, to be true servant-leaders who would also train others to do the same in accordance with 2 Timothy 2:2.</p>
                     </div>
                     <div class="project-image">
-                        <img src="https://source.unsplash.com/random/800x600/?missionaries,christian" alt="Brother Amartey and Brother Tom Davis">
+                        <img src="E:/Revival amarica/images/Teaching-and-Equipping.png" alt="Teaching and Equipping Session">
                         <p class="caption">Brother Amartey and Brother Tom Davis, who sponsored the first Messiah Crusade, at the Covington Square in Georgia.</p>
+                    </div>
+                </article>
+
+                <article class="project-item">
+                    <h3 class="project-title"><i class="fas fa-hands-helping"></i> Brothers in Ministry</h3>
+                    <div class="project-description">
+                        <p>Our ministry is built on strong relationships and partnerships in the gospel. Here we see the fellowship of brothers working together for the advancement of God's kingdom.</p>
+                    </div>
+                    <div class="project-image">
+                        <img src="E:/Revival amarica/images/Brothers.webp" alt="Brothers in Ministry">
                     </div>
                 </article>
             </div>
         </section>
 
         <section class="mb-20">
-            <h2 class="section-title">Project Resources</h2>
+            <h2 class="section-title"><i class="fas fa-book-open"></i> Project Resources</h2>
             <div class="resources">
                 <div class="resource-item">
-                    <h3>Our Free Book</h3>
+                    <h3><i class="fas fa-book"></i> Our Free Book</h3>
                     <p>This is our FREE book to you, but we need support to get it published and distributed. Please donate to support publication and distribution of the Doctrine of Christ.</p>
                     <div class="project-image mb-20">
-                        <img src="https://source.unsplash.com/random/800x600/?book,christian" alt="Free eBook">
+                        <img src="E:/Revival amarica/images/Our-Free-Book.webp" alt="Free eBook">
                     </div>
-                    <a href="Free-eBooks.html" class="cta-button">Get Free eBook</a>
+                    <a href="Free-eBooks.html" class="cta-button">Get Free eBook <i class="fas fa-download"></i></a>
                 </div>
                 
                 <div class="resource-item">
-                    <h3>Global Christian Village</h3>
+                    <h3><i class="fas fa-globe"></i> Global Christian Village</h3>
                     <p>Join our global community of believers working together to spread the message of Christ around the world.</p>
                     <div class="project-image mb-20">
-                        <img src="https://source.unsplash.com/random/800x600/?community,christian" alt="Global Christian Village">
+                        <img src="E:/Revival amarica/images/Global-Christian-Village.webp" alt="Global Christian Village">
                     </div>
-                    <a href="Global-Christian-Village.html" class="cta-button">Learn More</a>
+                    <a href="Global-Christian-Village.html" class="cta-button">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
 
         <section class="mb-20">
-            <h2 class="section-title">Project Media</h2>
+            <h2 class="section-title"><i class="fas fa-photo-video"></i> Project Media</h2>
             <div class="media-content">
                 <div class="media-item">
                     <div class="youtube-container">
@@ -584,9 +727,9 @@
 
     <section class="cta">
         <div class="container">
-            <h2>Partner With Us</h2>
+            <h2><i class="fas fa-handshake"></i> Partner With Us</h2>
             <p>Your generous donations help us continue these important projects and expand our reach to more communities.</p>
-            <a href="donation.html" class="cta-button">Donate Now</a>
+            <a href="donation.html" class="cta-button">Donate Now <i class="fas fa-donate"></i></a>
         </div>
     </section>
 
@@ -594,28 +737,28 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Revival Now America</h3>
+                    <h3><i class="fas fa-cross"></i> Revival Now America</h3>
                     <p>Dedicated to spreading the message of Christ and bringing spiritual revival across America and beyond.</p>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Quick Links</h3>
+                    <h3><i class="fas fa-link"></i> Quick Links</h3>
                     <div class="footer-links">
-                        <a href="home.html">Home</a>
-                        <a href="about.html">About Us</a>
-                        <a href="our-Projects.html">Our Projects</a>
-                        <a href="donation.html">Donate</a>
-                        <a href="contact.html">Contact Us</a>
+                        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                        <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+                        <a href="Our-Projects.html"><i class="fas fa-project-diagram"></i> Our Projects</a>
+                        <a href="donation.html"><i class="fas fa-donate"></i> Donate</a>
+                        <a href="contact-us.html"><i class="fas fa-envelope"></i> Contact Us</a>
                     </div>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Connect With Us</h3>
+                    <h3><i class="fas fa-share-alt"></i> Connect With Us</h3>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/RevivalNowAmerica" target="_blank">📱 Facebook</a>
-                        <a href="https://x.com/Revival4Now" target="_blank">🐦 Twitter</a>
-                        <a href="https://www.youtube.com/@revivalnowamerica" target="_blank">📺 YouTube</a>
-                        <a href="https://www.tiktok.com/@brotheramartey" target="_blank">📱 TikTok</a>
+                        <a href="https://www.facebook.com/RevivalNowAmerica" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/Revival4Now" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@revivalnowamerica" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@brotheramartey" target="_blank"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Revival Now America, our mission to ignite revival fires across the nation, and thoughts on revival compiled by Brother Amartey.">
+    <meta name="keywords" content="Revival Now America, who we are, Christian revival, Brother Amartey, spiritual awakening">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Revival Now America">
     <title>Who We Are | Revival Now America</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -58,6 +62,15 @@
             margin: 0 auto;
             position: relative;
             z-index: 1;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
         
         /* Navigation Styles */
@@ -362,10 +375,40 @@
                 margin-top: 1rem;
                 flex-wrap: wrap;
                 justify-content: center;
+                display: none;
+            }
+            
+            nav ul.active {
+                display: flex;
             }
             
             nav li {
                 margin: 0.5rem;
+            }
+            
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                transform: none;
+                display: none;
+                box-shadow: none;
+                background-color: rgba(255, 255, 255, 0.95);
+                margin-top: 0.5rem;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 2rem;
             }
             
             .hero h1 {
@@ -459,8 +502,11 @@
     <header>
         <div class="header-container">
             <div style="flex: 1;"></div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
             <nav>
-                <ul>
+                <ul id="navMenu">
                     <li class="dropdown">
                         <a href="index.html"><i class="fas fa-home"></i> Home</a>
                         <div class="dropdown-content">
@@ -468,7 +514,7 @@
                             <a href="Our-Projects.html">Our Projects</a>
                             <a href="our-message.html">Our Message</a>
                             <a href="who-we-are.html">Who We Are</a>
-                            <a href="what-whe-believe.html">What We Believe</a>
+                            <a href="what-we-believe.html">What We Believe</a>
                             <a href="Thoughts-on-Revival.html">Thoughts on Revival</a>
                         </div>
                     </li>
@@ -497,8 +543,12 @@
                             <a href="donation.html">Donation</a>
                         </div>
                     </li>
-                    <li>
-                        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+                        <div class="dropdown-content">
+                            <a href="Contact-us.html">Contact Us</a>
+                            <a href="prayer-request.html">Prayer Request</a>
+                        </div>
                     </li>
                 </ul>
             </nav>
@@ -616,8 +666,8 @@
                 <h3>Quick Links</h3>
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
-                <a href="our-projects.html">Our Projects</a>
-                <a href="contact.html">Contact</a>
+                <a href="Our-Projects.html">Our Projects</a>
+                <a href="Contact-us.html">Contact</a>
             </div>
             
             <div class="footer-section">
@@ -639,5 +689,42 @@
             <p>© 2025 Revival Now America! All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const dropdowns = document.querySelectorAll('.dropdown');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Toggle dropdown on mobile
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    dropdowns.forEach(d => {
+                        if (d !== dropdown) d.classList.remove('active');
+                    });
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+        
+        // Close menu when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992 && !e.target.closest('header')) {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                dropdowns.forEach(d => d.classList.remove('active'));
+            }
+        });
+    </script>
 </body>
 </html>
