@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join Revival Now America’s Christian discipleship program to grow in faith, fulfill the Great Commission, and become a disciple through biblical training and evangelism.">
+    <meta name="keywords" content="Christian discipleship, Great Commission, spiritual growth, Revival Now America, biblical training, evangelism training, Christian faith, disciple making, spiritual development">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Revival Now America">
     <title>Discipleship | Revival Now America</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -50,10 +54,24 @@
             align-items: center;
             padding: 15px 0;
         }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
         
         .nav-menu {
             display: flex;
             list-style: none;
+            justify-content: flex-end; /* Align navigation to the right */
         }
         
         .nav-item {
@@ -453,72 +471,73 @@
     </style>
 </head>
 <body>
-     <!-- Header -->
-     <header>
+    <!-- Header -->
+    <header>
         <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-fire"></i>
+                <span>Revival Now America</span>
+            </div>
             <button class="mobile-toggle" id="mobile-toggle">
                 <i class="fas fa-bars"></i>
             </button>
-            
-            <ul class="nav-menu" id="nav-menu">
-            <li class="nav-item">
-                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
-                    <ul class="dropdown">
-                        <li><a href="about.html" class="dropdown-link">About</a></li>
-                        <li><a href="Our-Projects.html" class="dropdown-link">Our Projects</a></li>
-                        <li><a href="our-message.html" class="dropdown-link">Our Message</a></li>
-                        <li><a href="who-we-are.html" class="dropdown-link">Who We Are</a></li>
-                        <li><a href="what-we-believe.html" class="dropdown-link">What We Believe</a></li>
-                        <li><a href="Thoughts-on-Revival.html" class="dropdown-link">Thoughts on Revival</a></li>
-                    </ul>
-                </li>
-                
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-church"></i> Ministries
-                    </a>
-                    <ul class="dropdown">
-                        <li><a href="bible-corner.html" class="dropdown-link">Bible Corner</a></li>
-                        <li><a href="Discipleship.html" class="dropdown-link">Discipleship</a></li>
-                        <li><a href="Weekly-Devotionals.html" class="dropdown-link">Weekly Devotionals</a></li>
-                        <li><a href="Global-Christian-Village.html" class="dropdown-link">Global Christian Village</a></li>
-                    </ul>
-                </li>
-                
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-book-open"></i> Resources
-                    </a>
-                    <ul class="dropdown">
-                        <li><a href="Free-eBooks.html" class="dropdown-link">Free eBooks</a></li>
-                        <li><a href="Photos.html" class="dropdown-link">Photos</a></li>
-                        <li><a href="Videos.html" class="dropdown-link">Videos</a></li>
-                        <li><a href="bible-corner.html" class="dropdown-link">Bible Corner</a></li>
-                    </ul>
-                </li>
-                
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-hand-holding-heart"></i> Give
-                    </a>
-                    <ul class="dropdown">
-                        <li><a href="Vehicle-Donations.html" class="dropdown-link">Vehicle Donations</a></li>
-                        <li><a href="donation.html" class="dropdown-link">Donation</a></li>
-                    </ul>
-                </li>
-                
-                <li class="nav-item">
-                    <a href="Contact.html" class="nav-link">
-                        <i class="fas fa-envelope"></i> Contact
-                    </a>
-                <<ul class="dropdown">
-                    <li><a href="Contact-us.html" class="dropdown-link">Contact Us</a></li>
-                    <li><a href="prayer-request.html" class="dropdown-link">Prayer Request</a></li>
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                        <ul class="dropdown">
+                            <li><a href="about.html" class="dropdown-link">About</a></li>
+                            <li><a href="Our-Projects.html" class="dropdown-link">Our Projects</a></li>
+                            <li><a href="our-message.html" class="dropdown-link">Our Message</a></li>
+                            <li><a href="who-we-are.html" class="dropdown-link">Who We Are</a></li>
+                            <li><a href="what-we-believe.html" class="dropdown-link">What We Believe</a></li>
+                            <li><a href="Thoughts-on-Revival.html" class="dropdown-link">Thoughts on Revival</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-church"></i> Ministries
+                        </a>
+                        <ul class="dropdown">
+                            <li><a href="bible-corner.html" class="dropdown-link">Bible Corner</a></li>
+                            <li><a href="Discipleship.html" class="dropdown-link">Discipleship</a></li>
+                            <li><a href="Weekly-Devotionals.html" class="dropdown-link">Weekly Devotionals</a></li>
+                            <li><a href="Global-Christian-Village.html" class="dropdown-link">Global Christian Village</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-book-open"></i> Resources
+                        </a>
+                        <ul class="dropdown">
+                            <li><a href="Free-eBooks.html" class="dropdown-link">Free eBooks</a></li>
+                            <li><a href="Photos.html" class="dropdown-link">Photos</a></li>
+                            <li><a href="Videos.html" class="dropdown-link">Videos</a></li>
+                            <li><a href="bible-corner.html" class="dropdown-link">Bible Corner</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-hand-holding-heart"></i> Give
+                        </a>
+                        <ul class="dropdown">
+                            <li><a href="Vehicle-Donations.html" class="dropdown-link">Vehicle Donations</a></li>
+                            <li><a href="donation.html" class="dropdown-link">Donation</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Contact.html" class="nav-link">
+                            <i class="fas fa-envelope"></i> Contact
+                        </a>
+                        <ul class="dropdown">
+                            <li><a href="Contact-us.html" class="dropdown-link">Contact Us</a></li>
+                            <li><a href="prayer-request.html" class="dropdown-link">Prayer Request</a></li>
+                        </ul>
+                    </li>
                 </ul>
-            </li>
-        </ul>
-    </div>
-</header>
+            </nav>
+        </div>
+    </header>
     
     <!-- Hero Section -->
     <section class="hero">

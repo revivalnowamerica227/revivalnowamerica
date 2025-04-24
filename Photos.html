@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the Photo Gallery of Revival Now America, showcasing moments of faith, community outreach, missions, and spiritual revival across America and beyond.">
+    <meta name="keywords" content="photo gallery, Revival Now America, Christian ministry photos, community outreach, mission trips, spiritual retreats, Bible study events, faith-based photography">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Revival Now America">
     <title>Photo Gallery - Revival Now America</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -43,7 +47,23 @@
             align-items: center;
         }
         
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+        
         /* Navigation */
+        nav {
+            margin-left: auto; /* Aligns navigation to the right */
+        }
+        
         nav ul {
             display: flex;
             list-style: none;
@@ -62,14 +82,21 @@
             padding: 10px 15px;
             border-radius: 5px;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
         }
         
         nav ul li a:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
         
+        nav ul li a i {
+            margin-right: 8px;
+        }
+        
         .dropdown {
             position: relative;
+            margin-left: 20px;
         }
         
         .dropdown-content {
@@ -594,19 +621,23 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-fire"></i>
+                <span>Revival Now America</span>
+            </div>
             <button class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
             </button>
             <nav>
                 <ul id="navMenu">
                     <li class="dropdown">
-                        <a href="#"><i class="fas fa-home"></i> Home</a>
+                        <a href="index.html"><i class="fas fa-home"></i> Home</a>
                         <div class="dropdown-content">
                             <a href="about.html">About</a>
-                            <a href="Our Projects.html">Our Projects</a>
+                            <a href="Our-Projects.html">Our Projects</a>
                             <a href="our-message.html">Our Message</a>
                             <a href="who-we-are.html">Who We Are</a>
-                            <a href="what-whe-believe.html">What We Believe</a>
+                            <a href="what-we-believe.html">What We Believe</a>
                             <a href="Thoughts-on-Revival.html">Thoughts on Revival</a>
                         </div>
                     </li>
@@ -615,17 +646,18 @@
                         <div class="dropdown-content">
                             <a href="bible-corner.html">Bible Corner</a>
                             <a href="Discipleship.html">Discipleship</a>
-                            <a href="Weekly Devotionals.html">Weekly Devotionals</a>
+                            <a href="Weekly-Devotionals.html">Weekly Devotionals</a>
                             <a href="Global-Christian-Village.html">Global Christian Village</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-book-open"></i> Resources</a>
                         <div class="dropdown-content">
-                            <a href="Free eBooks.html">Free eBooks</a>
+                            <a href="Free-eBooks.html">Free eBooks</a>
                             <a href="Photos.html">Photos</a>
                             <a href="Videos.html">Videos</a>
-                           </div>
+                            <a href="Bible-Corner.html">Bible Corner</a>
+                        </div>
                     </li>
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-hand-holding-heart"></i> Give</a>
@@ -705,7 +737,7 @@
                             <h4>Bible Study Resources</h4>
                             <p>Materials developed for community Bible studies</p>
                         </div>
-                 </div>
+                    </div>
                     <div class="gallery-item" data-category="community">
                         <img src="images/Farm Community.webp" alt="Food Distribution" loading="lazy">
                         <div class="gallery-overlay">
@@ -740,7 +772,7 @@
                         </div>
                     </div>
                     <div class="gallery-item">
-                        <img src="images/book.png" alt="Bible Study Resources" loading="lazy">
+                        <img src="images/Bible-School.webp" alt="Bible Study Resources" loading="lazy">
                         <div class="gallery-overlay">
                             <h4>Bible Study Resources</h4>
                             <p>Materials developed for community Bible studies</p>
@@ -830,7 +862,7 @@
         <div class="container footer-container">
             <div class="footer-section">
                 <h3 class="footer-heading">Revival Now America</h3>
-                <p>Dedicated to bringing spiritual renewal and revival to America and beyond through the transformative power of Jesus Christ.</p>
+                <p>Igniting Revival Fires Across America</p>
                 <div class="social-icons">
                     <a href="https://www.facebook.com/RevivalNowAmerica" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://x.com/Revival4Now" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -840,35 +872,37 @@
             </div>
             
             <div class="footer-section footer-links">
-                <h3 class="footer-heading">Quick Links</h3>
+                <h3 class="footer-heading">About</h3>
                 <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="our-message.html">Our Message</a></li>
-                    <li><a href="Weekly Devotionals.html">Weekly Devotionals</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="about.html">Team</a></li>
+                    <li><a href="about.html">History</a></li>
+                    <li><a href="about.html">Careers</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
                 </ul>
             </div>
             
             <div class="footer-section footer-links">
-                <h3 class="footer-heading">Resources</h3>
+                <h3 class="footer-heading">Privacy /
+
                 <ul>
-                    <li><a href="Free eBooks.html">Free eBooks</a></li>
-                    <li><a href="Videos.html">Videos</a></li>
-                    <li><a href="Bible Corner.html">Bible Corner</a></li>
-                    <li><a href="donation.html">Support Our Mission</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                    <li><a href="Contact-us.html">Contact Us</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
-                <h3 class="footer-heading">Contact Info</h3>
-                <p><i class="fas fa-envelope"></i> Email: info@revivalnowamerica.org</p>
-                <p><i class="fas fa-phone"></i> Phone: (555) 123-4567</p>
-                <p><i class="fas fa-map-marker-alt"></i> Address: P.O. Box 12345, City, State 12345</p>
+                <h3 class="footer-heading">Social</h3>
+                <ul class="footer-links">
+                    <li><a href="https://www.facebook.com/RevivalNowAmerica">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/revivalnowamerica">Instagram</a></li>
+                    <li><a href="https://x.com/Revival4Now">Twitter/X</a></li>
+                </ul>
             </div>
         </div>
         
         <div class="container footer-bottom">
-            <p>© 2025 Revival Now America. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+            <p>© 2025 Revival Now America. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a> | Designed with WordPress</p>
         </div>
     </footer>
 

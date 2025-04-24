@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Revival Now America - Seeking God for a mighty outpouring of His Spirit in our generation through prayer, repentance, and revival">
-    <meta name="keywords" content="revival, prayer, America, Christian, ministry, Brother Amartey, spiritual awakening">
+    <meta name="description" content="Revival Now America is a Christian ministry seeking a spiritual awakening through prayer, repentance, and revival. Join us to ignite revival across America.">
+    <meta name="keywords" content="Revival Now America, spiritual awakening, Christian ministry, prayer for revival, repentance, Brother Amartey, Christian revival movement, gospel preaching">
     <meta name="author" content="Revival Now America">
-    <title>Revival Now America | Spiritual Awakening & Prayer Movement</title>
+    <title>Revival Now America | Christian Revival & Prayer Movement</title>
     
     <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Revival Now America | Spiritual Awakening & Prayer Movement">
-    <meta property="og:description" content="Seeking God for a mighty outpouring of His Spirit in our generation through prayer, repentance, and revival">
+    <meta property="og:title" content="Revival Now America | Christian Revival & Prayer Movement">
+    <meta property="og:description" content="Seeking a mighty outpouring of God's Spirit through prayer, repentance, and revival. Join us to ignite revival across America.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.revivalnowamerica.org">
     <meta property="og:image" content="https://www.revivalnowamerica.org/images/og-image.jpg">
@@ -74,6 +74,11 @@
         .logo i {
             margin-right: 10px;
             color: var(--accent-color);
+            font-size: 1.8rem;
+        }
+        
+        nav {
+            margin-left: auto; /* Aligns navigation to the right */
         }
         
         nav ul {
@@ -136,10 +141,16 @@
             color: var(--dark-color);
             padding: 12px 16px;
             text-decoration: none;
-            display: block;
+            display: flex;
+            align-items: center;
             transition: all 0.2s ease;
             border-bottom: 1px solid #eee;
             font-size: 0.9rem;
+        }
+        
+        .dropdown-content a i {
+            margin-right: 10px;
+            color: var(--accent-color);
         }
         
         .dropdown-content a:hover {
@@ -535,6 +546,10 @@
                 text-align: center;
             }
             
+            nav {
+                margin-left: 0;
+            }
+            
             nav ul {
                 flex-direction: column;
                 margin-top: 1rem;
@@ -633,6 +648,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="header-container">
             <div class="logo">
@@ -644,44 +660,44 @@
                     <li class="dropdown">
                         <a href="index.html"><i class="fas fa-home"></i> Home</a>
                         <div class="dropdown-content">
-                            <a href="about.html">About Us</a>
-                            <a href="Our-Projects.html">Our Projects</a>
-                            <a href="our-message.html">Our Message</a>
-                            <a href="who-we-are.html">Who We Are</a>
-                            <a href="what-we-believe.html">What We Believe</a>
-                            <a href="Thoughts-on-Revival.html">Thoughts on Revival</a>
+                            <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+                            <a href="Our-Projects.html"><i class="fas fa-project-diagram"></i> Our Projects</a>
+                            <a href="our-message.html"><i class="fas fa-bullhorn"></i> Our Message</a>
+                            <a href="who-we-are.html"><i class="fas fa-users"></i> Who We Are</a>
+                            <a href="what-we-believe.html"><i class="fas fa-dove"></i> What We Believe</a>
+                            <a href="Thoughts-on-Revival.html"><i class="fas fa-lightbulb"></i> Thoughts on Revival</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-church"></i> Ministries</a>
                         <div class="dropdown-content">
-                            <a href="bible-corner.html">Bible Corner</a>
-                            <a href="Discipleship.html">Discipleship</a>
-                            <a href="Weekly-Devotionals.html">Weekly Devotionals</a>
-                            <a href="Global-Christian-Village.html">Global Christian Village</a>
+                            <a href="bible-corner.html"><i class="fas fa-bible"></i> Bible Corner</a>
+                            <a href="Discipleship.html"><i class="fas fa-user-graduate"></i> Discipleship</a>
+                            <a href="Weekly-Devotionals.html"><i class="fas fa-calendar-week"></i> Weekly Devotionals</a>
+                            <a href="Global-Christian-Village.html"><i class="fas fa-globe"></i> Global Christian Village</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-book-open"></i> Resources</a>
                         <div class="dropdown-content">
-                            <a href="Free-eBooks.html">Free eBooks</a>
-                            <a href="Photos.html">Photos</a>
-                            <a href="Videos.html">Videos</a>
-                            <a href="Bible-Corner.html">Bible Corner</a>
+                            <a href="Free-eBooks.html"><i class="fas fa-book"></i> Free eBooks</a>
+                            <a href="Photos.html"><i class="fas fa-camera"></i> Photos</a>
+                            <a href="Videos.html"><i class="fas fa-video"></i> Videos</a>
+                            <a href="Bible-Corner.html"><i class="fas fa-bible"></i> Bible Corner</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-hand-holding-heart"></i> Give</a>
                         <div class="dropdown-content">
-                            <a href="Vehicle-Donations.html">Vehicle Donations</a>
-                            <a href="donation.html">Donation</a>
+                            <a href="Vehicle-Donations.html"><i class="fas fa-car"></i> Vehicle Donations</a>
+                            <a href="donation.html"><i class="fas fa-donate"></i> Donation</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-envelope"></i> Contact</a>
                         <div class="dropdown-content">
-                            <a href="Contact-us.html">Contact Us</a>
-                            <a href="prayer-request.html">Prayer Request</a>
+                            <a href="Contact-us.html"><i class="fas fa-paper-plane"></i> Contact Us</a>
+                            <a href="prayer-request.html"><i class="fas fa-pray"></i> Prayer Request</a>
                         </div>
                     </li>
                 </ul>
@@ -689,14 +705,16 @@
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Revival Now America!</h1>
-            <p>Join us as we seek God for a mighty outpouring of His Spirit in our generation.</p>
+            <p>Join us in seeking a mighty outpouring of God's Spirit through prayer and repentance.</p>
             <a href="our-message.html" class="btn">Learn More</a>
         </div>
     </section>
 
+    <!-- About Brother Amartey Section -->
     <section>
         <div class="section-title">
             <h2>Brother Amartey Welcomes You</h2>
@@ -714,6 +732,7 @@
         </div>
     </section>
 
+    <!-- Vision & Mission Section -->
     <section style="background-color: #f5f5f5;">
         <div class="section-title">
             <h2>Our Vision & Mission</h2>
@@ -732,6 +751,7 @@
         </div>
     </section>
 
+    <!-- About Brother Amartey Continued -->
     <section>
         <div class="about-container">
             <div class="about-content">
@@ -746,6 +766,7 @@
         </div>
     </section>
 
+    <!-- Call to Action Section -->
     <section class="cta-section">
         <div class="cta-content">
             <h2>Join Us in Prayer for Revival</h2>
@@ -757,6 +778,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-about">
@@ -791,7 +813,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <span id="year"></span> Revival Now America. All Rights Reserved</p>
+            <p>© <span id="year"></span> Revival Now America. All Rights Reserved</p>
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms of Service</a>
