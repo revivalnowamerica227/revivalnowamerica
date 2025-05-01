@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Donate your vehicle to support veterans with Revival Now America. Fast, free pickup for cars, trucks, RVs, boats, or motorcycles. Tax-deductible and easy 3-step process.">
+    <meta name="keywords" content="donate vehicle to veterans, car donation form, tax deductible vehicle donation, free car pickup, RV donation veterans, boat donation charity, motorcycle donation process, Christian charity donation">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Revival Now America">
+    <title>Donate Vehicle to Veterans | Fast, Free Pickup | Tax Deductible | Revival Now America</title>
+    
+    <!-- Tracking Scripts -->
+    <script src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" async></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    
+    <!-- Facebook Pixel -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'YOUR_PIXEL_ID'); // Replace with your actual Facebook Pixel ID
+      fbq('track', 'PageView');
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d6e6e;
+            --secondary: #e63946;
+            --accent: #f4a261;
+            --light: #f1faee;
+            --dark: #1d3557;
+        }
+        
+        .donation-form-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            border: 3px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .donation-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .form-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .form-progress::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #eee;
+            z-index: 1;
+        }
+        
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+        }
+        
+        .progress-step.active .step-number {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+        
+        .progress-step.completed .step-number {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .step-number {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        .step-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #666;
+            text-align: center;
+        }
+        
+        .progress-step.active .step-label,
+        .progress-step.completed .step-label {
+            color: var(--dark);
+        }
+        
+        .form-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .form-section.active {
+            display: block;
+        }
+        
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .form-btn {
+            background: linear-gradient(135deg, var(--secondary), #c1121f);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .form-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.4);
+        }
+        
+        .form-btn.outline {
+            background: white;
+            color: var(--dark);
+            border: 2px solid var(--dark);
+        }
+        
+        .form-btn.outline:hover {
+            background: var(--light);
+            box-shadow: none;
+        }
+        
+        .form-icon {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .input-highlight {
+            border-left: 3px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 110, 0.25);
+        }
+        
+        .form-floating>label {
+            color: #666;
+        }
+        
+        .phone-cta {
+            background: rgba(244, 162, 97, 0.2);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 2rem;
+            border: 1px dashed var(--accent);
+        }
+        
+        .secure-badge {
+            display: inline-flex;
+            align-items: center;
+            background: var(--light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Donation Form Section -->
+<section class="py-5" id="donation-form">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="donation-form-container">
+                    <h2 class="text-center mb-4">
+                        <i class="fas fa-car-alt text-primary"></i> Start Your Vehicle Donation
+                    </h2>
+                    <p class="text-center mb-4">Complete this simple 3-step form to schedule your <strong>free vehicle pickup</strong> and receive your <strong>tax deduction receipt</strong>.</p>
+                    
+                    <!-- Form Progress Tracker -->
+                    <div class="form-progress">
+                        <div class="progress-step completed" id="step1-indicator">
+                            <span class="step-number">1</span>
+                            <span class="step-label">Your Info</span>
+                        </div>
+                        <div class="progress-step" id="step2-indicator">
+                            <span class="step-number">2</span>
+                            <span class="step-label">Vehicle Details</span>
+                        </div>
+                        <div class="progress-step" id="step3-indicator">
+                            <span class="step-number">3</span>
+                            <span class="step-label">Pickup Info</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Multi-Step Form -->
+                    <form id="vehicleDonationForm" onsubmit="return trackFormSubmission()">
+                        <!-- Step 1: Contact Information -->
+                        <div class="form-section active" id="step1">
+                            <h4 class="mb-4"><i class="fas fa-user-circle text-primary"></i> Contact Information</h4>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="donorName" name="donorName" 
+                                               placeholder="Full Name" required onblur="trackFieldInteraction('name_field')">
+                                        <label for="donorName">Full Name*</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="donorEmail" name="donorEmail" 
+                                               placeholder="Email Address" required onblur="trackFieldInteraction('email_field')">
+                                        <label for="donorEmail">Email*</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="donorPhone" name="donorPhone" 
+                                               placeholder="Phone Number" required onblur="trackFieldInteraction('phone_field')">
+                                        <label for="donorPhone">Phone*</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="donorZip" name="donorZip" 
+                                               placeholder="ZIP Code" required onblur="trackFieldInteraction('zip_field')">
+                                        <label for="donorZip">ZIP Code*</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-navigation">
+                                <button type="button" class="form-btn outline" disabled>
+                                    <i class="fas fa-arrow-left form-icon"></i> Previous
+                                </button>
+                                <button type="button" class="form-btn next-step" onclick="nextStep(1, 2)">
+                                    Continue <i class="fas fa-arrow-right form-icon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Vehicle Information -->
+                        <div class="form-section" id="step2">
+                            <h4 class="mb-4"><i class="fas fa-car text-primary"></i> Vehicle Details</h4>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="vehicleType" name="vehicleType" required
+                                                onchange="trackFieldInteraction('vehicle_type_select')">
+                                            <option value="">Select Vehicle Type</option>
+                                            <option value="car">Car</option>
+                                            <option value="truck">Truck</option>
+                                            <option value="suv">SUV</option>
+                                            <option value="motorcycle">Motorcycle</option>
+                                            <option value="rv">RV/Camper</option>
+                                            <option value="boat">Boat</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <label for="vehicleType">Vehicle Type*</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="vehicleMake" name="vehicleMake" 
+                                               placeholder="Make" required onblur="trackFieldInteraction('make_field')">
+                                        <label for="vehicleMake">Make*</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="vehicleModel" name="vehicleModel" 
+                                               placeholder="Model" required onblur="trackFieldInteraction('model_field')">
+                                        <label for="vehicleModel">Model*</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="vehicleYear" name="vehicleYear" 
+                                               placeholder="Year" min="1900" max="2025" required 
+                                               onblur="trackFieldInteraction('year_field')">
+                                        <label for="vehicleYear">Year*</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="vehicleCondition" name="vehicleCondition" 
+                                                  placeholder="Condition Details" style="height: 100px" required
+                                                  onblur="trackFieldInteraction('condition_field')"></textarea>
+                                        <label for="vehicleCondition">Condition Details*</label>
+                                    </div>
+                                    <p class="small text-muted mt-1">Please describe any damage, mechanical issues, or special features</p>
+                                </div>
+                            </div>
+                            <div class="form-navigation">
+                                <button type="button" class="form-btn outline prev-step" onclick="prevStep(2, 1)">
+                                    <i class="fas fa-arrow-left form-icon"></i> Back
+                                </button>
+                                <button type="button" class="form-btn next-step" onclick="nextStep(2, 3)">
+                                    Continue <i class="fas fa-arrow-right form-icon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Pickup Information -->
+                        <div class="form-section" id="step3">
+                            <h4 class="mb-4"><i class="fas fa-calendar-alt text-primary"></i> Pickup Information</h4>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="date" class="form-control" id="preferredDate" name="preferredDate" 
+                                               min="2025-05-01" required 
+                                               onchange="trackFieldInteraction('date_field')">
+                                        <label for="preferredDate">Preferred Pickup Date*</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="preferredTime" name="preferredTime" required
+                                                onchange="trackFieldInteraction('time_field')">
+                                            <option value="">Select Time Window</option>
+                                            <option value="morning">Morning (8am-12pm)</option>
+                                            <option value="afternoon">Afternoon (12pm-4pm)</option>
+                                            <option value="evening">Evening (4pm-8pm)</option>
+                                            <option value="anytime">Anytime</option>
+                                        </select>
+                                        <label for="preferredTime">Preferred Time*</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="pickupLocation" name="pickupLocation" 
+                                                  placeholder="Pickup Location Details" style="height: 100px" required
+                                                  onblur="trackFieldInteraction('location_field')"></textarea>
+                                        <label for="pickupLocation">Pickup Location Details*</label>
+                                    </div>
+                                    <p class="small text-muted mt-1">Include street address, parking instructions, or special access details</p>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="titleAvailable" name="titleAvailable"
+                                               onchange="trackFieldInteraction('title_checkbox')">
+                                        <label class="form-check-label" for="titleAvailable">
+                                            I have the vehicle title available
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-navigation">
+                                <button type="button" class="form-btn outline prev-step" onclick="prevStep(3, 2)">
+                                    <i class="fas fa-arrow-left form-icon"></i> Back
+                                </button>
+                                <button type="submit" class="form-btn" id="submitDonationBtn">
+                                    <i class="fas fa-paper-plane form-icon"></i> Submit Donation
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <!-- Phone CTA Alternative -->
+                    <div class="phone-cta">
+                        <h5 class="mb-3"><i class="fas fa-phone-alt text-primary"></i> Prefer to Donate by Phone?</h5>
+                        <a href="tel:1-855-500-7433" class="btn btn-lg btn-primary" onclick="trackPhoneCall()">
+                            <i class="fas fa-phone me-2"></i> Call 1-855-500-RIDE (7433)
+                        </a>
+                        <p class="small mt-2">Our donation specialists are available 7 days a week</p>
+                    </div>
+                    
+                    <!-- Security Badge -->
+                    <div class="secure-badge">
+                        <i class="fas fa-lock text-success me-2"></i>
+                        <span>Your information is secure and will never be shared</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tracking and Form Handling Script -->
+<script>
+// Form Navigation
+function nextStep(current, next) {
+    document.getElementById(`step${current}`).classList.remove('active');
+    document.getElementById(`step${next}`).classList.add('active');
+    document.getElementById(`step${current}-indicator`).classList.remove('active');
+    document.getElementById(`step${next}-indicator`).classList.add('active');
+    gtag('event', 'form_progress', {
+        'event_category': 'donation_form',
+        'event_label': `step_${next}`,
+        'value': next
+    });
+}
+
+function prevStep(current, prev) {
+    document.getElementById(`step${current}`).classList.remove('active');
+    document.getElementById(`step${prev}`).classList.add('active');
+    document.getElementById(`step${current}-indicator`).classList.remove('active');
+    document.getElementById(`step${prev}-indicator`).classList.add('active');
+}
+
+// Tracking Functions
+function trackFieldInteraction(fieldName) {
+    gtag('event', 'form_interaction', {
+        'event_category': 'donation_form',
+        'event_label': fieldName,
+        'value': 1
+    });
+    fbq('track', 'Lead', {field: fieldName});
+    
+    // Mark field as started in session storage
+    sessionStorage.setItem(`form_${fieldName}`, 'started');
+}
+
+function trackPhoneCall() {
+    gtag('event', 'phone_click', {
+        'event_category': 'conversion',
+        'event_label': 'donation_phone_call'
+    });
+    fbq('track', 'Contact');
+}
+
+function trackFormSubmission() {
+    // Form validation
+    const form = document.getElementById('vehicleDonationForm');
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return false;
+    }
+    
+    // Create a loading indicator
+    const submitBtn = document.getElementById('submitDonationBtn');
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+    submitBtn.disabled = true;
+    
+    // Track completion for analytics
+    gtag('event', 'form_submission', {
+        'event_category': 'conversion',
+        'event_label': 'vehicle_donation_completed',
+        'value': 1
+    });
+    fbq('track', 'CompleteRegistration');
+    
+    // Store completion
+    localStorage.setItem('donationFormCompleted', 'true');
+    
+    // Prepare form data for submission to Google Sheets
+    const formData = {
+        donorName: document.getElementById('donorName').value,
+        donorEmail: document.getElementById('donorEmail').value,
+        donorPhone: document.getElementById('donorPhone').value,
+        donorZip: document.getElementById('donorZip').value,
+        vehicleType: document.getElementById('vehicleType').value,
+        vehicleMake: document.getElementById('vehicleMake').value,
+        vehicleModel: document.getElementById('vehicleModel').value,
+        vehicleYear: document.getElementById('vehicleYear').value,
+        vehicleCondition: document.getElementById('vehicleCondition').value,
+        preferredDate: document.getElementById('preferredDate').value,
+        preferredTime: document.getElementById('preferredTime').value,
+        pickupLocation: document.getElementById('pickupLocation').value,
+        titleAvailable: document.getElementById('titleAvailable').checked
+    };
+    
+    // Create a hidden form to submit the data to Google Apps Script
+    const hiddenForm = document.createElement('form');
+    hiddenForm.method = 'POST';
+    hiddenForm.action = 'NEW_WEB_APP_URL_HERE'; // Replace with the actual web app URL from Google Apps Script deployment
+    hiddenForm.style.display = 'none';
+    hiddenForm.target = 'hiddenIframe'; // Target the iframe to capture the response
+    
+    // Add form data as hidden inputs
+    for (const key in formData) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = typeof formData[key] === 'boolean' ? formData[key].toString() : formData[key];
+        hiddenForm.appendChild(input);
+    }
+    
+    // Create a hidden iframe to capture the response
+    const iframe = document.createElement('iframe');
+    iframe.name = 'hiddenIframe';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+    
+    document.body.appendChild(hiddenForm);
+    
+    // Listen for the iframe load event to capture the response
+    iframe.onload = function() {
+        try {
+            // Check if contentDocument is accessible
+            const responseBody = iframe.contentDocument ? iframe.contentDocument.body.innerText : 'Error: Unable to access response';
+            console.log('Google Apps Script Response:', responseBody);
+            
+            // Reset button
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+            
+            if (responseBody.includes('Success')) {
+                // Show success message
+                showSubmissionMessage(true, "Thank you for your donation submission! A representative will contact you shortly to arrange pickup.");
+                
+                // Optionally reset the form
+                form.reset();
+            } else {
+                // Show error message with the response for debugging
+                showSubmissionMessage(false, `Submission failed: ${responseBody}. Please try again or call our donation line.`);
+            }
+        } catch (error) {
+            console.error('Error reading iframe response:', error);
+            // Reset button
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+            // Show error message
+            showSubmissionMessage(false, "There was an error submitting your donation. Please try again or call our donation line.");
+        }
+    };
+    
+    // Submit the hidden form
+    hiddenForm.submit();
+    
+    return false; // Prevent default form submission
+}
+
+// Function to show submission message
+function showSubmissionMessage(success, message) {
+    // First, remove any existing message
+    const existingMessage = document.getElementById('submissionMessage');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+    
+    // Create message element
+    const messageDiv = document.createElement('div');
+    messageDiv.id = 'submissionMessage';
+    messageDiv.className = success ? 'alert alert-success' : 'alert alert-danger';
+    messageDiv.innerHTML = `
+        <i class="fas fa-${success ? 'check-circle' : 'exclamation-circle'} me-2"></i>
+        ${message}
+    `;
+    
+    // Add custom styling
+    messageDiv.style.padding = '15px';
+    messageDiv.style.marginTop = '20px';
+    messageDiv.style.borderRadius = '5px';
+    messageDiv.style.backgroundColor = success ? '#d4edda' : '#f8d7da';
+    messageDiv.style.color = success ? '#155724' : '#721c24';
+    messageDiv.style.border = `1px solid ${success ? '#c3e6cb' : '#f5c6cb'}`;
+    
+    // Insert message after the form
+    const form = document.getElementById('vehicleDonationForm');
+    form.parentNode.insertBefore(messageDiv, form.nextSibling);
+    
+    // Scroll to message
+    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Remove message after 10 seconds if it's a success message
+    if (success) {
+        setTimeout(() => {
+            messageDiv.style.transition = 'opacity 1s ease-out';
+            messageDiv.style.opacity = '0';
+            setTimeout(() => messageDiv.remove(), 1000);
+        }, 10000);
+    }
+}
+
+// Track form abandonment
+window.addEventListener('beforeunload', function(e) {
+    const formStarted = Object.keys(sessionStorage).some(key => key.startsWith('form_'));
+    if(formStarted && !localStorage.getItem('donationFormCompleted')) {
+        gtag('event', 'form_abandonment', {
+            'event_category': 'donation_form',
+            'event_label': 'form_abandoned',
+            'value': 1
+        });
+        fbq('track', 'PageView');
+    }
+});
+
+// Field focus tracking
+document.querySelectorAll('input, select, textarea').forEach(field => {
+    field.addEventListener('focus', function() {
+        trackFieldInteraction(`${this.id}_focused`);
+    });
+});
+</script>
+</body>
+</html>
